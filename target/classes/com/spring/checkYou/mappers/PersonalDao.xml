@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.checkYou.dao.IPersonalDao">
+	
+	<!-- 나의 작업 추가  -->
+	<insert id="addNewWork">
+		insert into PersonalWorkList values (#{param1}, #{param2}, #{param3}, #{param4})
+	</insert> 
+	
+	<!-- 작업명 중복 체크  -->
+	<select id="checkWork" resultType="String">
+		select 'true' from PersonalWorkList where workname = #{param1}
+	</select>
+	
+	<!-- 내 작업 관리 페이지  -->
+	<select id="manageMyWorkPage" resultType ="com.spring.checkYou.dto.WorkDto">
+		select * from PersonalWorkList where id = #{id}
+	</select>
+	
+	<delete id="deleteWork">
+		delete from PersonalWorkList where workname = #{param1} and workdetail = #{param2} and id = #{param3}
+	</delete>
+	
+	
+</mapper>

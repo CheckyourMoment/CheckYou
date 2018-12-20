@@ -24,17 +24,16 @@ public class MemberController {
 	@Autowired
 	HttpSession session;
 	
-	
 	// method
 	
-	// È¸¿ø°¡ÀÔ
+		// íšŒì›ê°€ì…
 	@RequestMapping("/join")
 	public String join(MemberDto dto) {		// HttpServletRequest request
 		service.join(dto);
 		return "login";
 	}
 	
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	@RequestMapping("/login")
 	public String login(Model model, MemberDto dto) {
 		String path="null";
@@ -43,7 +42,8 @@ public class MemberController {
 		return path;
 	}
 	
-	// ¸ŞÀÎ È­¸é : ³»°¡ Ãß°¡ÇÑ work listµéÀÌ ÀÖ±â ¶§¹®¿¡ DBÁ¢±Ù ÇÊ¿ä, ÀÛ¾÷Á¾·ù¿Í ÀÛ¾÷ÀÌ¸§À» »Ì¾Æ¿Í¼­ + 2. main.jsp¿¡¼­ »Ñ¸°´Ù.
+
+	// ë©”ì¸ í™”ë©´ : ë‚´ê°€ ì¶”ê°€í•œ work listë“¤ì´ ìˆê¸° ë•Œë¬¸ì— DBì ‘ê·¼ í•„ìš”, ì‘ì—…ì¢…ë¥˜ì™€ ì‘ì—…ì´ë¦„ì„ ë½‘ì•„ì™€ì„œ + 2. main.jspì—ì„œ ë¿Œë¦°ë‹¤.
 	@RequestMapping("/dailyManagement")
 	public String dailyManagementPage(Model model) {
 		String id = (String)session.getAttribute("userId");
@@ -53,7 +53,7 @@ public class MemberController {
 		return "main";
 	}
 	
-	// Ä£±¸ Ã£±â 
+	// ì¹œêµ¬ ì°¾ê¸° 
 	@RequestMapping("/searchFriend")
 	public String searchFriend(Model model, HttpServletRequest request) {
 		
@@ -64,29 +64,29 @@ public class MemberController {
 		return "searchFriendPage";
 	}
 	
-	// Ä£±¸ Ãß°¡
+	// ì¹œêµ¬ ì¶”ê°€
 	@RequestMapping("/addFriend")
 	public String addFriend(FriendDto dto) {
 		String userId = (String)session.getAttribute("userId");
 		dto.setId(userId);
 		
 		// test
-		System.out.println("ÇöÀç È¸¿ø¸í : "+dto.getId());
-		System.out.println("Ãß°¡ÇÏ·Á´Â ¾ÆÀÌµğ : "+dto.getFriend());
+		System.out.println("í˜„ì¬ íšŒì›ëª…: "+dto.getId());
+		System.out.println("ì¶”ê°€í•˜ë ¤ëŠ” ì•„ì´ë”” : "+dto.getFriend());
 		
 		boolean alreadyExist = service.addFriendCheck(dto);
 		
 		if(alreadyExist==true) {
-			System.out.println("Ãß°¡ÇÏ·Á´Â Ä£±¸´Â ÀÌ¹Ì Ä£±¸¸ñ·Ï¿¡ ÀÖ½À´Ï´Ù.");
+			System.out.println("ì¶”ê°€í•˜ë ¤ëŠ” ì¹œêµ¬ëŠ” ì´ë¯¸ ì¹œêµ¬ëª©ë¡ì— ìˆìŠµë‹ˆë‹¤.");
 		}else {
 			service.addFriend(dto);
-			System.out.println("Ä£±¸Ãß°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+			System.out.println("ì¹œêµ¬ì¶”ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 		
 		return "searchFriendPage";
 	}
 	
-	// Ä£±¸ ¸ñ·Ï
+	// ì¹œêµ¬ ëª©ë¡
 	@RequestMapping("/friendList")
 	public String friendList(Model model) {
 		String userId = (String)session.getAttribute("userId");
@@ -94,6 +94,24 @@ public class MemberController {
 		service.friendList(model ,userId);
 		
 		return "friendList";
+	}
+	
+	// timeContainerTest
+	@RequestMapping("/timeContainerTest")
+	public String timeContainerTest(HttpServletRequest request) {
+		
+		String hour = request.getParameter("hour");
+		String minute = request.getParameter("minute");
+		String second = request.getParameter("second");
+		String mapping = request.getParameter("mapping");
+		// test
+		System.out.println(hour+":"+minute+":"+second+"mapping = "+mapping);
+		
+		session.setAttribute("timeContainer_hour", hour);
+		session.setAttribute("timeContainer_minute", minute);
+		session.setAttribute("timeContainer_second", second);
+		
+		return "redirect:"+ mapping;
 	}
 	
 	

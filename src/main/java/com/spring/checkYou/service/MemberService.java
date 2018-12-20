@@ -25,7 +25,7 @@ public class MemberService {
 
 	// method
 
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	public void join(MemberDto dto) {
 
 		String id = dto.getId();
@@ -36,7 +36,7 @@ public class MemberService {
 		dao.join(id, password, email);
 	}
 
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	public String login(MemberDto dto) {
 		String id = dto.getId();
 		String password = dto.getPassword();
@@ -51,31 +51,31 @@ public class MemberService {
 		} else {
 			session.setAttribute("userId", id);
 
-			// ÀÌ¸ŞÀÏ ¼¼¼ÇÃ³¸® ÇØ¾ßÇÏ³ª..? or Å×ÀÌºí¿¡ ³¯Â¥ÄÃ·³ Ãß°¡ÇØ¼­ dbÃÊ±âÈ­ ½ÃÅ°Áö ¸»±î?
+			// ì´ë©”ì¼ ì„¸ì…˜ì²˜ë¦¬ í•´ì•¼í•˜ë‚˜..? or í…Œì´ë¸”ì— ë‚ ì§œì»¬ëŸ¼ ì¶”ê°€í•´ì„œ dbì´ˆê¸°í™” ì‹œí‚¤ì§€ ë§ê¹Œ?
 
 			path = "redirect:/dailyManagement";
 			return path;
 		}
 	}
 
-	// ¸ŞÀÎ È­¸é
+	// ë©”ì¸ í™”ë©´
 	public void dailyManagementPage(Model model, String id) {
 		// IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
 		List<Object> worklist = sqlSession.selectList("com.spring.checkYou.dao.IMemberDao.dailyManagementPage", id);
 		model.addAttribute("worklist", worklist);
 	}
 
-	// Ä£±¸ Ã£±â
+	// ì¹œêµ¬ ì°¾ê¸°
 	public void searchFriend(Model model, String id) {
 
-		System.out.println("Ä£±¸ Ã£±â : " + id);
+		System.out.println("Ä£ï¿½ï¿½ Ã£ï¿½ï¿½ : " + id);
 
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
 		String searchedFriend = dao.searchFriend(id);
 		model.addAttribute("searchedFriend", searchedFriend);
 	}
 
-	// Ä£±¸ Ãß°¡
+	// ì¹œêµ¬ ì¶”ê°€
 	public void addFriend(FriendDto dto) {
 
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
@@ -84,24 +84,25 @@ public class MemberService {
 
 	}
 
-	// Ä£±¸ Ãß°¡ Áßº¹ Ã¼Å©
+	// ì¹œêµ¬ ì¶”ê°€ ì¤‘ë³µ ì²´í¬
 	public boolean addFriendCheck(FriendDto dto) {
 		boolean alreadyExist;
 		
 		FriendDto list = sqlSession.selectOne("addFriendCheck", dto);
 		// test
 		if(list==null) {
-			System.out.println("Áßº¹µÇÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
 			alreadyExist = false;
 		}else {
-			System.out.println("Áßº¹ µË´Ï´Ù.");
+			System.out.println("ï¿½ßºï¿½ ï¿½Ë´Ï´ï¿½.");
 			alreadyExist = true;
 		}
 	
 		return alreadyExist;
 	}
 	
-	// Ä£±¸ ¸ñ·Ï
+
+	// ì¹œêµ¬ ëª©ë¡
 	public void friendList(Model model ,String id) {
 		
 		List<FriendDto> friendList = sqlSession.selectList("friendList", id);

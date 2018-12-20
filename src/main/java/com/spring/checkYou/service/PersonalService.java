@@ -28,9 +28,10 @@ public class PersonalService {
 	@Autowired
 	Formatter formatter;
 	
+
 	// method
 
-	// »õ·Î¿î ÀÛ¾÷ Ãß°¡
+	// ìƒˆë¡œìš´ ì‘ì—… ì¶”ê°€
 	public void addNewWork(WorkDto dto) {
 
 		String id = dto.getId();
@@ -40,7 +41,7 @@ public class PersonalService {
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		/*
-		 * // ÀÛ¾÷¸í Áßº¹ test String check = dao.checkWork(workname);
+		 * // ì‘ì—…ëª… ì¤‘ë³µ test String check = dao.checkWork(workname);
 		 * System.out.println("checkwork query test : "+check);
 		 * 
 		 * if(check==null) { System.out.println("success adding newWork");
@@ -51,7 +52,7 @@ public class PersonalService {
 
 	}
 
-	// ³» ÀÛ¾÷ °ü¸® ÆäÀÌÁö
+	// ë‚´ ì‘ì—… ê´€ë¦¬ í˜ì´ì§€
 	public void manageMyWorkPage(Model model) {
 
 		String id = (String) session.getAttribute("userId");
@@ -60,37 +61,37 @@ public class PersonalService {
 		model.addAttribute("ManageWorklist", ManageWorklist);
 	}
 
-	// ÀÛ¾÷ »èÁ¦
+	// ì‘ì—… ì‚­ì œ
 	public void deleteWork(String workname, String workdetail, String id) {
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.deleteWork(workname, workdetail, id);
 	}
 
-	// ÀÛ¾÷ ½ÃÀÛ
+	// ì‘ì—… ì‹œì‘
 	public void startWork() {
 		String startTime = null;
 		String today = null;
 
-		// ¿À´Ã ³¯Â¥ ±¸ÇÏ±â
+		// ì˜¤ëŠ˜ ë‚ ì§œ êµ¬í•˜ê¸°
 		Date d = new Date();
 		today = formatter.getFormatter_Date().format(d);
-		System.out.println("¿À´Ã ³¯Â¥ : " + today);
+		System.out.println("ì˜¤ëŠ˜ ë‚ ì§œ : " + today);
 
-		// ÀÛ¾÷ ½ÃÀÛ ½Ã°£ ±¸ÇÏ±â
+		// ì‘ì—… ì‹œì‘ ì‹œê°„ êµ¬í•˜ê¸°
 		Date start = new Date();
 		startTime = formatter.getFormatter_Time().format(start);
-		System.out.println("½ÃÀÛ ½Ã°¢ : " + startTime);
+		System.out.println("ì‹œì‘ ì‹œê° : " + startTime);
 
 	}
 
-	// ÀÛ¾÷ Á¾·á
+	// ì‘ì—… ì¢…ë£Œ
 	public void stopWork() {
 
-		// ÀÛ¾÷ Á¾·á ½Ã°£ ±¸ÇÏ±â
+		// ì‘ì—… ì¢…ë£Œ ì‹œê°„ êµ¬í•˜ê¸°
 		Date end = new Date();
 		String endTime = formatter.getFormatter_Time().format(end);
-		System.out.println("Á¾·á ½Ã°¢ : " + endTime);
+		System.out.println("ì¢…ë£Œ ì‹œê° : " + endTime);
 	}
 
 }

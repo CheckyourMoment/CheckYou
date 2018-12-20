@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.spring.checkYou.dao.IPersonalDao;
+import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
 import com.spring.checkYou.util.Formatter;
 
@@ -27,7 +28,7 @@ public class PersonalService {
 
 	@Autowired
 	Formatter formatter;
-	
+
 	// method
 
 	// 새로운 작업 추가
@@ -39,15 +40,17 @@ public class PersonalService {
 		String workdetail = dto.getWorkdetail();
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
-		/*
-		 * // 작업명 중복 test String check = dao.checkWork(workname);
-		 * System.out.println("checkwork query test : "+check);
-		 * 
-		 * if(check==null) { System.out.println("success adding newWork");
-		 * dao.addNewWork(id,worktype,workname,workdetail); }else {
-		 * System.out.println("this workname is already exist"); }
-		 */
-		dao.addNewWork(id, worktype, workname, workdetail);
+
+		// 작업명 중복 test
+		String check = dao.checkWork(workname);
+		System.out.println("checkwork query test : " + check);
+
+		if (check == null) {
+			System.out.println("success adding newWork");
+			dao.addNewWork(id, worktype, workname, workdetail);
+		} else {
+			System.out.println("this workname is already exist");
+		}
 
 	}
 
@@ -68,19 +71,23 @@ public class PersonalService {
 	}
 
 	// 작업 시작
-	public void startWork() {
-		String startTime = null;
-		String today = null;
+	public void startWork(TimeSheetDto dto) {
 
 		// 오늘 날짜 구하기
 		Date d = new Date();
-		today = formatter.getFormatter_Date().format(d);
+		String today = formatter.getFormatter_Date().format(d);
 		System.out.println("오늘 날짜 : " + today);
 
 		// 작업 시작 시간 구하기
 		Date start = new Date();
-		startTime = formatter.getFormatter_Time().format(start);
+		String startTime = formatter.getFormatter_Time().format(start);
 		System.out.println("시작 시각 : " + startTime);
+
+		dto.setStarttime(startTime);
+		dto.setCreateddate(today);
+
+		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
+		dao.startWork(dto);
 
 	}
 
@@ -91,6 +98,26 @@ public class PersonalService {
 		Date end = new Date();
 		String endTime = formatter.getFormatter_Time().format(end);
 		System.out.println("종료 시각 : " + endTime);
+	}
+
+	// 오늘 일일 시간관리표 보기
+	public void viewTable(Model model) {
+		// 오늘 날짜 구하기
+		Date d = new Date();
+		String createddate = formatter.getFormatter_Date().format(d);
+		System.out.println("오늘 날짜 : " + createddate);
+		
+		// 현재 유저
+		String id = (String) session.getAttribute("userId");
+		System.out.println(id);
+		
+		TimeSheetDto dto = new TimeSheetDto();
+		dto.setId(id);
+		dto.setCreateddate(createddate);
+		
+		List<Object> timeSheet_today = sqlSession.selectList("com.spring.checkYou.dao.IPersonalDao.viewTable",dto);
+		model.addAttribute("timeSheet_today", timeSheet_today);
+
 	}
 
 }

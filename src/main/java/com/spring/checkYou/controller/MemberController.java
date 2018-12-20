@@ -26,7 +26,9 @@ public class MemberController {
 	
 	// method
 	
+
 		// 회원가입
+
 	@RequestMapping("/join")
 	public String join(MemberDto dto) {		// HttpServletRequest request
 		service.join(dto);
@@ -53,7 +55,9 @@ public class MemberController {
 		return "main";
 	}
 	
+
 	// 친구 찾기 
+
 	@RequestMapping("/searchFriend")
 	public String searchFriend(Model model, HttpServletRequest request) {
 		
@@ -70,6 +74,7 @@ public class MemberController {
 		String userId = (String)session.getAttribute("userId");
 		dto.setId(userId);
 		
+
 		// test
 		System.out.println("현재 회원명: "+dto.getId());
 		System.out.println("추가하려는 아이디 : "+dto.getFriend());
@@ -81,6 +86,7 @@ public class MemberController {
 		}else {
 			service.addFriend(dto);
 			System.out.println("친구추가 완료되었습니다.");
+
 		}
 		
 		return "searchFriendPage";

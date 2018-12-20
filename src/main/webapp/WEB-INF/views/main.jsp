@@ -132,10 +132,24 @@ function timeContainner(str){
 			</tr>
 		</c:forEach>
 
-	</table>
+
+ 	<form action="dailyManagement">
+ <input type="submit" value="Daily Management"/>
+	</form>
 	
+	<form action="viewTable">
+ <input type="submit" value="View daily time sheet"/>
+	</form>
 	
+	<form action="viewGraph">
+ <input type="submit" value="View Graph"/>
+	</form>
 	
+	<form action="searchTimeSheetPage">
+ <input type="submit" value="search another Daily Time Sheet"/>
+	</form>
+	
+
 	<!-- 스톱워치 start -->
 	<br>
 	<div id="controls" align="left">

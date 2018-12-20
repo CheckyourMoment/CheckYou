@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
 import com.spring.checkYou.service.PersonalService;
 
@@ -37,7 +38,6 @@ public class PersonalController {
 	// manageMyWorkPage 이동 - manageMyWorkPage에서는 내가 추가한 작업들을 삭제 또는 detail 등을 수정해서 내 작업목록을 관리할 수 있음.
 	@RequestMapping("/manageMyWorkPage")
 	public String manageMyWorkPage(Model model) {
-	
 		service.manageMyWorkPage(model);
 		
 		return "manageMyWorkPage";
@@ -61,14 +61,26 @@ public class PersonalController {
 	
 	// 작업 시작
 	@RequestMapping("/startWork")
-	public void startWork() {
-		service.startWork();
+	public void startWork(TimeSheetDto dto) {
+		String id = (String)session.getAttribute("userId");
+		dto.setId(id);
 		
+		service.startWork(dto);
 	}
 	
+	// 작업 종료
 	@RequestMapping("/stopWork")
 	public void stopWork() {
 		service.stopWork();
+	}
+	
+	// 오늘 시간관리표 보기
+	@RequestMapping("/viewTable")
+	public String viewTable(Model model) {
+		
+		service.viewTable(model);
+		
+		return "viewTable";
 	}
 	
 	

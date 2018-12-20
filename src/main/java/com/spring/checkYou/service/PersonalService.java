@@ -31,6 +31,8 @@ public class PersonalService {
 
 	// method
 
+	// 새로운 작업 추가
+
 	public void addNewWork(WorkDto dto) {
 
 		String id = dto.getId();
@@ -39,6 +41,7 @@ public class PersonalService {
 		String workdetail = dto.getWorkdetail();
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
+
 
 		String check = dao.checkWork(workname);
 		System.out.println("checkwork query test : " + check);
@@ -60,21 +63,27 @@ public class PersonalService {
 		model.addAttribute("ManageWorklist", ManageWorklist);
 	}
 
+
+	// 작업 삭제
+
 	public void deleteWork(String workname, String workdetail, String id) {
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.deleteWork(workname, workdetail, id);
 	}
 
+
 	public void startWork(TimeSheetDto dto) {
 
 		// 오늘 날짜 구하기
 		Date d = new Date();
 		String today = formatter.getFormatter_Date().format(d);
+
 		System.out.println("오늘 날짜 : " + today);
 
 		// 작업 시작 시간 구하기
 		Date start = new Date();
+
 		String startTime = formatter.getFormatter_Time().format(start);
 		System.out.println("시작 시각: " + startTime);
 
@@ -86,11 +95,13 @@ public class PersonalService {
 
 	}
 
+
 	public void stopWork() {
 
 		// 작업 종료 시간 구하기
 		Date end = new Date();
 		String endTime = formatter.getFormatter_Time().format(end);
+
 	}
 
 	public void viewTable(Model model) {
@@ -106,6 +117,7 @@ public class PersonalService {
 		
 		List<Object> timeSheet_today = sqlSession.selectList("com.spring.checkYou.dao.IPersonalDao.viewTable",dto);
 		model.addAttribute("timeSheet_today", timeSheet_today);
+
 
 	}
 

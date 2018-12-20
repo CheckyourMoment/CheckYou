@@ -25,6 +25,9 @@ public class MemberService {
 
 	// method
 
+
+	// 회원가입
+
 	public void join(MemberDto dto) {
 
 		String id = dto.getId();
@@ -35,6 +38,8 @@ public class MemberService {
 		dao.join(id, password, email);
 	}
 
+
+	// 로그인
 	public String login(MemberDto dto) {
 		String id = dto.getId();
 		String password = dto.getPassword();
@@ -49,11 +54,13 @@ public class MemberService {
 		} else {
 			session.setAttribute("userId", id);
 
-
 			path = "redirect:/dailyManagement";
 			return path;
 		}
 	}
+
+
+	// 메인 화면
 
 	public void dailyManagementPage(Model model, String id) {
 		// IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
@@ -61,12 +68,18 @@ public class MemberService {
 		model.addAttribute("worklist", worklist);
 	}
 
+
+	// 친구 찾기
 	public void searchFriend(Model model, String id) {
+
 
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
 		String searchedFriend = dao.searchFriend(id);
 		model.addAttribute("searchedFriend", searchedFriend);
 	}
+
+
+	// 친구 추가
 
 	public void addFriend(FriendDto dto) {
 
@@ -76,21 +89,24 @@ public class MemberService {
 
 	}
 
-	// 친구추가 중복 체크
+
+	// 친구 추가 중복 체크
 	public boolean addFriendCheck(FriendDto dto) {
 		boolean alreadyExist;
 		
 		FriendDto list = sqlSession.selectOne("addFriendCheck", dto);
 		
 		if(list==null) {
+
 			alreadyExist = false;
 		}else {
 			alreadyExist = true;
 		}
-	
 		return alreadyExist;
 	}
 	
+
+	// 친구 목록
 	public void friendList(Model model ,String id) {
 		
 		List<FriendDto> friendList = sqlSession.selectList("friendList", id);

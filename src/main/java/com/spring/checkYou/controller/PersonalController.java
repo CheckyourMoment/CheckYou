@@ -42,7 +42,7 @@ public class PersonalController {
 		
 		return "manageMyWorkPage";
 	}
-	
+
 	// 작업 삭제
 	@RequestMapping("/deleteWork")
 	public String deleteWork(HttpServletRequest request) {

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Formatter {
 
-	// ½ÃÀÛ ½Ã°£, Á¾·á ½Ã°£À» formatÇÒ formatter
+	// ì‹œì‘ ì‹œê°„, ì¢…ë£Œ ì‹œê°„ì„ formatí•  formatter
 	private SimpleDateFormat formatter_Time = new SimpleDateFormat("a hh:mm", Locale.US);
 
-	// ¿À´Ã ³¯Â¥¸¦ formatÇÒ formmater
+	// ì˜¤ëŠ˜ ë‚ ì§œë¥¼ formatí•  formmater
 	private SimpleDateFormat formatter_Date = new SimpleDateFormat("yyyy-MM-dd");
 
 	public SimpleDateFormat getFormatter_Time() {

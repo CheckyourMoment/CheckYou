@@ -25,7 +25,6 @@ public class MemberService {
 
 	// method
 
-	// È¸¿ø°¡ÀÔ
 	public void join(MemberDto dto) {
 
 		String id = dto.getId();
@@ -36,7 +35,6 @@ public class MemberService {
 		dao.join(id, password, email);
 	}
 
-	// ·Î±×ÀÎ
 	public String login(MemberDto dto) {
 		String id = dto.getId();
 		String password = dto.getPassword();
@@ -51,31 +49,25 @@ public class MemberService {
 		} else {
 			session.setAttribute("userId", id);
 
-			// ÀÌ¸ŞÀÏ ¼¼¼ÇÃ³¸® ÇØ¾ßÇÏ³ª..? or Å×ÀÌºí¿¡ ³¯Â¥ÄÃ·³ Ãß°¡ÇØ¼­ dbÃÊ±âÈ­ ½ÃÅ°Áö ¸»±î?
 
 			path = "redirect:/dailyManagement";
 			return path;
 		}
 	}
 
-	// ¸ŞÀÎ È­¸é
 	public void dailyManagementPage(Model model, String id) {
 		// IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
 		List<Object> worklist = sqlSession.selectList("com.spring.checkYou.dao.IMemberDao.dailyManagementPage", id);
 		model.addAttribute("worklist", worklist);
 	}
 
-	// Ä£±¸ Ã£±â
 	public void searchFriend(Model model, String id) {
-
-		System.out.println("Ä£±¸ Ã£±â : " + id);
 
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
 		String searchedFriend = dao.searchFriend(id);
 		model.addAttribute("searchedFriend", searchedFriend);
 	}
 
-	// Ä£±¸ Ãß°¡
 	public void addFriend(FriendDto dto) {
 
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
@@ -84,24 +76,21 @@ public class MemberService {
 
 	}
 
-	// Ä£±¸ Ãß°¡ Áßº¹ Ã¼Å©
+	// ì¹œêµ¬ì¶”ê°€ ì¤‘ë³µ ì²´í¬
 	public boolean addFriendCheck(FriendDto dto) {
 		boolean alreadyExist;
 		
 		FriendDto list = sqlSession.selectOne("addFriendCheck", dto);
-		// test
+		
 		if(list==null) {
-			System.out.println("Áßº¹µÇÁö ¾Ê½À´Ï´Ù.");
 			alreadyExist = false;
 		}else {
-			System.out.println("Áßº¹ µË´Ï´Ù.");
 			alreadyExist = true;
 		}
 	
 		return alreadyExist;
 	}
 	
-	// Ä£±¸ ¸ñ·Ï
 	public void friendList(Model model ,String id) {
 		
 		List<FriendDto> friendList = sqlSession.selectList("friendList", id);

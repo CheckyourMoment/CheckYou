@@ -31,7 +31,6 @@ public class PersonalService {
 
 	// method
 
-	// »õ·Î¿î ÀÛ¾÷ Ãß°¡
 	public void addNewWork(WorkDto dto) {
 
 		String id = dto.getId();
@@ -41,7 +40,6 @@ public class PersonalService {
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 
-		// ÀÛ¾÷¸í Áßº¹ test
 		String check = dao.checkWork(workname);
 		System.out.println("checkwork query test : " + check);
 
@@ -54,7 +52,6 @@ public class PersonalService {
 
 	}
 
-	// ³» ÀÛ¾÷ °ü¸® ÆäÀÌÁö
 	public void manageMyWorkPage(Model model) {
 
 		String id = (String) session.getAttribute("userId");
@@ -63,25 +60,23 @@ public class PersonalService {
 		model.addAttribute("ManageWorklist", ManageWorklist);
 	}
 
-	// ÀÛ¾÷ »èÁ¦
 	public void deleteWork(String workname, String workdetail, String id) {
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.deleteWork(workname, workdetail, id);
 	}
 
-	// ÀÛ¾÷ ½ÃÀÛ
 	public void startWork(TimeSheetDto dto) {
 
-		// ¿À´Ã ³¯Â¥ ±¸ÇÏ±â
+		// ì˜¤ëŠ˜ ë‚ ì§œ êµ¬í•˜ê¸°
 		Date d = new Date();
 		String today = formatter.getFormatter_Date().format(d);
-		System.out.println("¿À´Ã ³¯Â¥ : " + today);
+		System.out.println("ì˜¤ëŠ˜ ë‚ ì§œ : " + today);
 
-		// ÀÛ¾÷ ½ÃÀÛ ½Ã°£ ±¸ÇÏ±â
+		// ì‘ì—… ì‹œì‘ ì‹œê°„ êµ¬í•˜ê¸°
 		Date start = new Date();
 		String startTime = formatter.getFormatter_Time().format(start);
-		System.out.println("½ÃÀÛ ½Ã°¢ : " + startTime);
+		System.out.println("ì‹œì‘ ì‹œê°: " + startTime);
 
 		dto.setStarttime(startTime);
 		dto.setCreateddate(today);
@@ -91,23 +86,17 @@ public class PersonalService {
 
 	}
 
-	// ÀÛ¾÷ Á¾·á
 	public void stopWork() {
 
-		// ÀÛ¾÷ Á¾·á ½Ã°£ ±¸ÇÏ±â
+		// ì‘ì—… ì¢…ë£Œ ì‹œê°„ êµ¬í•˜ê¸°
 		Date end = new Date();
 		String endTime = formatter.getFormatter_Time().format(end);
-		System.out.println("Á¾·á ½Ã°¢ : " + endTime);
 	}
 
-	// ¿À´Ã ÀÏÀÏ ½Ã°£°ü¸®Ç¥ º¸±â
 	public void viewTable(Model model) {
-		// ¿À´Ã ³¯Â¥ ±¸ÇÏ±â
 		Date d = new Date();
 		String createddate = formatter.getFormatter_Date().format(d);
-		System.out.println("¿À´Ã ³¯Â¥ : " + createddate);
 		
-		// ÇöÀç À¯Àú
 		String id = (String) session.getAttribute("userId");
 		System.out.println(id);
 		

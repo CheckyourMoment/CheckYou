@@ -1,10 +1,13 @@
 package com.spring.checkYou.dao;
 
+import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
-// °³ÀÎ ÀÏÀÏ ½Ã°£°ü¸® Äõ¸® ÀÎÅÍÆäÀÌ½º
+//ê°œì¸ ì¼ì¼ ì‹œê°„ê´€ë¦¬ ì¿¼ë¦¬ ì¸í„°í˜ì´ìŠ¤
 public interface IPersonalDao {
 	public void addNewWork(String id, String worktype, String workname, String workdetail);
 	public String checkWork(String workname);
 	public WorkDto manageMyWorkPage(String id);
 	public void deleteWork(String workname, String workdetail, String id);
+	public void startWork(TimeSheetDto dto);
+	public TimeSheetDto viewTable(TimeSheetDto dto);
 }

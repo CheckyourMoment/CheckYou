@@ -63,12 +63,17 @@
 	</form>
 	
 	<form action="viewTable">
- <input type="submit" value="View Table"/>
+ <input type="submit" value="View daily time sheet"/>
 	</form>
 	
 	<form action="viewGraph">
  <input type="submit" value="View Graph"/>
 	</form>
+	
+	<form action="searchTimeSheetPage">
+ <input type="submit" value="search another Daily Time Sheet"/>
+	</form>
+	
   
   <h3>Group</h3>
   <form action="">

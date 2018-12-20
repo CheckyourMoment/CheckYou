@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
 import com.spring.checkYou.service.PersonalService;
 
@@ -24,7 +25,7 @@ public class PersonalController {
 
 	// method
 	
-	// »õ·Î¿î ÀÛ¾÷ Ãß°¡ ·ÎÁ÷
+	// ìƒˆë¡œìš´ ì‘ì—… ì¶”ê°€ ë¡œì§
 	@RequestMapping("/addNewWork")
 	public String addNewWork(WorkDto dto) {
 		String id = (String) session.getAttribute("userId");
@@ -34,16 +35,15 @@ public class PersonalController {
 		return "addNewWorkPage";
 	}
 	
-	// manageMyWorkPage ÀÌµ¿ - manageMyWorkPage¿¡¼­´Â ³»°¡ Ãß°¡ÇÑ ÀÛ¾÷µéÀ» »èÁ¦ ¶Ç´Â detail µîÀ» ¼öÁ¤ÇØ¼­ ³» ÀÛ¾÷¸ñ·ÏÀ» °ü¸®ÇÒ ¼ö ÀÖÀ½.
+	// manageMyWorkPage ì´ë™ - manageMyWorkPageì—ì„œëŠ” ë‚´ê°€ ì¶”ê°€í•œ ì‘ì—…ë“¤ì„ ì‚­ì œ ë˜ëŠ” detail ë“±ì„ ìˆ˜ì •í•´ì„œ ë‚´ ì‘ì—…ëª©ë¡ì„ ê´€ë¦¬í•  ìˆ˜ ìˆìŒ.
 	@RequestMapping("/manageMyWorkPage")
 	public String manageMyWorkPage(Model model) {
-	
 		service.manageMyWorkPage(model);
 		
 		return "manageMyWorkPage";
 	}
 	
-	// ÀÛ¾÷ »èÁ¦
+	// ì‘ì—… ì‚­ì œ
 	@RequestMapping("/deleteWork")
 	public String deleteWork(HttpServletRequest request) {
 		String workname = request.getParameter("workname");
@@ -59,16 +59,28 @@ public class PersonalController {
 		return "redirect:/manageMyWorkPage";
 	}
 	
-	// ÀÛ¾÷ ½ÃÀÛ
+	// ì‘ì—… ì‹œì‘
 	@RequestMapping("/startWork")
-	public void startWork() {
-		service.startWork();
+	public void startWork(TimeSheetDto dto) {
+		String id = (String)session.getAttribute("userId");
+		dto.setId(id);
 		
+		service.startWork(dto);
 	}
 	
+	// ì‘ì—… ì¢…ë£Œ
 	@RequestMapping("/stopWork")
 	public void stopWork() {
 		service.stopWork();
+	}
+	
+	// ì˜¤ëŠ˜ ì‹œê°„ê´€ë¦¬í‘œ ë³´ê¸°
+	@RequestMapping("/viewTable")
+	public String viewTable(Model model) {
+		
+		service.viewTable(model);
+		
+		return "viewTable";
 	}
 	
 	

@@ -17,7 +17,9 @@
 
 <table width="500" cellpadding="0" cellspacing="0" border="0">
 		<tr>
-			<td>Work type</td> <td>Work name</td>
+			<td>Work type</td>
+			<td>Work name</td>
+			<td>Work detail</td>
 		</tr>
 		<c:forEach items="${ManageWorklist}" var="dto">
 		

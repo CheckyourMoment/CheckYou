@@ -1,8 +1,8 @@
 <%@page import="org.springframework.context.annotation.Primary"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="javax.servlet.http.HttpSession" %>
-	
+<%@ page import="javax.servlet.http.HttpSession"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -10,7 +10,6 @@
 <head>
 <title>Home</title>
 
-<!-- 스톱워치 -->
 <script>
 // 전역 변수
 var time = 0;
@@ -81,6 +80,8 @@ function timeContainner(str){
  	var hours = timeContainer_hour.value;
  	var mins = timeContainer_minute.value;
  	var secs = timeContainer_second.value;
+ 	
+ 	window.alert(mapping);
 	
 	location.href = "timeContainerTest?hour="+hours+"&minute="+mins+"&second="+secs+"&mapping="+mapping;
 }
@@ -91,166 +92,154 @@ function timeContainner(str){
 </head>
 <body>
 
-
+<!-- session을 이용해 hiddenType의 input tag에 담을 스톱워치 시간   -->
 <%
-	String hour = (String)session.getAttribute("timeContainer_hour");
-	String minute = (String)session.getAttribute("timeContainer_minute");
-	String second = (String)session.getAttribute("timeContainer_second");
+String hour = (String) session.getAttribute("timeContainer_hour");
+String minute = (String) session.getAttribute("timeContainer_minute");
+String second = (String) session.getAttribute("timeContainer_second");
 %>
 
-<!-- test -->
-<%	out.print("@@@this is Test@@@");
-	out.print(hour);
-	out.print(minute);
-	out.print(second);
+<!-- session에 담긴 시간을 제대로 가져왔는지 테스트 -->
+<%
+out.print("This is session test : ");
+out.print(hour);
+out.print(minute);
+out.print(second);
 %>
- 
- 
- 
-<!-- session scope에 저장되어 있는 스톱워치 시간을 담을 element -->
-<input type="hidden" id="timeContainer_hour"/>
-<input type="hidden" id="timeContainer_minute"/>
-<input type="hidden" id="timeContainer_second"/>
+	
+<!-- session scope에 저장되어 있는 스톱워치 시간을 담을  hidden element -->
+<input type="hidden" id="timeContainer_hour" />
+<input type="hidden" id="timeContainer_minute" />
+<input type="hidden" id="timeContainer_second" />
 
-	<div>${userId}님환영합니다.</div>
-	</br>
-	<div>-Daily ManageMent-</div>
-	</br>
 
-	<table width="500" cellpadding="0" cellspacing="0" border="0">
+<div>${userId}님환영합니다.</div></br>
+<div>-Daily ManageMent-</div></br>	
+	
+
+	
+<!-- 나의 Task 목록 -->
+<table width="500" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>Work type Work name Work detail</td>
+	</tr>
+		
+	<c:forEach items="${worklist}" var="dto">
 		<tr>
-
-			<td>Work type Work name Work detail</td>
-		</tr>
-		<c:forEach items="${worklist}" var="dto">
-			<tr>
-				<td>
-				<input type="radio" name="work" value="auto" checked>
-					${dto.worktype} / ${dto.workname} / ${dto.workdetail} 
+			<td><input type="radio" name="work" value="auto" checked>
+				${dto.worktype} / ${dto.workname} / ${dto.workdetail}
 				</input>
-				</td>
-			</tr>
-		</c:forEach>
+			</td>
+		</tr>
+	</c:forEach>
+</table>
 
 
- 	<form action="dailyManagement">
- <input type="submit" value="Daily Management"/>
-	</form>
-	
-	<form action="viewTable">
- <input type="submit" value="View daily time sheet"/>
-	</form>
-	
-	<form action="viewGraph">
- <input type="submit" value="View Graph"/>
-	</form>
-	
-	<form action="searchTimeSheetPage">
- <input type="submit" value="search another Daily Time Sheet"/>
-	</form>
-	
 
-	<!-- 스톱워치 start -->
-	<br>
-	<div id="controls" align="left">
-			<button id="startPause" onclick="startPause()">
-				<b id="start">Start</b>
-			</button>
+
+<!-- 스톱워치 버튼 -->
+<br>
+
+<div id="controls" align="left">
+	<button id="startPause" onclick="startPause()">
+		<b id="start">Start</b>
+	</button>
+
+</div>
+<!-- 스톱워치 시간 -->
+<div class="container">
+	<h3>
+		<p id="output">
+			<b>0:00:00:00</b>
+		</p>
+	</h3>
+</div>
+
+</br>
+
+
+
+
+
+
+
+		<!-- 자바스크립트 매개변수만 넘기면 끝이다. 힘내자 아자아자 -->
+		<!-- 끝나면 session의 타임+타이머자동으로 돌게 새로운 타임메소드 만들면 끝!! -->
+
+		<div align="right">
+
+			<h3>Friend</h3>
+			<input type="button" value="Search Friend" onclick="timeContainner('searchFriendPage')" />
+			</br>
+			<input type="button" value="Friend List" onclick="timeContainner('friendList')" />
+
+
+
+			<h3>Personal</h3>
+			<form action="addNewWorkPage">
+				<input type="submit" value="Add new work" onclick= "timeContainner()" />
+			</form>
+
+			<form action="manageMyWorkPage">
+				<input type="submit" value="Manage my work" onclick= " timeContainner()" />
+			</form>
+
+			<form action="dailyManagement">
+				<input type="submit" value="Daily Management" />
+			</form>
+
+			<form action="viewTable">
+				<input type="submit" value="View daily time sheet" />
+			</form>
+
+			<form action="viewGraph">
+				<input type="submit" value="View Graph" />
+			</form>
+
+			<form action="searchTimeSheetPage">
+				<input type="submit" value="search another Daily Time Sheet" />
+			</form>
+
+			<h3>Group</h3>
+			<form action="">
+				<input type="submit" value="option1 onclick= " timeContainner()" />
+			</form>
+
+			<form action="">
+				<input type="submit" value="option2 onclick=" timeContainner()" />
+			</form>
+
+			<form action="">
+				<input type="submit" value="option3 onclick=" timeContainner()" />
+			</form>
+
+			<form action="">
+				<input type="submit" value="option4 onclick=" timeContainner()" />
+			</form>
+
+			<h3>My Page</h3>
+			<form action="">
+				<input type="submit" value="option1 onclick=" timeContainner()" />
+			</form>
+
+			<form action="">
+				<input type="submit" value="option2 onclick=" timeContainner()" />
+			</form>
+
+			<form action="">
+				<input type="submit" value="option3 onclick=" timeContainner()" />
+			</form>
+
+			<form action="">
+				<input type="submit" value="option4 onclick=" timeContainner()" />
+			</form>
+
+			<h3>Logout</h3>
+			<form action="logout">
+				<input type="submit" value="logout" />
+			</form>
 			
 		</div>
-	<div class="container">
-		<h3>
-			<p id="output">
-				<b>0:00:00:00</b>
-			</p>
-		</h3>
 		
-	</div>
-	</br>
-	<!-- 스톱워치 end -->
-
-
-
-
-
-
-<!-- 자바스크립트 매개변수만 넘기면 끝이다. 힘내자 아자아자 -->
-<!-- 끝나면 session의 타임+타이머자동으로 돌게 새로운 타임메소드 만들면 끝!! -->
-
-	<div align="right">
-
-		<h3>Friend</h3>
-		 <%String searchFriend = "searchFriend";%>
-		<input type="submit" value="Search Friend" onclick="timeContainner()"/>
-	
-		<%String friendList = "friendList";%>
-		<input type="submit"  value="Friend List" onclick= "timeContainner()" />
-
-		<h3>Personal</h3>
-		<form action="addNewWorkPage">
-			<input type="submit" value="Add new work onclick= "timeContainner()" />
-		</form>
-
-		<form action="manageMyWorkPage">
-			<input type="submit" value="Manage my work onclick= "timeContainner()" />
-		</form>
-
-		<form action="dailyManagement">
-			<input type="submit" value="Daily Management onclick= "timeContainner()" />
-		</form>
-
-		<form action="viewTable">
-			<input type="submit" value="View Table onclick= "timeContainner()" />
-		</form>
-
-		<form action="viewGraph">
-			<input type="submit" value="View Graph onclick= "timeContainner()" />
-		</form>
-
-		<h3>Group</h3>
-		<form action="">
-			<input type="submit" value="option1 onclick= "timeContainner()" />
-		</form>
-
-		<form action="">
-			<input type="submit" value="option2 onclick="timeContainner()" />
-		</form>
-
-		<form action="">
-			<input type="submit" value="option3 onclick="timeContainner()" />
-		</form>
-
-		<form action="">
-			<input type="submit" value="option4 onclick="timeContainner()" />
-		</form>
-
-		<h3>My Page</h3>
-		<form action="">
-			<input type="submit" value="option1 onclick="timeContainner()" />
-		</form>
-
-		<form action="">
-			<input type="submit" value="option2 onclick="timeContainner()" />
-		</form>
-
-		<form action="">
-			<input type="submit" value="option3 onclick="timeContainner()" />
-		</form>
-
-		<form action="">
-			<input type="submit" value="option4 onclick="timeContainner()" />
-		</form>
-
-
-
-
-		<h3>Logout</h3>
-		<form action="logout">
-			<input type="submit" value="logout" />
-		</form>
-	</div>
-
-
-
 </body>
 </html>

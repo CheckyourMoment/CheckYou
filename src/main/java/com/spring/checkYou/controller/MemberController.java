@@ -103,7 +103,7 @@ public class MemberController {
 	}
 	
 	// timeContainerTest
-	@RequestMapping("/timeContainerTest")
+	@RequestMapping("/timeContainer")
 	public String timeContainerTest(HttpServletRequest request) {
 		
 		String hour = request.getParameter("hour");

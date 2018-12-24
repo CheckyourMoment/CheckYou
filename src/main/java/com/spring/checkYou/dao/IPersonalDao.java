@@ -10,4 +10,6 @@ public interface IPersonalDao {
 	public void deleteWork(String workname, String workdetail, String id);
 	public void startWork(TimeSheetDto dto);
 	public TimeSheetDto viewTable(TimeSheetDto dto);
+	public void stopWork(TimeSheetDto dto);
+	public void evaluate(TimeSheetDto dto);
 }

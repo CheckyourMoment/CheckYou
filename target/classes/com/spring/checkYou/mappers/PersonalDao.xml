@@ -33,4 +33,15 @@
 	<select id="viewTable" resultType="com.spring.checkYou.dto.TimeSheetDto">
 		select * from dailytimesheet where id = #{id} and createddate = #{createddate}
 	</select>
+	
+	<!-- 작업 정지 -->
+	<update id="stopWork">
+		update dailytimesheet set progresstime=#{progresstime}, endtime=#{endtime} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and endtime='-1'
+	</update>
+	
+	<!-- 내 작업 평가 -->
+	<update id="evaluate">
+		update dailytimesheet set evaluation=#{evaluation} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
+	</update>
+	
 </mapper>

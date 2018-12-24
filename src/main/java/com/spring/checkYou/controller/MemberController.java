@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.checkYou.dto.FriendDto;
 import com.spring.checkYou.dto.MemberDto;
+import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
 import com.spring.checkYou.service.MemberService;
+import com.spring.checkYou.service.PersonalService;
 import com.spring.checkYou.util.Formatter;
 
 @Controller
@@ -24,6 +26,9 @@ public class MemberController {
 	// field
 	@Autowired
 	MemberService service;
+	
+	@Autowired
+	PersonalService personalService;
 
 	@Autowired
 	HttpSession session;
@@ -68,11 +73,17 @@ public class MemberController {
 		session.setAttribute("minuteReturnedMain", minute);
 		session.setAttribute("secondReturnedMain", second);
 		
+		if(session.getAttribute("startstopwatch_hour")==null) {
+			session.setAttribute("startstopwatch_hour", "0");	
+	   		session.setAttribute("startstopwatch_minute", "0");	
+	   		session.setAttribute("startstopwatch_second", "0");
+		}
+		
 		return "main";
 	}
 	
 	@RequestMapping("/startTime")
-	public String startTime(HttpServletRequest request) {
+	public String startTime(HttpServletRequest request, TimeSheetDto dto) {
 		System.out.println("startTime()");
 		String runningconfirm = request.getParameter("runningconfirm");
 		System.out.println("runningconfirm : "+runningconfirm);
@@ -92,12 +103,25 @@ public class MemberController {
 	    	System.out.println("start hour : "+hour);
 	    	System.out.println("start minute : "+minute);
 	    	System.out.println("start second : "+second);
+	    	
+	    	System.out.println(dto.getWorktype());
+	    	System.out.println(dto.getWorkname());
+	    	System.out.println(dto.getWorkdetail());
+	    	
+	    	session.setAttribute("Worktype", dto.getWorktype());
+	    	session.setAttribute("Workname", dto.getWorkname());
+	    	session.setAttribute("Workdetail", dto.getWorkdetail());
+	    	
+	    	String id = (String)session.getAttribute("userId");
+			dto.setId(id);
+			
+			personalService.startWork(dto);
 		
 		return "redirect:dailyManagement";
 	}
 	
 	@RequestMapping("/stopTime")
-	public String stopTime(HttpServletRequest request) {
+	public String stopTime(HttpServletRequest request, TimeSheetDto dto) {
 		System.out.println("stopTime()");
 		String runningconfirm = request.getParameter("runningconfirm");
 		System.out.println("runningconfirm : "+runningconfirm);
@@ -107,6 +131,27 @@ public class MemberController {
 	    	session.setAttribute("startstopwatch_hour", "0");	
 	   		session.setAttribute("startstopwatch_minute", "0");	
 	   		session.setAttribute("startstopwatch_second", "0");
+	   		
+	   	// 
+	   		String worktype = (String)session.getAttribute("Worktype");
+	   		String workname = (String)session.getAttribute("Workname");
+	   		String workdetail = (String)session.getAttribute("Workdetail");
+	    	String id = (String)session.getAttribute("userId");
+	    	String progresstime = request.getParameter("progresstime");
+	    	
+	    	int time1 = Integer.parseInt(progresstime)/10;
+	    	int minute = time1/60;
+	    	int second = time1-minute*60;
+	    	
+	    	progresstime = Integer.toString(minute);
+	    	
+	    	dto.setProgresstime(progresstime);
+	    	dto.setId(id);
+	    	dto.setWorktype(worktype);
+	    	dto.setWorkname(workname);
+	    	dto.setWorkdetail(workdetail);
+	    	
+	    	personalService.stopWork(dto);
 		
 		return "redirect:dailyManagement";
 	}

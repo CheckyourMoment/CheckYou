@@ -17,13 +17,24 @@ var running = 0;	//  0:정지상태 	1:스톱워치 실행상태
 
 function startPause(continueTime){	// 시작 정지 버튼 클릭 이벤트 처리 메소드
     if(running == 0){	// start
-    	
     	time = continueTime*10;
     	
         running = 1;	// 스톱워치가 정지상태이면 실행상태로 변경한 후
         var runningconfirm = document.getElementById("runningconfirm");
+        
+        var size = document.getElementsByName("work").length;
+       	for(var i = 0; i < size; i++) {
+           if(document.getElementsByName("work")[i].checked) {
+          		var workType = document.getElementsByName("workType")[i].value;
+          		var workName = document.getElementsByName("workName")[i].value;
+          		var workDetail = document.getElementsByName("workDetail")[i].value;
+                break;
+           }
+      } 	
+        
         if(runningconfirm.value==0){
-        location.href = "startTime?runningconfirm="+running;
+        	
+        location.href = "startTime?runningconfirm="+running+"&worktype="+workType+"&workname="+workName+"&workdetail="+workDetail;
         }
     	increment();	// increment()메소드 실행
    	 	document.getElementById("start").innerHTML = "Pause";	// start버튼을 pause버튼으로 변경
@@ -31,7 +42,8 @@ function startPause(continueTime){	// 시작 정지 버튼 클릭 이벤트 처�
     
     else{ // stop
         running = 0;	// 스톱워치가 실행상태이면 정지상태로 변경한 후 
-       	location.href = "stopTime?runningconfirm="+running;
+        location.href = "stopTime?runningconfirm="+running+"&progresstime="+time;
+        
         document.getElementById("start").innerHTML = "start"; // start버튼을 start버튼으로 변경
    
     }
@@ -126,13 +138,7 @@ out.print(startSecond);
 	int time1 = (Integer.parseInt(returnHour))*(60*60)+(Integer.parseInt(returnMinute))*60+Integer.parseInt(returnSecond);
 	int time2 = (Integer.parseInt(startHour))*(60*60)+(Integer.parseInt(startMinute))*60+Integer.parseInt(startSecond);
 	
-	int time = time1 - time2;
-	
-	/* out.print("Contunue time : ");
-	out.print(continueHour+" : "); 
-	out.print(continueMinute+" : "); 
-	out.print(continueSecond+"</br>"); */
-	
+	int time = time1 - time2;	
 	out.print("whole Time : "+time);
 %>
 <input type ="hidden" id = "continueHour" value="<%=continueHour%>">
@@ -153,7 +159,11 @@ out.print(startSecond);
 		
 	<c:forEach items="${worklist}" var="dto">
 		<tr>
-			<td><input type="radio" name="work" value="auto" checked>
+			<td><input type="radio" name="work" id="work" value="worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">
+				<input type="radio" name ="workType" value="${dto.worktype}" style="display:none"/>
+				<input type="radio" name ="workName" value="${dto.workname}" style="display:none"/>
+				<input type="radio" name ="workDetail" value="${dto.workdetail}" style="display:none"/>
+				
 				${dto.worktype} / ${dto.workname} / ${dto.workdetail}
 				</input>
 			</td>
@@ -161,18 +171,20 @@ out.print(startSecond);
 	</c:forEach>
 </table>
 
-
-
-
 <!-- 스톱워치 버튼 -->
 <br>
 
 <div id="controls" align="left">
-	<button id="startPause" onclick="startPause()">
+	<button id="startPause" onclick="startPause(0)">
 		<b id="start">Start</b>
 	</button>
 
 </div>
+
+
+
+
+
 <!-- 스톱워치 시간 -->
 <div class="container">
 	<h3>
@@ -187,19 +199,22 @@ out.print(startSecond);
 
 		<div align="right">
 			<h3>Friend</h3>
-			<input type="button" value="Search Friend" onclick="timeContainner('searchFriendPage')" />
-			</br>
-			<input type="button" value="Friend List" onclick="timeContainner('friendList')" />
-
+			<form  action="searchFriendPage">
+				<input type="submit" value="Search Friend"/>
+			</form>
+			
+			<form  action="friendList">
+				<input type="submit" value="Friend List"/>
+			</form>
 
 
 			<h3>Personal</h3>
 			<form action="addNewWorkPage">
-				<input type="submit" value="Add new work" onclick= "timeContainner()" />
+				<input type="submit" value="Add new work"/>
 			</form>
 
 			<form action="manageMyWorkPage">
-				<input type="submit" value="Manage my work" onclick= " timeContainner()" />
+				<input type="submit" value="Manage my work"/>
 			</form>
 
 			<form action="dailyManagement">

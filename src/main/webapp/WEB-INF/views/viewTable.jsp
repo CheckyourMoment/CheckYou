@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>today's time sheet</title>
 </head>
 <body>
 
@@ -19,11 +19,11 @@
 	<table width="800" cellpadding="0" cellspacing="0" border="1">
 		<tr align="center">
 			<td>Time</td>
-			<td>Progress Time</td>
 			<td>kind</td>
 			<td>work</td>
-			<td>evaluation</td>
 			<td>Work detail</td>
+			<td>evaluation</td>
+			<td style="border:0">evaluate you task!</td>
 		</tr>
 		
 		<c:forEach items="${timeSheet_today}" var="dto">
@@ -32,11 +32,35 @@
 				</br>|</br>
 				${dto.endtime}
 			</td>
-			<td>${dto.progresstime}</td>
 			<td>${dto.worktype}</td>
 			<td>${dto.workname}</td>
-			<td>good</td>
 			<td>${dto.workdetail}</td>
+		
+			
+		<c:choose>
+   		 <c:when test="${dto.evaluation eq 'good'}">
+   		  	<td style="background-color:blue">
+      			<p style="color:white">good</p>
+      	    </td>
+   		 </c:when>
+   		 <c:when test="${dto.evaluation eq 'bad'}">
+   		 	 <td style="background-color:red">
+      			<p style="color:white">red</p>
+      	    </td>
+   		 </c:when>
+   		 <c:otherwise>
+   			 <td>
+      			<p> Not evaluated yet</p>
+      		</td>
+  		  </c:otherwise>
+
+		</c:choose>
+		
+		
+			<td style="border:0">
+				<a href="evaluate?evaluation=good&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">good</a>
+				<a href="evaluate?evaluation=bad&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">bad</a>
+			</td>
 		</tr>
 		
 		</c:forEach>

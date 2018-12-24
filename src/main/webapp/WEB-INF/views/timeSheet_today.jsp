@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>today's time sheet</title>
 </head>
 <body>
 <a href="dailyManagement">Back</a>
@@ -13,16 +13,15 @@
 <form>
 	<table width="500" cellpadding="0" cellspacing="0" border="0">
 		<tr>
-			<td>Progress Time</td> <td>kind</td> <td>work</td> <td>evaluation</td> <td>Work detail</td>
+			<td>kind</td> <td>work</td> <td>Work detail</td> <td>evaluation</td>
 		</tr>
 		
 		<c:forEach items="${timeSheet}" var="dto">
 		<tr>
-			<td>${dto.progresstime}</td>
 			<td>${dto.worktype}</td>
 			<td>${dto.workname}</td>
-			<td>good</td>
 			<td>${dto.workdetail}</td>
+			<td>good</td>
 		</tr>
 		</c:forEach>
 		

@@ -67,13 +67,7 @@ public class PersonalController {
 		
 		service.startWork(dto);
 	}
-	
-	// 작업 종료
-	@RequestMapping("/stopWork")
-	public void stopWork() {
-		service.stopWork();
-	}
-	
+
 	// 오늘 시간관리표 보기
 	@RequestMapping("/viewTable")
 	public String viewTable(Model model) {
@@ -81,6 +75,20 @@ public class PersonalController {
 		service.viewTable(model);
 		
 		return "viewTable";
+	}
+	
+	// 내 task 평가하기
+	@RequestMapping("/evaluate")
+	public String evaluate(TimeSheetDto dto) {
+		System.out.println("evaluate()");
+		
+		String evaluation = dto.getEvaluation();
+		String id = (String)session.getAttribute("userId");
+		
+		dto.setId(id);
+		service.evaluate(dto);
+		
+		return "redirect:viewTable";
 	}
 	
 	

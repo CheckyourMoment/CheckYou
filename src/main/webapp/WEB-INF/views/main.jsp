@@ -9,6 +9,7 @@
 <html>
 <head>
 <title>Home</title>
+<link rel="stylesheet" href="style.css">
 
 <script>
 // 전역 변수
@@ -31,7 +32,7 @@ function startPause(){
     }
 }
 
-//
+
 function increment(){
     if(running == 1){
     	
@@ -158,15 +159,10 @@ out.print(second);
 </br>
 
 
-
-
-
-
-
 		<!-- 자바스크립트 매개변수만 넘기면 끝이다. 힘내자 아자아자 -->
 		<!-- 끝나면 session의 타임+타이머자동으로 돌게 새로운 타임메소드 만들면 끝!! -->
 
-		<div align="right">
+		<div class="side" align="right">
 
 			<h3>Friend</h3>
 			<input type="button" value="Search Friend" onclick="timeContainner('searchFriendPage')" />
@@ -175,7 +171,7 @@ out.print(second);
 
 
 
-			<h3>Personal</h3>
+			<h3>Personal</h3> 
 			<form action="addNewWorkPage">
 				<input type="submit" value="Add new work" onclick= "timeContainner()" />
 			</form>

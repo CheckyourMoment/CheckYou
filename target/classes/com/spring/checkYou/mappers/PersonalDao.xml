@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -32,7 +31,7 @@
 	
 	<!-- 오늘 시간관리표 보기 -->
 	<select id="viewTable" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select * from dailytimesheet where id = #{id} and createddate = #{createddate}
+		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by starttime asc
 	</select>
 	
 	<!-- 작업 정지 -->
@@ -46,3 +45,4 @@
 	</update>
 	
 </mapper>
+

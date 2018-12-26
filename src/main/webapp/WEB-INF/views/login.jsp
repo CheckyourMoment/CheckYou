@@ -21,7 +21,7 @@
 	%>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3"></div>
+			<div class="col-md-4"></div>
 			<div class="col-md-4"
 				style="background: rgba(0, 0, 0, 0.7); box-shadow: -1px 1px 30px 5px black;">
 				<h1 class="text-center">LOGIN</h1>

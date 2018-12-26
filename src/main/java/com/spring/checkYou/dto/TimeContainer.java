@@ -1,3 +1,4 @@
+
 package com.spring.checkYou.dto;
 
 public class TimeContainer {
@@ -7,3 +8,4 @@ public class TimeContainer {
 	private String mapping;
 	private String running; 
 }
+

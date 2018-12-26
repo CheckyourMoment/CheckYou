@@ -10,6 +10,7 @@
 <html>
 <head>
 <title>Home</title>
+<link rel="stylesheet" href="style.css">
 
 <script>
 var time = 0;
@@ -196,8 +197,9 @@ out.print(startSecond);
 
 </br>
 
+		<div class="side" align="right">
 
-		<div align="right">
+
 			<h3>Friend</h3>
 			<form  action="searchFriendPage">
 				<input type="submit" value="Search Friend"/>
@@ -208,7 +210,7 @@ out.print(startSecond);
 			</form>
 
 
-			<h3>Personal</h3>
+			<h3>Personal</h3> 
 			<form action="addNewWorkPage">
 				<input type="submit" value="Add new work"/>
 			</form>

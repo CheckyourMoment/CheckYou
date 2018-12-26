@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,72 +9,95 @@
 <script type="text/javascript"
 	src="./js/Validation.js">
 </script>
-	 -->
-
+	-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+ 
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/joinstyle.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-	<form action="join" method="post"
-		onsubmit="return validate()">
 
+	<div class="container">
+		<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+		
+	<form class="contact-form" action="join" method="post"	onsubmit="return validate()">
+	<h1 class="text-center">Contact Us</h1>
+		<div class="border"></div>
+			<input type="text" class="contact-form-text" placeholder="Your ID"  id="id" name="id">
+			<input type="password" class="contact-form-text"
+				placeholder="Your password" id="password" name="password"> <input type="password"
+				class="contact-form-text" placeholder="Your password check" id="confirmpassword"> <input
+				type="email" class="contact-form-text" placeholder="Your Email" id="email" name="email">
 
-		<center>
-			<table border="0" cellspacing="0" id="myTable">
-
-				<tr align="center">
-					<td colspan="2" bgcolor="##3498db">Sign up</td>
-				</tr>
-
-				<tr>
-					<td align="center" bgcolor="#ffffff">ID</td>
-					<td><input type="text" size="25" id="id" name="id">4 ~ 12 characters and number
-						</td>
-				</tr>
-
-				<tr>
-					<td align="center" bgcolor="#ffffff">password</td>
-					<td><input type="text" size="25" id="password" name="password">4 ~ 12 characters and number
-					</td>
-				</tr>
-
-				<tr>
-					<td align="center" bgcolor="#ffffff">password confirm</td>
-					<td><input type="text" size="25" id="confirmpassword"></td>
-				</tr>
-
-				<tr>
-					<td align="center" bgcolor="#ffffff">email</td>
-					<td><input type="text" size="25" id="email" name="email">
-					</td>
-				</tr>
-
+			<input type="submit" class="contact-form-btn" value="sign up">
+			<input type="reset" class="contact-form-btn" value="reset">
 			
+		</form></div>
+	</div>
+    </div>
 
-			</table>
-		</center>
 
-		<br>
-		<center>
-			<input type="submit" value="sign up"> <input type="reset" value="reset">
-		</center>
+<!-- 
+
+
+
+	<table border="0" cellspacing="0" id="myTable">
+
+		<tr align="center">
+			<td colspan="2" bgcolor="##3498db">Sign up</td>
+		</tr>
+
+		<tr>
+			<td align="center" bgcolor="#ffffff">ID</td>
+			<td><input type="text" size="25" id="id" name="id">4 ~
+				12 characters and number</td>
+		</tr>
+
+		<tr>
+			<td align="center" bgcolor="#ffffff">password</td>
+			<td><input type="text" size="25" id="password" name="password">4
+				~ 12 characters and number</td>
+		</tr>
+
+		<tr>
+			<td align="center" bgcolor="#ffffff">password confirm</td>
+			<td><input type="text" size="25" id="confirmpassword"></td>
+		</tr>
+
+		<tr>
+			<td align="center" bgcolor="#ffffff">email</td>
+			<td><input type="text" size="25" id="email" name="email">
+			</td>
+		</tr>
+
+
+
+	</table>
+
+
+	<br>
+	<center>
+		<input type="submit" value="sign up"> <input type="reset"
+			value="reset">
+	</center>
 
 
 	</form>
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+ -->
+
+
+
+
+
+
+
+
+
 	<script type="text/javascript">
 
 var idCheck =/^[a-zA-Z0-9]{4,12}$/;
@@ -144,10 +167,10 @@ function mailValidate(){
   }
 }
 
-</script>	 
-	
-	
-	
+</script>
+
+
+
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 package com.spring.checkYou.dto;
 
 public class TimeSheetDto {
@@ -10,6 +11,8 @@ public class TimeSheetDto {
 	private String endtime;
 	private String progresstime;
 	private String createddate;
+	private String evaluation;
+	
 	public String getId() {
 		return id;
 	}
@@ -58,7 +61,16 @@ public class TimeSheetDto {
 	public void setCreateddate(String createddate) {
 		this.createddate = createddate;
 	}
+	public String getEvaluation() {
+		return evaluation;
+	}
+	public void setEvaluation(String evaluation) {
+		this.evaluation = evaluation;
+	}
+	
+	
 	
 	
 	
 }
+

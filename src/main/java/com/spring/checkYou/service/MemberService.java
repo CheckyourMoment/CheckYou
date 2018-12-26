@@ -1,6 +1,5 @@
 package com.spring.checkYou.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import com.spring.checkYou.dao.IMemberDao;
 import com.spring.checkYou.dto.FriendDto;
 import com.spring.checkYou.dto.MemberDto;
-import com.spring.checkYou.dto.WorkDto;
 
 @org.springframework.stereotype.Service
 public class MemberService {
@@ -25,9 +23,7 @@ public class MemberService {
 
 	// method
 
-
 	// 회원가입
-
 	public void join(MemberDto dto) {
 
 		String id = dto.getId();

@@ -96,12 +96,14 @@ public class PersonalService {
 	}
 
 
-	public void stopWork() {
-
+	public void stopWork(TimeSheetDto dto) {
 		// 작업 종료 시간 구하기
 		Date end = new Date();
-		String endTime = formatter.getFormatter_Time().format(end);
-
+		String endtime = formatter.getFormatter_Time().format(end);
+		dto.setEndtime(endtime);
+		
+		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
+		dao.stopWork(dto);
 	}
 
 	public void viewTable(Model model) {
@@ -120,5 +122,13 @@ public class PersonalService {
 
 
 	}
+	
+	public void evaluate(TimeSheetDto dto) {
+		
+		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
+		dao.evaluate(dto);
+		
+	}
+	
 
 }

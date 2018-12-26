@@ -43,11 +43,19 @@
       			<p style="color:white">good</p>
       	    </td>
    		 </c:when>
+   		 
    		 <c:when test="${dto.evaluation eq 'bad'}">
    		 	 <td style="background-color:red">
-      			<p style="color:white">red</p>
+      			<p style="color:white">bad</p>
       	    </td>
    		 </c:when>
+   		 
+   		 <c:when test="${dto.evaluation eq 'soso'}">
+   		 	 <td style="background-color:gray">
+      			<p style="color:white">soso</p>
+      	    </td>
+   		 </c:when>
+   		 
    		 <c:otherwise>
    			 <td>
       			<p> Not evaluated yet</p>
@@ -60,6 +68,7 @@
 			<td style="border:0">
 				<a href="evaluate?evaluation=good&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">good</a>
 				<a href="evaluate?evaluation=bad&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">bad</a>
+				<a href="evaluate?evaluation=soso&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">soso</a>
 			</td>
 		</tr>
 		

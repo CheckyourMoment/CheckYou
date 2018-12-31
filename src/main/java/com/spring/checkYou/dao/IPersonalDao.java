@@ -13,5 +13,6 @@ public interface IPersonalDao {
 	public TimeSheetDto viewTable(TimeSheetDto dto);
 	public void stopWork(TimeSheetDto dto);
 	public void evaluate(TimeSheetDto dto);
+	public void deleteTimeSheet(TimeSheetDto dto);
 }
 

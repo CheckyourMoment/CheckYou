@@ -23,20 +23,33 @@ function startPause(continueTime){	// 시작 정지 버튼 클릭 이벤트 처�
         running = 1;	// 스톱워치가 정지상태이면 실행상태로 변경한 후
         var runningconfirm = document.getElementById("runningconfirm");
         
-        var size = document.getElementsByName("work").length;
-       	for(var i = 0; i < size; i++) {
-           if(document.getElementsByName("work")[i].checked) {
-          		var workType = document.getElementsByName("workType")[i].value;
-          		var workName = document.getElementsByName("workName")[i].value;
-          		var workDetail = document.getElementsByName("workDetail")[i].value;
-                break;
-           }
-      } 	
         
+        // main page에서 start버튼 눌럿을 경우
         if(runningconfirm.value==0){
         	
-        location.href = "startTime?runningconfirm="+running+"&worktype="+workType+"&workname="+workName+"&workdetail="+workDetail;
+        	var size = document.getElementsByName("work").length;
+           	for(var i = 0; i < size; i++) {
+               if(document.getElementsByName("work")[i].checked) {
+              		var workType = document.getElementsByName("workType")[i].value;
+              		var workName = document.getElementsByName("workName")[i].value;
+              		var workDetail = document.getElementsByName("workDetail")[i].value;
+                    break;
+               }
+          } 	
+           	// test
+           	
+           	// if workType!=undefined
+           	if(workType!=undefined){
+        		location.href = "startTime?runningconfirm="+running+"&worktype="+workType+"&workname="+workName+"&workdetail="+workDetail;
+           	}
+        	//if workType==undefined
+        	else{
+        		window.alert("수행 할 작업을 선택 후 시작하세요.");
+        		location.href = "dailyManagement";
+        	}
+        	
         }
+        
     	increment();	// increment()메소드 실행
    	 	document.getElementById("start").innerHTML = "Pause";	// start버튼을 pause버튼으로 변경
     }

@@ -65,12 +65,18 @@ public class PersonalService {
 
 
 	// 작업 삭제
-
 	public void deleteWork(String workname, String workdetail, String id) {
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.deleteWork(workname, workdetail, id);
 	}
+	
+	// 일일 시간 관리 삭제
+		public void deleteTimeSheet(TimeSheetDto dto) {
+
+			IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
+			dao.deleteTimeSheet(dto);
+		}
 
 
 	public void startWork(TimeSheetDto dto) {
@@ -97,6 +103,7 @@ public class PersonalService {
 
 
 	public void stopWork(TimeSheetDto dto) {
+		System.out.println("stopWork() on service");
 		// 작업 종료 시간 구하기
 		Date end = new Date();
 		String endtime = formatter.getFormatter_Time().format(end);

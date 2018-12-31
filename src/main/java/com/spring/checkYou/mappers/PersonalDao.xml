@@ -44,5 +44,10 @@
 		update dailytimesheet set evaluation=#{evaluation} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
 	</update>
 	
+	<!-- 일일 시간 관리 삭제 -->
+	<delete id="deleteTimeSheet">
+		delete from dailytimesheet where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
+	</delete>
+	
 </mapper>
 

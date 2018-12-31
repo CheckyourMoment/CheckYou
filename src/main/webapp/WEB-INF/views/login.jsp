@@ -43,7 +43,7 @@
 
 <div class="input-group">
 					<input type="submit" class="btn-danger" value="sign in" /></div>
-					<a href="joinForm"><p class="text-center">Sign up? </p></a>
+					<a href="joinForm"><p class="text-center">Sign up </p></a>
 			</form>
 				</div>
 			</div>

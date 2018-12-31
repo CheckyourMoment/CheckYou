@@ -91,6 +91,19 @@ public class PersonalController {
 		return "redirect:viewTable";
 	}
 	
+	// 내 timeSheet 삭제
+	@RequestMapping("/deleteTimeSheet")
+	public String deleteTimeSheet(TimeSheetDto dto) {
+		System.out.println("deleteTimeSheet()");
+		
+		String id = (String)session.getAttribute("userId");
+		dto.setId(id);
+		
+		service.deleteTimeSheet(dto);
+		
+		return "redirect:viewTable";
+	}
+	
 	
 	
 }

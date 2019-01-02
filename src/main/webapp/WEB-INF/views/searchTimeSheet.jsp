@@ -32,7 +32,20 @@ input date : <input type="text" name="Date_TimeSheet"> Input Format(0000-00-00)
 		<tr align="center">
 			<td>${dto.starttime}
 				</br>|</br>
+				
+				
+		<c:choose>	
+		<c:when test="${dto.endtime eq '-1'}">
+   		  		now processing
+   		 </c:when>
+   		 
+   		  <c:otherwise>
 				${dto.endtime}
+		  </c:otherwise>
+   		 
+		</c:choose>	
+		
+		
 			</td>
 			<td>${dto.worktype}</td>
 			<td>${dto.workname}</td>

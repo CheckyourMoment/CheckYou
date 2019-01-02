@@ -14,5 +14,6 @@ public interface IPersonalDao {
 	public void stopWork(TimeSheetDto dto);
 	public void evaluate(TimeSheetDto dto);
 	public void deleteTimeSheet(TimeSheetDto dto);
+	public void searchTimeSheet(TimeSheetDto dto);
 }
 

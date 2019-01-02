@@ -30,13 +30,24 @@
 		<tr align="center">
 			<td>${dto.starttime}
 				</br>|</br>
+				
+		<c:choose>	
+		<c:when test="${dto.endtime eq '-1'}">
+   		  		now processing
+   		 </c:when>
+   		 
+   		  <c:otherwise>
 				${dto.endtime}
+		  </c:otherwise>
+   		 
+		</c:choose>	
+		
+		  
 			</td>
 			<td>${dto.worktype}</td>
 			<td>${dto.workname}</td>
 			<td>${dto.workdetail}</td>
 		
-			
 		<c:choose>
    		 <c:when test="${dto.evaluation eq 'good'}">
    		  	<td style="background-color:blue">

@@ -12,8 +12,11 @@ public class Formatter {
 	// 시작 시간, 종료 시간을 format할 formatter
 	private SimpleDateFormat formatter_Time = new SimpleDateFormat("a hh:mm", Locale.US);
 
-	// 오늘 날짜를 format할 formmater
+	// 오늘 날짜를 format할 formatter
 	private SimpleDateFormat formatter_Date = new SimpleDateFormat("yyyy-MM-dd");
+	
+	// 정렬을 위한 formatter
+	private SimpleDateFormat formatter_ForSort = new SimpleDateFormat("HH:mm");
 
 	// 스톱워치
 	private SimpleDateFormat hourFormatter = new SimpleDateFormat("HH");
@@ -61,6 +64,14 @@ public class Formatter {
 
 	public void setSecondFormatter(SimpleDateFormat secondFormatter) {
 		this.secondFormatter = secondFormatter;
+	}
+
+	public SimpleDateFormat getFormatter_ForSort() {
+		return formatter_ForSort;
+	}
+
+	public void setFormatter_ForSort(SimpleDateFormat formatter_ForSort) {
+		this.formatter_ForSort = formatter_ForSort;
 	}
 	
 	

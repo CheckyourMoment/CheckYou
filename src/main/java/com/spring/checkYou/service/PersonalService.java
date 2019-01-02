@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -92,9 +93,14 @@ public class PersonalService {
 
 		String startTime = formatter.getFormatter_Time().format(start);
 		System.out.println("시작 시각: " + startTime);
+		
+		// 정렬을 위한 시간(24시)
+		String timeForSort = formatter.getFormatter_ForSort().format(start);
+		System.out.println("timeForSort : "+timeForSort);
 
 		dto.setStarttime(startTime);
 		dto.setCreateddate(today);
+		dto.setTime(timeForSort);
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.startWork(dto);
@@ -149,6 +155,7 @@ public class PersonalService {
 		model.addAttribute("timeSheet_anotherDay", timeSheet_anotherDay);
 		
 	}
+
 	
 
 }

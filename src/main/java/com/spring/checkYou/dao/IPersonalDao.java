@@ -1,6 +1,10 @@
 
 package com.spring.checkYou.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
 //개인 일일 시간관리 쿼리 인터페이스
@@ -15,5 +19,7 @@ public interface IPersonalDao {
 	public void evaluate(TimeSheetDto dto);
 	public void deleteTimeSheet(TimeSheetDto dto);
 	public void searchTimeSheet(TimeSheetDto dto);
+	
+	public List<TimeSheetDto> excellDownload(@Param(value = "word") String word) throws Exception;
 }
 

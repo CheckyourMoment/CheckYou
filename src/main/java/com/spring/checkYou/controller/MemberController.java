@@ -61,6 +61,12 @@ public class MemberController {
 		String id = (String) session.getAttribute("userId");
 		service.dailyManagementPage(model, id);
 		
+		// 검색 한 세션 초기화
+		String Date_TimeSheet = (String)session.getAttribute("Date_TimeSheet");
+		if(Date_TimeSheet != null) {
+			session.setAttribute("Date_TimeSheet", "NOT");
+		}
+		
 		// main 페이지 돌아온 시간을 session에 저장
 		Date date = new Date();
 		String hour = formatter.getHourFormatter().format(date);

@@ -1,6 +1,8 @@
 package com.spring.checkYou.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
+import com.spring.checkYou.service.ExcellService;
 import com.spring.checkYou.service.PersonalService;
 
 @Controller
@@ -19,6 +22,9 @@ public class PersonalController {
 	// field
 	@Autowired
 	PersonalService service;
+	
+	@Resource(name = "excellService")
+	private ExcellService excellservice;
 
 	@Autowired
 	HttpSession session;
@@ -92,7 +98,7 @@ public class PersonalController {
 
 		String str = request.getParameter("this");
 
-		if (str.equals("another")) {
+		if (str !=null) {
 			path = "redirect:searchTimeSheet";
 		}
 
@@ -112,13 +118,14 @@ public class PersonalController {
 		service.deleteTimeSheet(dto);
 
 		String str = request.getParameter("this");
-		if (str.equals("another")) {
+		if (str !=null) {
 			path = "redirect:searchTimeSheet";
 		}
 
 		return path;
 	}
 
+	// 다른 시간 관리표 검색
 	@RequestMapping("/searchTimeSheet")
 	public String searchTimeSheet(Model model, HttpServletRequest request) {
 		System.out.println("searchTimeSheet()");
@@ -137,6 +144,25 @@ public class PersonalController {
 		service.searchTimeSheet(Date_TimeSheet, id, model);
 
 		return "searchTimeSheet";
+	}
+	
+	// 엑셀로 다운 받기
+	@RequestMapping("/excelDownload")
+	public void excelDownload(HttpServletResponse response,HttpServletRequest request) throws Exception {
+		System.out.println("excelDownload()");
+		
+		String createddate = request.getParameter("searchedDate");
+		String id = (String)session.getAttribute("userId");
+		
+		System.out.println("createddate : "+createddate);
+		
+		TimeSheetDto dto = new TimeSheetDto();
+		dto.setCreateddate(createddate);
+		dto.setId(id);
+		
+		excellservice.selectExcelList(response, dto);
+		
+		
 	}
 
 }

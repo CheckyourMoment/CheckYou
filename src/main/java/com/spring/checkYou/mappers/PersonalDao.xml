@@ -26,12 +26,12 @@
 	
 	<!-- 작업 시작  -->
 	<insert id="startWork">
-		insert into dailytimesheet(id,worktype,workname,workdetail,starttime,createddate) values(#{id},#{worktype},#{workname},#{workdetail},#{starttime},#{createddate})
+		insert into dailytimesheet(id,worktype,workname,workdetail,starttime,createddate,time) values(#{id},#{worktype},#{workname},#{workdetail},#{starttime},#{createddate},#{time})
 	</insert>
 	
 	<!-- 오늘 시간관리표 보기 -->
 	<select id="viewTable" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by starttime asc
+		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
 	</select>
 	
 	<!-- 작업 정지 -->
@@ -51,7 +51,12 @@
 	
 	<!-- 다른 날의 시간관리표 보기 -->
 	<select id="searchTimeSheet" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by starttime asc
+		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
+	</select>
+	
+	<!-- excell파일로 다운로드 하기  -->
+	<select id="excellDownload" resultType="com.spring.checkYou.dto.TimeSheetDto">
+		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
 	</select>
 	
 	

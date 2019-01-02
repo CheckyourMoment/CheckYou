@@ -6,8 +6,59 @@
 <head>
 <meta charset="utf-8">
 <title>search timeSheet</title>
+
+<!--jQuery UI, jQuery, File Download Plugin을 포함시키는 부분 -->
+<link rel="stylesheet" href="<c:url value='/js/jquery-ui-1.12.0/jquery-ui.min.css'/>"/> 
+<script src="<c:url value="/js/jquery-3.1.0.min.js"/>"></script>
+<script src="<c:url value="/js/jquery-ui-1.12.0/jquery-ui.min.js"/>"></script>
+<script src="<c:url value="/js/jquery.fileDownload.js"/>"></script>
+
+<!-- "엑셀 다운로드" 버튼 클릭시 진행막대 다이얼로그를 띄우고 다운로드 요청 후 응답에 따라 성공시 다운로드가 진행되고, 실패시 에러메세지 다이얼로그를 띄웁니다.-->
+<script type="text/javascript">
+//<![CDATA[ 
+	$(function() { 
+	$("#btn-excel").on("click", function () {
+		
+		
+		var searchedDate = document.getElementById("searchedDate").value;
+		if(searchedDate=="NOT"){
+			window.alert("select a Date which you want download");
+			return false
+		}
+		
+		var $preparingFileModal = $("#preparing-file-modal");
+		$preparingFileModal.dialog({ modal: true });
+		$("#progressbar").progressbar({value: false});
+		$.fileDownload("excelDownload?searchedDate="+searchedDate, { 
+			successCallback: function (url) {
+				$preparingFileModal.dialog('close');
+				},
+				failCallback: function (responseHtml, url) {
+					$preparingFileModal.dialog('close');
+					$("#error-modal").dialog({ modal: true });
+					}
+				}); // 버튼의 원래 클릭 이벤트를 중지 시키기 위해 필요합니다.
+				return false;
+				}); 
+	});
+//]]> 
+</script>
+
+
+
 </head>
 <body>
+
+<%String searchedDate = (String)session.getAttribute("Date_TimeSheet"); %>
+
+<%
+	if(searchedDate==null){%>
+		<input type="hidden" value="NOT" id="searchedDate">
+	<%}
+else{%>
+<input type="hidden" value="<%=searchedDate%>" id="searchedDate">
+<% }%>
+
 <a href="dailyManagement">Back</a>
 <h2>- Search another time sheet</h2>
 
@@ -98,6 +149,19 @@ input date : <input type="text" name="Date_TimeSheet"> Input Format(0000-00-00)
 </form>
 
 
+
+<!--엑셀 다운로드 버튼과 필요한 다이얼로그를 생성할 요소들 입니다.-->
+<button id="btn-excel">엑셀 다운로드</button>
+
+<!-- 파일 생성중 보여질 진행막대를 포함하고 있는 다이얼로그 입니다. -->
+<div title="Data Download" id="preparing-file-modal" style="display: none;">
+	<div id="progressbar" style="width: 100%; height: 22px; margin-top: 20px;"></div> 
+</div> 
+
+<!-- 에러발생시 보여질 메세지 다이얼로그 입니다. --> 
+<div title="Error" id="error-modal" style="display: none;"> 
+	<p>생성실패.</p> 
+</div>
 
 
 

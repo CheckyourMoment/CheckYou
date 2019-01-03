@@ -1,5 +1,9 @@
 package com.spring.checkYou.controller;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,13 +12,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
+import com.spring.checkYou.service.CanvasjsChartService;
 import com.spring.checkYou.service.ExcellService;
 import com.spring.checkYou.service.PersonalService;
+import com.spring.checkYou.util.Formatter;
 
 @Controller
 public class PersonalController {
@@ -25,9 +32,15 @@ public class PersonalController {
 	
 	@Resource(name = "excellService")
 	private ExcellService excellservice;
+	
+	@Autowired
+	private CanvasjsChartService canvasjsChartService;
 
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	Formatter formatter;
 
 	// method
 
@@ -161,8 +174,36 @@ public class PersonalController {
 		dto.setId(id);
 		
 		excellservice.selectExcelList(response, dto);
-		
-		
 	}
+	
+	// 그래프 보기
+	@RequestMapping("/canvasjschart")
+	public String viewChart(ModelMap modelMap,HttpServletRequest request) {
+		System.out.println("viewChart()");
+		
+		String Date_graph = request.getParameter("Date_graph");
+		System.out.println(Date_graph);
+		
+		if(Date_graph==null) {
+			System.out.println("탭을 이용해 들어왔습니다. Date_graph는 널 입니다. 오늘 날짜로 초기화 하겠습니다.");
+			Date d = new Date();
+			Date_graph = formatter.getFormatter_Date().format(d);
+		}
+		
+		if(Date_graph.equals("")) {
+			System.out.println("Date_graph는 공백입니다. 따라서 자동으로 오늘 날짜로 검색하겠습니다.");
+			Date d = new Date();
+			Date_graph = formatter.getFormatter_Date().format(d);
+		}
+		
+	
+		
+		List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData(Date_graph);
+		modelMap.addAttribute("dataPointsList", canvasjsDataList);
+		modelMap.addAttribute("date", Date_graph);
+		
+		return "viewGraph";
+	}
+	
 
 }

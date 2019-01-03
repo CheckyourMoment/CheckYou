@@ -6,14 +6,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.ResultContext;
-import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,9 +33,8 @@ public class ExcellService {
 		// 메모리에 100개의 행을 유지합니다. 행의 수가 넘으면 디스크에 적습니다.
 		SXSSFWorkbook wb = new SXSSFWorkbook(100);
 		final Sheet sheet = wb.createSheet();
-
+		
 		try {
-			System.out.println("test1");
 			System.out.println(dto.getId());
 			System.out.println(dto.getCreateddate());
 			

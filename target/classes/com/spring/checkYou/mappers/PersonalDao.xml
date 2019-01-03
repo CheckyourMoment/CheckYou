@@ -60,5 +60,10 @@
 	</select>
 	
 	
+		<!-- 차트 데이터 가져오기  -->
+	<select id="getChartData" resultType="com.spring.checkYou.dto.TimeSheetDto">
+		select worktype, SUM(progresstime) as progresstime from dailytimesheet where id = #{id} and createddate = #{createddate} group by worktype
+	</select>
+	
 </mapper>
 

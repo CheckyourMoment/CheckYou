@@ -240,7 +240,7 @@ out.print(startSecond);
 				<input type="submit" value="View daily time sheet" />
 			</form>
 
-			<form action="viewGraph">
+			<form action="canvasjschart">
 				<input type="submit" value="View Graph" />
 			</form>
 

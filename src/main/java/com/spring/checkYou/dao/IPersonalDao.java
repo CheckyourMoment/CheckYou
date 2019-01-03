@@ -21,5 +21,7 @@ public interface IPersonalDao {
 	public void searchTimeSheet(TimeSheetDto dto);
 	
 	public List<TimeSheetDto> excellDownload(@Param(value = "word") String word) throws Exception;
+	
+	public List<TimeSheetDto> getChartData(TimeSheetDto dto);
 }
 

@@ -109,7 +109,7 @@ function continueTime(){
 	/* window.alert("continueHour : "+continueHour.value);
 	window.alert("continueMinute : "+continueMinute.value);
 	window.alert("continueSecond : "+continueSecond.value);
-	window.alert("continueTime : "+continueTime.value); */
+	window.alert("continueTime : "+continueTime.value);  */
 	
 	if(runningconfirm.value==1){
 		startPause(continueTime.value);
@@ -278,14 +278,14 @@ out.print(startSecond);
 	</c:forEach>
 </table>
 
-
-
-
-
-
 </div>
 </br>
 
+
+
+
+
+<!-- 메뉴 버튼  -->
 		<div class="side" align="right">
 
 

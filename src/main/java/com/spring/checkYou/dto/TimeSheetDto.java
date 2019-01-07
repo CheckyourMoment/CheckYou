@@ -12,6 +12,7 @@ public class TimeSheetDto {
 	private String progresstime;
 	private String createddate;
 	private String evaluation;
+	private String time;
 	
 	public String getId() {
 		return id;
@@ -67,6 +68,13 @@ public class TimeSheetDto {
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
 	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	
 	
 	
 	

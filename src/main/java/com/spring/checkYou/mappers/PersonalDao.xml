@@ -26,12 +26,12 @@
 	
 	<!-- 작업 시작  -->
 	<insert id="startWork">
-		insert into dailytimesheet(id,worktype,workname,workdetail,starttime,createddate) values(#{id},#{worktype},#{workname},#{workdetail},#{starttime},#{createddate})
+		insert into dailytimesheet(id,worktype,workname,workdetail,starttime,createddate,time) values(#{id},#{worktype},#{workname},#{workdetail},#{starttime},#{createddate},#{time})
 	</insert>
 	
 	<!-- 오늘 시간관리표 보기 -->
 	<select id="viewTable" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by starttime asc
+		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
 	</select>
 	
 	<!-- 작업 정지 -->
@@ -43,6 +43,27 @@
 	<update id="evaluate">
 		update dailytimesheet set evaluation=#{evaluation} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
 	</update>
+	
+	<!-- 일일 시간 관리 삭제 -->
+	<delete id="deleteTimeSheet">
+		delete from dailytimesheet where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
+	</delete>
+	
+	<!-- 다른 날의 시간관리표 보기 -->
+	<select id="searchTimeSheet" resultType="com.spring.checkYou.dto.TimeSheetDto">
+		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
+	</select>
+	
+	<!-- excell파일로 다운로드 하기  -->
+	<select id="excellDownload" resultType="com.spring.checkYou.dto.TimeSheetDto">
+		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
+	</select>
+	
+	
+		<!-- 차트 데이터 가져오기  -->
+	<select id="getChartData" resultType="com.spring.checkYou.dto.TimeSheetDto">
+		select worktype, SUM(progresstime) as progresstime from dailytimesheet where id = #{id} and createddate = #{createddate} group by worktype
+	</select>
 	
 </mapper>
 

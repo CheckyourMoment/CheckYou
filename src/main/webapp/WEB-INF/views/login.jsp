@@ -34,8 +34,6 @@
    %>
 	<!-- title -->
 
-	<!-- //title -->
-<!---728x90--->
 
 	<!-- content -->
  <div class="sub-main-w3">

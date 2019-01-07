@@ -2,10 +2,15 @@ package com.spring.checkYou.service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -65,14 +70,20 @@ public class PersonalService {
 
 
 	// 작업 삭제
-
 	public void deleteWork(String workname, String workdetail, String id) {
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.deleteWork(workname, workdetail, id);
 	}
+	
+	// 일일 시간 관리 삭제
+		public void deleteTimeSheet(TimeSheetDto dto) {
 
+			IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
+			dao.deleteTimeSheet(dto);
+		}
 
+	// 작업 시작
 	public void startWork(TimeSheetDto dto) {
 
 		// 오늘 날짜 구하기
@@ -86,17 +97,23 @@ public class PersonalService {
 
 		String startTime = formatter.getFormatter_Time().format(start);
 		System.out.println("시작 시각: " + startTime);
+		
+		// 정렬을 위한 시간(24시)
+		String timeForSort = formatter.getFormatter_ForSort().format(start);
+		System.out.println("timeForSort : "+timeForSort);
 
 		dto.setStarttime(startTime);
 		dto.setCreateddate(today);
+		dto.setTime(timeForSort);
 
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.startWork(dto);
 
 	}
 
-
+	// 작업 정지
 	public void stopWork(TimeSheetDto dto) {
+		System.out.println("stopWork() on service");
 		// 작업 종료 시간 구하기
 		Date end = new Date();
 		String endtime = formatter.getFormatter_Time().format(end);
@@ -106,6 +123,7 @@ public class PersonalService {
 		dao.stopWork(dto);
 	}
 
+	// 오늘의 시간 관리 보기
 	public void viewTable(Model model) {
 		Date d = new Date();
 		String createddate = formatter.getFormatter_Date().format(d);
@@ -123,12 +141,25 @@ public class PersonalService {
 
 	}
 	
+	// 평가 하기
 	public void evaluate(TimeSheetDto dto) {
 		
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 		dao.evaluate(dto);
 		
 	}
+	
+	public void searchTimeSheet(String Date_TimeSheet, String id, Model model) {
+		TimeSheetDto dto = new TimeSheetDto();
+		dto.setId(id);
+		dto.setCreateddate(Date_TimeSheet);
+		
+		List<Object> timeSheet_anotherDay = sqlSession.selectList("com.spring.checkYou.dao.IPersonalDao.searchTimeSheet",dto);
+		model.addAttribute("timeSheet_anotherDay", timeSheet_anotherDay);
+	}
+	
+	
+
 	
 
 }

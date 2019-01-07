@@ -15,6 +15,10 @@
 		select * from checkYouMember where id = #{param1} and password = #{param2}
 	</select>
 	
+	<!--  아이디 중복체크  -->
+	<select id="idCheck" resultType="String">
+		select * from checkYouMember where id = #{param1}
+	</select>
 	
 	<!-- main 페이지  -->
 	<select id="dailyManagementPage" resultType="com.spring.checkYou.dto.WorkDto">
@@ -40,5 +44,6 @@
 	<select id="friendList" resultType="com.spring.checkYou.dto.FriendDto">
 		select * from friendlist where id= #{id}
 	</select>
+
 	
 </mapper>

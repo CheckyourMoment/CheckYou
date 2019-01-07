@@ -21,6 +21,7 @@ public class MemberService {
 	@Autowired
 	HttpSession session;
 
+
 	// method
 
 	// 회원가입
@@ -33,23 +34,45 @@ public class MemberService {
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
 		dao.join(id, password, email);
 	}
+	
+	//아이디 중복체크
+	public String idCheck(MemberDto dto) {
+		// TODO Auto-generated method stub
+		String id = dto.getId();
+		String alreadyExist;
+		System.out.println("MemberService  호출"+dto.getId());
+		
+		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
+	
+		 String dto1 = dao.idCheck(id);
+		 // 아이디가 친구목록에 없을 때
+			if(dto1 == null) 
+			alreadyExist = "false";
+			else
+				//아이디가 친구목록에 있을때
+				alreadyExist = "true";
+			
+			return alreadyExist;
+			
+	}
 
-
+	
 	// 로그인
 	public String login(MemberDto dto) {
 		String id = dto.getId();
 		String password = dto.getPassword();
-
+		int loginresult;
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
 		MemberDto dto2 = dao.login(id, password);
 
 		String path = null;
 		if (dto2 == null) {
 			path = "redirect:/";
+			loginresult=0;
 			return path;
 		} else {
+			loginresult=1;
 			session.setAttribute("userId", id);
-
 			path = "redirect:/dailyManagement";
 			return path;
 		}
@@ -109,5 +132,6 @@ public class MemberService {
 		
 		model.addAttribute("friendList",friendList);
 	}
+
 
 }

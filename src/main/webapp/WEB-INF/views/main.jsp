@@ -9,9 +9,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
-<link rel="stylesheet" href="style.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+<title>Home</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/mainstyle.css"  media="all">
+
+<!--  스톱워치 함수  -->
 <script>
 var time = 0;
 var running = 0;	//  0:정지상태 	1:스톱워치 실행상태
@@ -99,6 +108,63 @@ function continueTime(){
 </head>
 <body onload="continueTime();">
 
+<!-- 메뉴 바 시작  -->
+<header class="header_area">
+           	<div class="top_menu">
+           		<div class="container">
+           			
+           		</div>
+           	</div>
+            <div class="main_menu" id="mainNav">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="index.html"><img src="img/i" alt=""><img src="img/logo-2.png" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						
+								<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+					 		
+							<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personal</a>
+									<ul class="dropdown-menu">
+											<li class="nav-item"><a class="nav-link" href="single-blog.html">Daily Management </a></li>
+										<li class="nav-item"><a class="nav-link" href="blog.html">daily time sheet</a></li>
+									
+											<li class="nav-item"><a class="nav-link" href="single-blog.html">View Graph</a></li>
+									</ul>
+								</li>  
+								
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GROUP</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="blog.html">Add Friend</a></li>
+										<li class="nav-item"><a class="nav-link" href="single-blog.html">Friend List</a></li>
+									</ul>
+								</li> 
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Page</a>
+									<ul class="dropdown-menu">
+
+										<li class="nav-item"><a class="nav-link" href="single-blog.html">Logout</a></li>
+									</ul>
+								</li> 
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
+        
+        
+  <!-- 메뉴 바 끝 -->      
+        
 <%// 스톱워치 진행 여부
 String runningconfirm = (String)session.getAttribute("runningconfirm");
 if(runningconfirm == null) runningconfirm = "0";
@@ -113,10 +179,10 @@ String returnHour = (String) session.getAttribute("hourReturnedMain");
 String returnMinute = (String) session.getAttribute("minuteReturnedMain");
 String returnSecond = (String) session.getAttribute("secondReturnedMain");
 
-out.print("returned main page time : ");
+/* out.print("returned main page time : ");
 out.print(returnHour+" : "); 
 out.print(returnMinute+" : "); 
-out.print(returnSecond);
+out.print(returnSecond); */
 
 %>
 </br>
@@ -142,17 +208,44 @@ out.print(startSecond);
 	int time = time1 - time2;	
 	out.print("whole Time : "+time);
 %>
+
 <input type ="hidden" id = "continueHour" value="<%=continueHour%>">
 <input type ="hidden" id = "continueMinute" value="<%=continueMinute%>">
 <input type ="hidden" id = "continueSecond" value="<%=continueSecond%>">
 <input type ="hidden" id = "continueTime" value="<%=time%>">
 	
-<div>${userId}님환영합니다.</div></br>
-<div>-Daily ManageMent-</div></br>	
-	
 
+
+
+	<div class=mainfish>
+		<div class=user>${userId}님 의 하루 일과</div>
+
+
+</br>
+
+<div class=daily align=center><h5>-Daily ManageMent-</h5></div></br>	
 	
+<!-- 스톱워치 시간 -->
+<div class="stop">
+	<h3>
+		<p id="output">
+			<b>0:00:00:00</b>
+		</p>
+	</h3>
+</div>
+
+<!-- 스톱워치 버튼 -->
+<br>
+
+<div id="controls" align="left">
+	<button id="startPause" onclick="startPause(0)">
+		<b id="start">Start</b>
+		</b>
+	</button>
+
+</div>
 <!-- 나의 Task 목록 -->
+<div class=todo>
 <table width="500" cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td>Work type Work name Work detail</td>
@@ -172,29 +265,12 @@ out.print(startSecond);
 	</c:forEach>
 </table>
 
-<!-- 스톱워치 버튼 -->
-<br>
 
-<div id="controls" align="left">
-	<button id="startPause" onclick="startPause(0)">
-		<b id="start">Start</b>
-	</button>
+
+
+
 
 </div>
-
-
-
-
-
-<!-- 스톱워치 시간 -->
-<div class="container">
-	<h3>
-		<p id="output">
-			<b>0:00:00:00</b>
-		</p>
-	</h3>
-</div>
-
 </br>
 
 		<div class="side" align="right">
@@ -230,43 +306,45 @@ out.print(startSecond);
 			<form action="viewGraph">
 				<input type="submit" value="View Graph" />
 			</form>
-
+	<form action="test">
+				<input type="submit" value="test" />
+			</form>
 			<form action="searchTimeSheetPage">
 				<input type="submit" value="search another Daily Time Sheet" />
 			</form>
 
 			<h3>Group</h3>
 			<form action="">
-				<input type="submit" value="option1 onclick= " timeContainner()" />
+				<input type="submit" value="option1" onclick= " timeContainner()" />
 			</form>
 
 			<form action="">
-				<input type="submit" value="option2 onclick=" timeContainner()" />
+				<input type="submit" value="option2" onclick=" timeContainner()" />
 			</form>
 
 			<form action="">
-				<input type="submit" value="option3 onclick=" timeContainner()" />
+				<input type="submit" value="option3" onclick=" timeContainner()" />
 			</form>
 
 			<form action="">
-				<input type="submit" value="option4 onclick=" timeContainner()" />
+				<input type="submit" value="option4" onclick=" timeContainner()" />
 			</form>
 
 			<h3>My Page</h3>
 			<form action="">
-				<input type="submit" value="option1 onclick=" timeContainner()" />
+				<input type="submit" value="option1" onclick=" timeContainner()" />
 			</form>
 
 			<form action="">
-				<input type="submit" value="option2 onclick=" timeContainner()" />
+				<input type="submit" value="option2" onclick=" timeContainner()" />
 			</form>
 
 			<form action="">
-				<input type="submit" value="option3 onclick=" timeContainner()" />
+				<input type="submit" value="option3" onclick=" timeContainner()" />
 			</form>
 
 			<form action="">
-				<input type="submit" value="option4 onclick=" timeContainner()" />
+				<input type="submit" value="option4" onclick=" timeContainner()" />
 			</form>
 
 			<h3>Logout</h3>
@@ -275,6 +353,6 @@ out.print(startSecond);
 			</form>
 			
 		</div>
-		
+		</div>
 </body>
 </html>

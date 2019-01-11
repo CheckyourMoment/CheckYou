@@ -174,6 +174,7 @@ public class PersonalController {
 		dto.setId(id);
 		
 		excellservice.selectExcelList(response, dto);
+	
 	}
 	
 	// 그래프 보기

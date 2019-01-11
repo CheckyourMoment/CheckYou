@@ -41,7 +41,7 @@ public class MemberController {
 	// method
 
 	// 회원가입
-	@RequestMapping("/join")
+	@RequestMapping("/join")       
 	public String join(MemberDto dto) { // HttpServletRequest request
 		service.join(dto);
 		return "login";

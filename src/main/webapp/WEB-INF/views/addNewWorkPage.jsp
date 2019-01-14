@@ -3,6 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script language="javascript">
+function pclose1(){
+    opener.location.reload();
+    window.close();
+}
+</script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/workadd.css"
+	media="all">
 <meta charset="utf-8">
 <title>add work</title>
 
@@ -37,7 +46,6 @@
 
 </head>
 <body>
-	<a href="dailyManagement">Back</a>
 	<h3>You can add new Work on this page</h3>
 	<h3>Let's try!</h3>
 	
@@ -46,24 +54,29 @@
 	<form action="addNewWork" onsubmit="return check()">
 	<table>
 		<tr>
-		Input Type of work - <input type="text" id="worktype" name="worktype" value=""/>
+		  <input type="text"  class="question" id="worktype" name="worktype" value=""/>
+		  <label for="worktype"><span>Input Type of work </span></label>
 		</tr>
 		</br>
 	
 		<tr>
-		Input work name - <input type="text" id="workname" name="workname" value=""/>
+		  <input type="text" id="workname" name="workname" value=""/>
+			  <label for="workname"><span>Input work name </span></label>
 		</tr>
 		</br>
 		
 		<tr>
-		Input detail of work - <input type="text" id="workdetail" name="workdetail" value=""/>
+		 - <input type="text" id="workdetail" name="workdetail" value=""/>
+		  <label for="workdetail"><span>Input detail of work </span></label>
 		</tr>
 		</br>
 		
 	</table>
-	
-	<input type="submit" value="Add"/></br>
-	</form>
-	
+
+	<input type="submit" value="Add"/>
+	<a href="dailyManagement" onClick="pclose1();">Back</a>   
+
+ 	</form>
+
 </body>
 </html>

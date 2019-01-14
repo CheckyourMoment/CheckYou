@@ -5,15 +5,20 @@
 <html>
 <head>
 <meta charset="utf-8">
+	<script language="javascript">
+function pclose1(){
+    opener.location.reload();
+    window.close();
+}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
 
-<a href="dailyManagement">Back</a>
-
+	<form action="manageMyWorkPage" onsubmit="return check()">
 <h3>You can manage your Work on this page</h3>
 
-<div >- manageMyWorkPage -</div> </br>
+<div > manageMyWorkPage</div> </br>
 
 <table width="500" cellpadding="0" cellspacing="0" border="0">
 		<tr>
@@ -35,6 +40,8 @@
 		</c:forEach>
 		
 </table>
-	
+	<a href="dailyManagement" onClick="pclose1();">Back</a>   
+
+	</form>
 </body>
 </html>

@@ -211,7 +211,8 @@ img {
 /*end reset*/
 
 body {    
-	background: url(../img/00.jpg) no-repeat;
+		/*배경색 바꾸는거*/
+	background-color: #814794;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

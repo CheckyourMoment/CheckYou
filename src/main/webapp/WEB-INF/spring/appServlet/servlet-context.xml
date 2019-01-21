@@ -28,6 +28,9 @@
 		view-name="searchFriendPage" />
 	<mvc:view-controller path="/searchTimeSheetPage"
 		view-name="searchTimeSheet" />
+	<mvc:view-controller path="/MakeGroupPage"
+		view-name="MakeGroupPage" />
+		
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 

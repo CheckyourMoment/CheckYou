@@ -28,6 +28,11 @@
 		view-name="searchFriendPage" />
 	<mvc:view-controller path="/searchTimeSheetPage"
 		view-name="searchTimeSheet" />
+	<mvc:view-controller path="/MakeGroupPage"
+		view-name="MakeGroupPage" />
+	<mvc:view-controller path="addMemberPage"
+		view-name="addMemberPage" />
+		
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -39,7 +44,7 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/img/**" location="/resources/img/" />
 	<resources mapping="/js/**" location="/resources/js/" />
-	
+
 	<resources mapping="/resources/**" location="/resources/" />
 
 

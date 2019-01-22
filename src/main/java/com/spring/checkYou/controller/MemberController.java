@@ -11,6 +11,8 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.checkYou.dto.FriendDto;
 import com.spring.checkYou.dto.MemberDto;
@@ -39,7 +41,7 @@ public class MemberController {
 	// method
 
 	// 회원가입
-	@RequestMapping("/join")
+	@RequestMapping("/join")       
 	public String join(MemberDto dto) { // HttpServletRequest request
 		service.join(dto);
 		return "login";
@@ -50,10 +52,29 @@ public class MemberController {
 	public String login(Model model, MemberDto dto) {
 		String path = "null";
 		path = service.login(dto);
-
+		
 		return path;
 	}
-
+	 @ResponseBody
+	    @RequestMapping(value="/checkId.do",method = RequestMethod.POST)
+	    public String idCheck(Model model, MemberDto dto) {
+	        System.out.println("Controller.idCheck() 호출");
+	        int result=0;
+	       
+	     
+	    	String alreadyExist = service.idCheck(dto);
+	    	
+	    	System.out.println(alreadyExist);
+			if (alreadyExist == "false") {
+				System.out.println("아이디 사용하셔도 됩니다.");
+				result = 1;
+			} else {
+				System.out.println("아이디는 이미 친구목록에 있습니다.");
+			}
+	        
+	        return String.valueOf(result);
+	    }
+	 
 	// 메인 화면 : 내가 추가한 work list들이 있기 때문에 DB접근 필요, 작업종류와 작업이름을 뽑아와서 + 2. main.jsp에서 뿌린다.
 	@RequestMapping("/dailyManagement")
 	public String dailyManagementPage(Model model) {
@@ -207,5 +228,6 @@ public class MemberController {
 
 		return "friendList";
 	}
+
 
 }

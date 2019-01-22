@@ -14,5 +14,5 @@ public interface IMemberDao {
 	public void addFriend(FriendDto dto);
 	public FriendDto addFriendCheck(FriendDto dto);
 	public FriendDto friendList(String id);
-	
+	public String idCheck(String id);
 }

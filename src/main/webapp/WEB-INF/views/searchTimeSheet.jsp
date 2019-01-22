@@ -8,18 +8,29 @@
 <title>search timeSheet</title>
 
 <!--jQuery UI, jQuery, File Download Plugin을 포함시키는 부분 -->
-<link rel="stylesheet" href="<c:url value='/js/jquery-ui-1.12.0/jquery-ui.min.css'/>"/> 
-<script src="<c:url value="/js/jquery-3.1.0.min.js"/>"></script>
-<script src="<c:url value="/js/jquery-ui-1.12.0/jquery-ui.min.js"/>"></script>
-<script src="<c:url value="/js/jquery.fileDownload.js"/>"></script>
+<%--  <link rel="stylesheet" href="<c:url value='/js/jquery-ui-1.12.0/jquery-ui.min.css'/>"/>  --%>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"></script>
+<%-- <script src="<c:url value="/js/jquery-3.1.0.min.js"/>"></script> --%>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	
+<%-- <script src="<c:url value="/js/jquery-ui-1.12.0/jquery-ui.min.js"/>"></script> --%>
+<script  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="  crossorigin="anonymous"></script> 
+
+
+<%-- 
+<script src="<c:url value="/js/jquery.fileDownload.js"/>"></script> --%>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery.fileDownload/1.4.2/jquery.fileDownload.js"></script>
+
+
+
 
 <!-- "엑셀 다운로드" 버튼 클릭시 진행막대 다이얼로그를 띄우고 다운로드 요청 후 응답에 따라 성공시 다운로드가 진행되고, 실패시 에러메세지 다이얼로그를 띄웁니다.-->
 <script type="text/javascript">
 //<![CDATA[ 
 	$(function() { 
 	$("#btn-excel").on("click", function () {
-		
-		
+
 		var searchedDate = document.getElementById("searchedDate").value;
 		if(searchedDate=="NOT"){
 			window.alert("select a Date which you want download");
@@ -154,7 +165,7 @@ input date : <input type="text" name="Date_TimeSheet"> Input Format(0000-00-00)
 <button id="btn-excel">엑셀 다운로드</button>
 
 <!-- 파일 생성중 보여질 진행막대를 포함하고 있는 다이얼로그 입니다. -->
-<div title="Data Download" id="preparing-file-modal" style="display: none;">
+<div title="Data Download" id="preparing-file-modal" class="ui-progressbar" style="display: none;">
 	<div id="progressbar" style="width: 100%; height: 22px; margin-top: 20px;"></div> 
 </div> 
 

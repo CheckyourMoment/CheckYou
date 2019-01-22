@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.checkYou.dao.IGroupDao">
+	
+	<!-- 그룹 추가  -->
+	<insert id="addGroup">
+		insert into grouplist values (#{constructor},#{groupName},#{groupType},#{purpose})
+	</insert> 
+	
+	<!-- 그룹명 중복 체크  -->
+	<select id="checkGroup" resultType="String">
+		select 'true' from grouplist where groupname = #{param1} and constructor = #{param2}
+	</select>
+	
+	<!-- groupList_owner 가져오기  -->
+	<select id="groupList_owner" resultType="com.spring.checkYou.dto.GroupDto">
+		select * from grouplist where constructor = #{param1}
+	</select>
+	
+	<!-- groupList_member 가져오기  -->
+	<select id="groupList_member" resultType="com.spring.checkYou.dto.GroupDto">
+		select * from groupmember where member = #{param1}
+	</select>
+	
+	<!-- 멤버 찾기 -->
+	<select id="searchMember" resultType="String">
+		select id from checkYouMember where id = #{param1}
+	</select>
+	
+	<!-- 멤버 추가 -->
+	<insert id="addMember">
+		insert into groupmember values (#{constructor}, #{groupname}, #{groupmember}, #{acception})
+	</insert>
+	
+	<!-- 멤버 추가 중복 체크 -->
+	<select id="addMemberCheck" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember}
+	</select>
+	
+	<!-- 멤버 목록 -->
+	<select id="memberList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and acception = #{acception}
+	</select>
+	
+	<!-- 초대 목록 -->
+	<select id="inviteList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and acception = #{acception}
+	</select>
+	
+	
+</mapper>
+

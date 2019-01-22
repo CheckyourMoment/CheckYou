@@ -50,6 +50,7 @@ public class GroupController {
 		 */
 
 		return "group_home";
+
 	}
 
 	// Group 선택
@@ -118,5 +119,6 @@ public class GroupController {
 	}
 
 	// 그룹에 초대했지만 아직 수락하지 않은 사용자
+
 
 }

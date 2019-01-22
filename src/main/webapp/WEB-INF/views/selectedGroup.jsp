@@ -17,7 +17,9 @@ Group Name : <%=selectedGroup %>
 	</br>
 	<a href="addComment">comment</a>
 	</br>
-	<a href="MemberList">member</a>
+	<a href="addMemberPage">AddMember</a>
+	</br>
+	<a href="MemberList">MemberList</a>
 	</br>
 	<a>Delete Group</a>
 </div>

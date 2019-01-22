@@ -48,9 +48,10 @@
 	</form> --%>
 	
 				<c:forEach items="${grouplist_owner}" var="dto">
-					<span style="background-color:gray">
-						<a href = "selectGroup?groupName=${dto.groupName}">
-							<font color="white">Group Name : ${dto.groupName} Owner : ${dto.constructor}</font>
+					<span style="background-color:gray" >
+						<a href = "selectGroup?groupName=${dto.groupName}&constructor=${dto.constructor}">
+							<font color="white">Group Name : ${dto.groupName}</font></br>
+							<font color="white"> Owner : ${dto.constructor}</font>
 						</a>
 					</span>
 					</br></br>

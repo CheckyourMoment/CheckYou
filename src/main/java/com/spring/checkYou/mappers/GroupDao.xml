@@ -25,6 +25,31 @@
 		select * from groupmember where member = #{param1}
 	</select>
 	
+	<!-- 멤버 찾기 -->
+	<select id="searchMember" resultType="String">
+		select id from checkYouMember where id = #{param1}
+	</select>
+	
+	<!-- 멤버 추가 -->
+	<insert id="addMember">
+		insert into groupmember values (#{constructor}, #{groupname}, #{groupmember}, #{acception})
+	</insert>
+	
+	<!-- 멤버 추가 중복 체크 -->
+	<select id="addMemberCheck" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember}
+	</select>
+	
+	<!-- 멤버 목록 -->
+	<select id="memberList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and acception = #{acception}
+	</select>
+	
+	<!-- 초대 목록 -->
+	<select id="inviteList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and acception = #{acception}
+	</select>
+	
 	
 </mapper>
 

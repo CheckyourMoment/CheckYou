@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.checkYou.dto.FriendDto;
 import com.spring.checkYou.dto.GroupDto;
+import com.spring.checkYou.dto.GroupMemberDto;
 import com.spring.checkYou.service.GroupService;
 
 @Controller
@@ -30,7 +32,6 @@ public class GroupController {
 	public String addGroup(GroupDto dto) {
 		String constructor = (String) session.getAttribute("userId");
 		dto.setConstructor(constructor);
-
 		service.addGroup(dto);
 		return "MakeGroupPage";
 	}
@@ -49,19 +50,75 @@ public class GroupController {
 		 */
 
 		return "group_home";
+
 	}
 
-	// group_home에서 group선택
+	// Group 선택
 	@RequestMapping("/selectGroup")
 	public String selectGroup(HttpServletRequest request) {
 		System.out.println("selectGroup()");
-
 		String groupName = request.getParameter("groupName");
 		session.setAttribute("selectedGroup", groupName);
+
+		String constructor = request.getParameter("constructor");
+		session.setAttribute("constructor", constructor);
 
 		return "selectedGroup";
 	}
 
-	
+	// 멤버 찾기
+	@RequestMapping("/searchMember")
+	public String searchMember(Model model, HttpServletRequest request) {
+		String id = request.getParameter("searchMember");
+		service.searchMember(model, id);
+		return "addMemberPage";
+	}
+
+	// 멤버 추가
+	@RequestMapping("/addMember")
+	public String addMember(GroupMemberDto dto) {
+		String userId = (String) session.getAttribute("constructor");
+		dto.setConstructor(userId);
+		String groupName = (String) session.getAttribute("selectedGroup");
+		dto.setGroupname(groupName);
+		dto.setAcception("0");
+		// test
+		System.out.println("constructor: " + dto.getConstructor());
+		System.out.println("invite " + dto.getGroupmember());
+		System.out.println("groupName : " + dto.getGroupname());
+
+		boolean alreadyExist = service.addMemberCheck(dto);
+
+		if (alreadyExist == true) {
+			System.out.println("추가하려는 멤버는 이미 목록에 있거나, 수락을 기다리는 중 입니다.");
+		} else {
+			service.addMember(dto);
+			System.out.println("초대하였습니다.");
+
+		}
+
+		return "addMemberPage";
+	}
+
+	// 그룹 멤버 목록
+	@RequestMapping("/MemberList")
+	public String MemberList(Model model, GroupMemberDto dto) {
+
+		String constructor = (String) session.getAttribute("constructor");
+		String groupName = (String) session.getAttribute("selectedGroup");
+
+		dto.setConstructor(constructor);
+		dto.setGroupname(groupName);
+		dto.setAcception("1");
+		service.memberList(model, dto);
+
+		dto.setAcception("0");
+		service.inviteList(model, dto);
+
+		return "MemberList";
+	}
+
+	// 그룹에 초대했지만 아직 수락하지 않은 사용자
+
 
 }

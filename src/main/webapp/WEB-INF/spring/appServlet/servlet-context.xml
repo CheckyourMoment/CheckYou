@@ -30,6 +30,8 @@
 		view-name="searchTimeSheet" />
 	<mvc:view-controller path="/MakeGroupPage"
 		view-name="MakeGroupPage" />
+	<mvc:view-controller path="addMemberPage"
+		view-name="addMemberPage" />
 		
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->

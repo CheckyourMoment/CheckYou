@@ -228,11 +228,6 @@ public class MemberController {
 
 		return "friendList";
 	}
-	@RequestMapping("/test")
-	public String test(Model model) {
-		String userId = (String) session.getAttribute("userId");
 
-		return "test";
-	}
 
 }

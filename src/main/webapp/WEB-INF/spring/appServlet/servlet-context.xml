@@ -67,7 +67,7 @@
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:orcl" />
 		<beans:property name="username" value="hr" />
-		<beans:property name="password" value="1234" />
+		<beans:property name="password" value="19965808" />
 	</beans:bean>
 
 	<!-- myBatis 사용을 위한 sqlSession 빈 생성 -->

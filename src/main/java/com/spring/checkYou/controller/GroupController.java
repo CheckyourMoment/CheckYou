@@ -57,7 +57,7 @@ public class GroupController {
 
 	// Group 선택
 	@RequestMapping("/selectGroup")
-	public String selectGroup(HttpServletRequest request) {
+	public String selectGroup(HttpServletRequest request, Model model) {
 		System.out.println("selectGroup()");
 
 		String groupName = request.getParameter("groupName");
@@ -71,8 +71,10 @@ public class GroupController {
 		// 선택된 그룹의 메모개수를 세션에 저장하는 로직(selectedGroup에 올때 마다 갱신)
 		String memocount = memoCount();
 		System.out.println((String)session.getAttribute("selectedGroup")+"의 메모개수는"+memocount+"개 입니다.");
-		
 		session.setAttribute("memoCount", memocount);
+		
+		// 선택된 그룹의 메모의 데이터를 session에 저장한 후 메모 Element.value에 넣어 wholeMemo()호출하여 메모를 유지시키기 위해
+		loadMemoData(model);
 
 		return "selectedGroup";
 	}
@@ -251,6 +253,17 @@ public class GroupController {
 		
 		service.increaseMemoCount(increasedMemoCount,groupname);
 		
+		// 메모 저장
+		String count = request.getParameter("count");
+		int j = Integer.parseInt(count);
+		ArrayList memoList = new ArrayList();
+		for(int i = 1; i<=j ; i++) {
+			String memo = request.getParameter("memo"+i);
+			memoList.add(memo);
+		}
+		deleteMemoForSave();
+		service.saveMemo(memoList);
+		
 		return "redirect:selectGroup";
 	}
 	
@@ -258,6 +271,8 @@ public class GroupController {
 	@RequestMapping("/saveMemo")
 	public String saveMemo(HttpServletRequest request) {
 		System.out.println("saveMemo() in controller");
+		
+		String moveTo = request.getParameter("moveTo");
 		
 		String count = request.getParameter("count");
 		int j = Integer.parseInt(count);
@@ -269,20 +284,62 @@ public class GroupController {
 		memoList.add(memo);
 		}
 		
-		//test
+	/*	//test
 		Iterator iter = memoList.iterator();
-		
 		System.out.println("test");
 		while(iter.hasNext()) {
 			String test = (String)iter.next();
 			System.out.println(test);
-		}
+		}*/
 		
+		deleteMemoForSave();
 		service.saveMemo(memoList);
+		
+		return "redirect:"+moveTo;
+	}
+	
+	// 해당 그룹의 메모 데이터를 로드해오는 로직
+	@RequestMapping("/loadMemoData")
+	public void loadMemoData(Model model) {
+		System.out.println("loadMemoData() in controller");
+		
+		String groupname = (String)session.getAttribute("selectedGroup");
+		String memoCount = (String)session.getAttribute("memoCount");
+		
+		service.loadMemoData(groupname,memoCount,model);
+		
+	}
+	
+	// 모든 모든 메모삭제 로직 : 메모를 갱신하기 위해선 모든 메모를 삭제하고 다시 저장해야한다.
+	public void deleteMemoForSave() {
+		System.out.println("deleteMemoForSave() in controller");
+		
+		String groupname = (String)session.getAttribute("selectedGroup");
+		service.deleteMemoForSave(groupname);
+	}
+	
+	// 하나의 메모삭제
+	@RequestMapping("/deleteOneMemo")
+	public String deleteOneMemo(HttpServletRequest request) {
+		System.out.println("deleteOneMemo() in controller");
+		
+		// 메모 저장
+		String count = request.getParameter("count");
+		int j = Integer.parseInt(count);
+		ArrayList memoList = new ArrayList();
+		for(int i = 1; i<=j ; i++) {
+			String memo = request.getParameter("memo"+i);
+			memoList.add(memo);
+		}
+		deleteMemoForSave();
+		service.saveMemo(memoList);
+		
+		// 메모삭제
+		String deleteNum = request.getParameter("deleteNum");
+		service.deleteOneMemo(deleteNum);
 		
 		return "redirect:selectGroup";
 	}
-	
 	
 	
 	

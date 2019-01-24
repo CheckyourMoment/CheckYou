@@ -165,6 +165,7 @@ public class GroupService {
 		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
 		dao.deleteGroup1(groupname); // grouplist table에서 해당 그룹삭제
 		dao.deleteGroup2(groupname); // groupmember table에서 해당 그룹의 멤버삭제
+		dao.deleteGroup3(groupname); // groupmemo table에서 해당 그룹의 메모삭제
 	}
 
 	// 멤버의 오늘 시간관리표 보기 
@@ -209,8 +210,59 @@ public class GroupService {
 			int f=Integer.parseInt(i)+1;
 			i = Integer.toString(f);
 		}
+	}
 	
+	// 메모로드
+	public void loadMemoData(String groupname, String memoCount, Model model) {
+		List<String> memoDataList = sqlSession.selectList("loadMemoData", groupname);
+		model.addAttribute("memoDataList",memoDataList);
+		
+		// test
+		System.out.println("test");
+		Iterator iter = memoDataList.iterator();
+		while(iter.hasNext()) {
+			String test = (String)iter.next();
+			System.out.println(test);
+		}
+	}
+	
+	// 갱신을 위한 모든 메모 삭제
+	public void deleteMemoForSave(String groupname) {
+		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
+		dao.deleteMemoForSave(groupname);
+	}
+	
+	// 단일 메모 삭제
+	public void deleteOneMemo(String deleteNum) {
+		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
+		String groupname = (String)session.getAttribute("selectedGroup");
+		String memoCount = (String)session.getAttribute("memoCount");
+		
+		// 해당되는 번호의 메모를 삭제
+		dao.deleteOneMemo(groupname, deleteNum);
+		
+		
+		// 삭제된 메모의 뒷 번호 메모들의 번호를 앞으로 당긴다.
+		int start = Integer.parseInt(deleteNum);
+		int end = Integer.parseInt(memoCount);
+		int swap = 0;
+		for(int i = 1; start<end ; i++) {
+			start = start+i;
+			swap = start-1;
+			
+			String start_str = Integer.toString(start);
+			String swap_str = Integer.toString(swap);
+			
+		dao.swapMemoNum(groupname,start_str,swap_str);
+		}
+		
+		// 전체 메모개수를 줄이는 로직
+		String decrease = Integer.toString(end-1);
+		
+		dao.decreaseMemoCount(decrease,groupname);
+		session.setAttribute("memoCount", decrease);
 		
 	}
+	
 	
 }

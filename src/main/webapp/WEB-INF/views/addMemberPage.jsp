@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a href="selectGroup">Back</a>  
 <h2>- Search Member and invite! - </h2>
 	
 	<form action ="searchMember">

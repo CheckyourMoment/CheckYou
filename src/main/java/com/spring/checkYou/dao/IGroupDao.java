@@ -21,7 +21,13 @@ public interface IGroupDao {
 	public void cancelInvite(GroupMemberDto dto);
 	public void deleteGroup1(String groupname);
 	public void deleteGroup2(String groupname);
+	public void deleteGroup3(String groupname);
 	public String memoCount(String groupname);
 	public void increaseMemoCount(String increasedMemoCount, String groupname);
 	public void saveMemo(String groupname, String memonumber, String memo);
+	public String loadMemoData(String groupname);
+	public void deleteMemoForSave(String groupname);
+	public void deleteOneMemo(String groupname, String deleteNum);
+	public void swapMemoNum(String start, String groupname, String swap);
+	public void decreaseMemoCount(String decrease, String groupname);
 }

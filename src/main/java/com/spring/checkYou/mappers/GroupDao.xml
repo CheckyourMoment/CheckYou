@@ -7,7 +7,7 @@
 	
 	<!-- 그룹 추가  -->
 	<insert id="addGroup">
-		insert into grouplist values (#{constructor},#{groupName},#{groupType},#{purpose})
+		insert into grouplist values (#{constructor},#{groupName},#{groupType},#{purpose},#{memocount})
 	</insert> 
 	
 	<!-- 그룹명 중복 체크  -->
@@ -21,8 +21,8 @@
 	</select>
 	
 	<!-- groupList_member 가져오기  -->
-	<select id="groupList_member" resultType="com.spring.checkYou.dto.GroupDto">
-		select * from groupmember where member = #{param1}
+	<select id="groupList_member" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where groupmember = #{param1}
 	</select>
 	
 	<!-- 멤버 찾기 -->
@@ -49,6 +49,57 @@
 	<select id="inviteList" resultType="com.spring.checkYou.dto.GroupMemberDto">
 		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and acception = #{acception}
 	</select>
+	
+	<!-- 요청받은 초대 목록 -->
+	<select id="requestList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where groupmember = #{groupmember} and acception = #{acception}
+	</select>
+	
+	<!-- 초대요청 수락 -->
+	<update id="accept">
+		update groupmember set acception='1' where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</update>
+	
+	<!-- 초대요청 거절 -->
+	<delete id="refuse">
+		delete from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</delete>
+	
+	<!-- 멤버 삭제 -->
+	<delete id="deleteMember">
+		delete from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</delete>
+	
+	<!-- 멤버요청 취소 -->
+	<delete id="cancelInvite">
+		delete from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</delete>
+	
+	<!-- grouplist table에서  해당 그룹삭제 -->
+	<delete id="deleteGroup1">
+		delete from grouplist where groupname = #{groupname}
+	</delete>
+	
+	<!-- groupmember table에서 해당 그룹의 멤버삭제 -->
+	<delete id="deleteGroup2">
+		delete from groupmember where groupname = #{groupname}
+	</delete>
+	
+	<!-- 그룹의 메모개수 구하기 -->
+	<select id="memoCount" resultType="String">
+		select memocount from grouplist where groupname = #{param1}
+	</select>
+	
+	<!-- 그룹 메모개수 갱신(증가) -->
+	<update id="increaseMemoCount">
+		update grouplist set memocount= #{param1} where groupname= #{param2}
+	</update>
+	
+	<!-- 메모 저장  -->
+	<insert id="saveMemo">
+		insert into groupmemo values (#{param1},#{param2},#{param3})
+	</insert>
+	
 	
 	
 </mapper>

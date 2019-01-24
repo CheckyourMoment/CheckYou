@@ -39,7 +39,8 @@
 </head>
 <body>
 
-<a onClick="history.back();">Back</a>   
+<!-- <a onClick="history.back();">Back</a>   --> 
+<a href="groupHome">Back</a>   
 
 <form action="addGroup" onsubmit="return check()">
 

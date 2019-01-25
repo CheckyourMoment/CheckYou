@@ -6,7 +6,7 @@ import com.spring.checkYou.dto.GroupMemberDto;
 
 public interface IGroupDao {
 	public void addGroup(GroupDto dto);
-	public String checkGroup(String groupName, String constructor);
+	public String checkGroup(String groupName);
 	public GroupDto groupList_owner(String id);
 	public GroupMemberDto groupList_member(String id);
 	public String searchMember(String id);
@@ -25,9 +25,12 @@ public interface IGroupDao {
 	public String memoCount(String groupname);
 	public void increaseMemoCount(String increasedMemoCount, String groupname);
 	public void saveMemo(String groupname, String memonumber, String memo);
+	public void saveColor(String groupname, String memonumber, String memoColor);
 	public String loadMemoData(String groupname);
 	public void deleteMemoForSave(String groupname);
 	public void deleteOneMemo(String groupname, String deleteNum);
 	public void swapMemoNum(String start, String groupname, String swap);
 	public void decreaseMemoCount(String decrease, String groupname);
+	public void changeMemoColor(String groupname, String changeNum , String memoColor);
+	public void addNewMemo(String groupname, String newMemoNum);
 }

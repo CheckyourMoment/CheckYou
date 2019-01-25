@@ -32,11 +32,11 @@ public class GroupController {
 
 	// group 추가
 	@RequestMapping("/addGroup")
-	public String addGroup(GroupDto dto) {
+	public String addGroup(GroupDto dto, Model model) {
 		String constructor = (String) session.getAttribute("userId");
 		dto.setConstructor(constructor);
 		dto.setMemocount("0");
-		service.addGroup(dto);
+		service.addGroup(dto,model);
 		return "MakeGroupPage";
 	}
 
@@ -83,31 +83,31 @@ public class GroupController {
 	@RequestMapping("/searchMember")
 	public String searchMember(Model model, HttpServletRequest request) {
 		String id = request.getParameter("searchMember");
+		
+		
 		service.searchMember(model, id);
+		
 		return "addMemberPage";
 	}
 
 	// 멤버 추가
 	@RequestMapping("/addMember")
-	public String addMember(GroupMemberDto dto) {
+	public String addMember(GroupMemberDto dto, Model model) {
 		String userId = (String) session.getAttribute("constructor");
 		dto.setConstructor(userId);
 		String groupName = (String) session.getAttribute("selectedGroup");
 		dto.setGroupname(groupName);
 		dto.setAcception("0");
-		// test
-		System.out.println("constructor: " + dto.getConstructor());
-		System.out.println("invite " + dto.getGroupmember());
-		System.out.println("groupName : " + dto.getGroupname());
 
 		boolean alreadyExist = service.addMemberCheck(dto);
 
 		if (alreadyExist == true) {
 			System.out.println("추가하려는 멤버는 이미 목록에 있거나, 수락을 기다리는 중 입니다.");
+			model.addAttribute("invite", "fail");
 		} else {
 			service.addMember(dto);
 			System.out.println("초대하였습니다.");
-
+			model.addAttribute("invite", "success");
 		}
 
 		return "addMemberPage";
@@ -257,15 +257,34 @@ public class GroupController {
 		String count = request.getParameter("count");
 		int j = Integer.parseInt(count);
 		ArrayList memoList = new ArrayList();
+		ArrayList colorList = new ArrayList();
+		
 		for(int i = 1; i<=j ; i++) {
 			String memo = request.getParameter("memo"+i);
+			String memoColor = request.getParameter("memoColor"+i);
+			memoColor = "#"+memoColor;
+			//test
+			System.out.println("colorList의 색상들 입니다. : "+memoColor);
+			
 			memoList.add(memo);
+			colorList.add(memoColor);
 		}
 		deleteMemoForSave();
 		service.saveMemo(memoList);
 		
+		service.saveColor(colorList);
+		
+		// 실제로 빈 메모를 생성
+		addNewMemo(groupname, increasedMemoCount);
+		
 		return "redirect:selectGroup";
 	}
+	
+	// 새로운 메모생성버튼 클릭시 DB에서 그룹의 메모개수는 갱신되지만 실제 메모가 생성되진않는 문제가 발생. 이를 위해 실제로 새로운 빈 메모를 DB에 생성하는 로직
+	public void addNewMemo(String groupname, String newMemoNum) {
+		service.addNewMemo(groupname, newMemoNum);
+	}
+	
 	
 	// 메모 저장
 	@RequestMapping("/saveMemo")
@@ -278,22 +297,22 @@ public class GroupController {
 		int j = Integer.parseInt(count);
 		
 		ArrayList memoList = new ArrayList();
+		ArrayList colorList = new ArrayList();
 		
 		for(int i = 1; i<=j ; i++) {
-		String memo = request.getParameter("memo"+i);
-		memoList.add(memo);
+			String memo = request.getParameter("memo"+i);
+			String memoColor = request.getParameter("memoColor"+i);
+			memoColor = "#"+memoColor;
+			//test
+			System.out.println("colorList의 색상들 입니다. : "+memoColor);
+			
+			memoList.add(memo);
+			colorList.add(memoColor);
 		}
-		
-	/*	//test
-		Iterator iter = memoList.iterator();
-		System.out.println("test");
-		while(iter.hasNext()) {
-			String test = (String)iter.next();
-			System.out.println(test);
-		}*/
-		
 		deleteMemoForSave();
 		service.saveMemo(memoList);
+		
+		service.saveColor(colorList);
 		
 		return "redirect:"+moveTo;
 	}
@@ -323,20 +342,66 @@ public class GroupController {
 	public String deleteOneMemo(HttpServletRequest request) {
 		System.out.println("deleteOneMemo() in controller");
 		
-		// 메모 저장
+		// 메모 데이터 및 색상 저장
 		String count = request.getParameter("count");
 		int j = Integer.parseInt(count);
 		ArrayList memoList = new ArrayList();
+		ArrayList colorList = new ArrayList();
+				
 		for(int i = 1; i<=j ; i++) {
 			String memo = request.getParameter("memo"+i);
+			String memoColor = request.getParameter("memoColor"+i);
+			memoColor = "#"+memoColor;
+			//test
+			System.out.println("colorList의 색상들 입니다. : "+memoColor);
+					
 			memoList.add(memo);
+			colorList.add(memoColor);
+		}
+		deleteMemoForSave();
+		service.saveMemo(memoList);
+		service.saveColor(colorList);
+		// 메모삭제
+		String deleteNum = request.getParameter("deleteNum");
+		service.deleteOneMemo(deleteNum);
+		
+		return "redirect:selectGroup";
+	}
+	
+	// 메모 색상 변경
+	@RequestMapping("/changeMemoColor")
+	public String changeMemoColor(HttpServletRequest request) {
+		System.out.println("changeMemoColor() in controller");
+		
+		// 메모 데이터 및 색상 저장
+		String count = request.getParameter("count");
+		int j = Integer.parseInt(count);
+		ArrayList memoList = new ArrayList();
+		ArrayList colorList = new ArrayList();
+		
+		for(int i = 1; i<=j ; i++) {
+			String memo = request.getParameter("memo"+i);
+			String memoColor = request.getParameter("memoColor"+i);
+			memoColor = "#"+memoColor;
+			//test
+			System.out.println("colorList의 색상들 입니다. : "+memoColor);
+			
+			memoList.add(memo);
+			colorList.add(memoColor);
 		}
 		deleteMemoForSave();
 		service.saveMemo(memoList);
 		
-		// 메모삭제
-		String deleteNum = request.getParameter("deleteNum");
-		service.deleteOneMemo(deleteNum);
+		service.saveColor(colorList);
+		
+		
+		// 메모 색 바꾸기
+		String changeNum = request.getParameter("changeNum");
+		String color = request.getParameter("color");
+		String memoColor = "#"+color;
+		System.out.println(memoColor);
+		
+		service.changeMemoColor(changeNum, memoColor);
 		
 		return "redirect:selectGroup";
 	}

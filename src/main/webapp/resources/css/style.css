@@ -1,3 +1,5 @@
+ @import url("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Roboto:300,400,500,700");
+
 html,
 body,
 div,
@@ -212,7 +214,7 @@ img {
 
 body {    
 		/*배경색 바꾸는거*/
-	background-color: #814794;
+	background-color: #9055A2;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -228,7 +230,7 @@ body {
 /*-- title --*/
 
 h1 {
-	   margin: 1px 2px 45px 2px;
+	margin: 1px 2px 45px 2px;
     font-size: 3.5em;
     color: #fff;
     letter-spacing: 2px;
@@ -236,7 +238,7 @@ h1 {
     text-align: center;
     text-shadow: 2px 1px 4px rgba(19, 19, 19, 0.52);
     font-style: italic;
-    font-family: 'Tangerine', cursive;
+  	 font-family: 'Noto Sans Kannada', sans-serif;
 }
 
 h1 span {

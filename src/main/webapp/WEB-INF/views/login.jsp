@@ -42,7 +42,6 @@
                <form  action="login" method="post" id="target" >
            	<h1>
 		<span>L</span>ogin
-		<span>F</span>orm
 	</h1>
         
             <div class="input">

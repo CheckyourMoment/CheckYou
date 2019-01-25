@@ -4,11 +4,19 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.checkYou.dao.ICommentDao">
-	
-	<!-- Comment 추가  -->
-	<insert id="groupComment">
-		insert into gcomment values (#{constructor},#{groupName},#{groupComment})
-	</insert> 
+
+	<!-- Comment 추가 -->
+	<insert id="addComment">
+		insert into gcomment values
+		(#{groupName},#{groupComment})
+	</insert>
+
+	<!-- 내용 -->
+	<select id="keepComment" resultType="String">
+		select groupcomment from gcomment where groupname=#{groupName}
+	</select>
+
+
 
 </mapper>
 

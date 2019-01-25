@@ -4,46 +4,81 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.checkYou.dao.IMemberDao">
-	
-	<!-- 회원 가입  -->
+
+	<!-- 회원 가입 -->
 	<insert id="join">
-		insert into checkYouMember values (#{param1}, #{param2}, #{param3})
-	</insert> 
-	
-	<!-- 로그인  -->
-	<select id="login" resultType="com.spring.checkYou.dto.MemberDto">
-		select * from checkYouMember where id = #{param1} and password = #{param2}
+		insert into checkYouMember values (#{param1},
+		#{param2}, #{param3})
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="login"
+		resultType="com.spring.checkYou.dto.MemberDto">
+		select * from checkYouMember where id = #{param1} and
+		password = #{param2}
 	</select>
-	
-	<!--  아이디 중복체크  -->
+
+	<!-- 아이디 중복체크 -->
 	<select id="idCheck" resultType="String">
-		select * from checkYouMember where id = #{param1}
+		select * from checkYouMember
+		where id = #{param1}
 	</select>
-	
-	<!-- main 페이지  -->
-	<select id="dailyManagementPage" resultType="com.spring.checkYou.dto.WorkDto">
+
+	<!-- main 페이지 -->
+	<select id="dailyManagementPage"
+		resultType="com.spring.checkYou.dto.WorkDto">
 		select * from PERSONALWORKLIST where id = #{id}
 	</select>
-	
+
 	<!-- 친구 찾기 -->
 	<select id="searchFriend" resultType="String">
-		select id from checkYouMember where id = #{param1}
+		select id from
+		checkYouMember where id = #{param1}
 	</select>
-	
+
 	<!-- 친구 추가 -->
 	<insert id="addFriend">
 		insert into friendlist values (#{id}, #{friend})
 	</insert>
-	
+
 	<!-- 친구 추가 중복 체크 -->
-	<select id="addFriendCheck" resultType="com.spring.checkYou.dto.FriendDto">
-		select * from friendlist where id= #{id} and friend = #{friend}
+	<select id="addFriendCheck"
+		resultType="com.spring.checkYou.dto.FriendDto">
+		select * from friendlist where id= #{id} and friend =
+		#{friend}
 	</select>
-	
+
 	<!-- 친구 목록 -->
-	<select id="friendList" resultType="com.spring.checkYou.dto.FriendDto">
+	<select id="friendList"
+		resultType="com.spring.checkYou.dto.FriendDto">
 		select * from friendlist where id= #{id}
 	</select>
 
-	
+	<!-- 아이디 찾기 -->
+	<select id="findID" resultType="String">
+		select id from checkYouMember
+		where email = #{param1}
+	</select>
+
+	<!-- 임시비밀번호 -->
+	<update id="findPW">
+		update checkYouMember set password =
+		#{password,jdbcType=VARCHAR} where email = #{email,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 회원정보 수정:비밀번호 -->
+	<update id="modify">
+		update checkYouMember set password =
+		#{password}
+		where
+		id = #{id}
+	</update>
+
+
+
+
+
+
+
+
 </mapper>

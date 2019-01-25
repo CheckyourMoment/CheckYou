@@ -124,8 +124,11 @@ while(iter.hasNext()) {
 
 
 <div align="right">
+
+	<a href="">Group Home</a>
+
 	</br>
-	<a href="addComment">comment</a>
+	<a href="comment">comment</a>
 	</br>
 	<a href="#" onclick="saveMemo('addMemberPage')">AddMember</a>
 	</br>

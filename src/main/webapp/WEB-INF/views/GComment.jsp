@@ -6,24 +6,39 @@
 <head>
 <meta charset="UTF-8">
 <title>groupComment</title>
-
-
 </head>
 <body>
+	<h3>write down your opinion</h3>
+
+
+	<%
+		String name = (String) session.getAttribute("selectedGroup");
+	%>
+	Group Name :<%=name%>
+
 	<form action="addComment">
+		<input type="hidden" value="<%=name%>" name="groupName" />
 		<table>
 			<tr>
-				Input Comment :
-				<input type="text" id="groupComment" name="groupComment" value="${dto.groupComment}" />
+				<textarea cols="50" rows="8" id="groupComment" name="groupComment"
+					value="">
+						 </textarea>
 			</tr>
 			</br>
 		</table>
 		<div>
-			<a onClick="history.back();">Back</a>&nbsp;&nbsp; 
 			<input type="submit" value="Save" />
 		</div>
 
 	</form>
+
+	<div align="right">
+		<a>Group Home</a> </br> <a href="comment">comment</a> </br> <a
+			href="addMemberPage">AddMember</a> </br> <a href="MemberList">MemberList</a>
+		</br> <a>Delete Group</a>
+	</div>
+
+
 
 </body>
 </html>

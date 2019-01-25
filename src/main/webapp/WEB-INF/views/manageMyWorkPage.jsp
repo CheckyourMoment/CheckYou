@@ -23,7 +23,7 @@ function pclose1(){
 <body>
 	<div class="container text-center">
 		<div class="row">
-			<div class="col-lg-18 mx-auto" style="margin-top: 140px">
+			<div class="col-lg-18 mx-auto" style="margin-top: 200px">
 	<form action="manageMyWorkPage" onsubmit="return check()">
 <h3>You can manage your Work on this page</h3>
 

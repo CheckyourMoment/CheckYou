@@ -166,6 +166,7 @@ function continueTime(){
 							<li class="nav-item active"><a class="nav-link"
 								href="dailyManagement">Home <img class="small"
 									src="img/05.png" /></a></li>
+
 							<!--personal menubar!-->
 							<li class="nav-item submenu dropdown"><a
 								href="dailyManagement" class="nav-link dropdown-toggle"
@@ -178,14 +179,13 @@ function continueTime(){
 										href="dailyManagement">Daily Management </a></li>
 									<li class="nav-item"><a class="nav-link" href="viewTable">daily
 											time sheet</a></li>
-
-
 									<li class="nav-item"><a class="nav-link"
 										href="canvasjschart">View Graph</a></li>
 
 									<li class="nav-item"><a class="nav-link"
 										href="searchTimeSheetPage">searchTimeSheet</a></li>
 								</ul></li>
+
 							<!--Group menubar!-->
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -197,6 +197,8 @@ function continueTime(){
 									<li class="nav-item"><a class="nav-link"
 										href="single-blog.html">Mento</a></li>
 								</ul></li>
+
+							<!-- Friend -->
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
 								role="button" aria-haspopup="true" aria-expanded="false">Friend
@@ -208,6 +210,7 @@ function continueTime(){
 									<li class="nav-item"><a class="nav-link" href="friendList">Friend
 											List</a></li>
 								</ul></li>
+							<!-- mypage -->
 							<li class="nav-item submenu dropdown"><a href="logout"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
 								role="button" aria-haspopup="true" aria-expanded="false">My
@@ -216,6 +219,9 @@ function continueTime(){
 								<ul class="dropdown-menu">
 
 									<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+									<li class="nav-item"><a class="nav-link" href="MyPage">MyPage</a></li>
+									
+									
 								</ul></li>
 						</ul>
 					</div>
@@ -243,9 +249,7 @@ function continueTime(){
 						<div class="worklist">
 							<h3>
 								WORKLIST <a href="javascript:popupOpen();"><img alt=""
-									src="img/plus1.png"> 
-									
-									</a> <a href="javascript:popupOpen1();"><img
+									src="img/plus1.png"> </a> <a href="javascript:popupOpen1();"><img
 									alt="" src="img/minus.png"> </a>
 								<!-- <input type="image" src="img/plus.png" onclick="window.openlocation.href='addNewWorkPage'"/>
 					 -->

@@ -13,9 +13,9 @@ Group Name : <%=selectedGroup %>
 
 
 <div align="right">
-	<a >Group Home</a>
+	<a href="">Group Home</a>
 	</br>
-	<a href="addComment">comment</a>
+	<a href="comment">comment</a>
 	</br>
 	<a href="addMemberPage">AddMember</a>
 	</br>

@@ -59,10 +59,8 @@ public class GroupController {
 		System.out.println("selectGroup()");
 		String groupName = request.getParameter("groupName");
 		session.setAttribute("selectedGroup", groupName);
-
 		String constructor = request.getParameter("constructor");
 		session.setAttribute("constructor", constructor);
-
 		return "selectedGroup";
 	}
 

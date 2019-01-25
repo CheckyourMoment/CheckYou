@@ -4,8 +4,6 @@ import com.spring.checkYou.dto.CommentDto;
 
 public interface ICommentDao {
 	public void addComment(CommentDto dto);
-	
-	public String checkComment(String constructor, String groupName);
-	
+	// public String keepComment(String content);
 
 }

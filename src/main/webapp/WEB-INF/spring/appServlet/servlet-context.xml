@@ -18,8 +18,12 @@
 	<mvc:view-controller path="/" view-name="login" />
 	<mvc:view-controller path="/joinForm"
 		view-name="join" />
+	<mvc:view-controller path="/findForm"
+		view-name="find" />
 	<mvc:view-controller path="/logout"
 		view-name="login" />
+	<mvc:view-controller path="/MyPage"
+		view-name="/MyPage" />
 	<mvc:view-controller path="/addNewWorkPage"
 		view-name="addNewWorkPage" />
 	<mvc:view-controller path="/manageMyWorkPage"
@@ -32,7 +36,7 @@
 		view-name="MakeGroupPage" />
 	<mvc:view-controller path="addMemberPage"
 		view-name="addMemberPage" />
-		
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -49,10 +53,10 @@
 
 
 
-	<!-- 자바 스크립트 리소스 경로 맵핑  -->
-	 <resources location="/WEB-INF/views/js/" mapping="/js/**"></resources> 
-	<!--   <resources location="/WEB-INF/views/css/" mapping="/css/**"></resources> 
-	   <resources location="/WEB-INF/views/img/" mapping="/img/**"></resources>  -->
+	<!-- 자바 스크립트 리소스 경로 맵핑 -->
+	<resources location="/WEB-INF/views/js/" mapping="/js/**"></resources>
+	<!-- <resources location="/WEB-INF/views/css/" mapping="/css/**"></resources> 
+		<resources location="/WEB-INF/views/img/" mapping="/img/**"></resources> -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean

@@ -18,7 +18,7 @@
 	crossorigin="anonymous"> -->
 <title>Home</title>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/mainstyle.css"
+	href="${pageContext.request.contextPath}/resources/css/search.css"
 	media="all">
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
@@ -28,7 +28,7 @@
 <body>
 
 	<!-- 메뉴 바 시작  -->
-	<header class="header_area">
+<header class="header_area">
 		<div class="top_menu">
 			<div class="container"></div>
 		</div>
@@ -36,9 +36,8 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img
-						src="img/i" alt=""><img src="img/02.jpg" alt=""></a>
-
+					<a class="navbar-brand logo_h" href="index.html">
+					<img src="img/i" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -46,73 +45,49 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset"
 						id="navbarSupportedContent">
 
 						<ul class="nav navbar-nav menu_nav ml-auto">
-
-
 							<li class="nav-item active">
-								<!--Home menubar!--> <a class="nav-link" href="dailyManagement">Home<img
+							    <a class="nav-link" href="dailyManagement">Home
+							    <img
 									src="img/05.png" /></a>
-							</li>
-
-
+				            </li>
 							<!--personal menubar!-->
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Personal
-									<img class="small" src="img/113.png" />
-							</a>
-
-								<ul class="dropdown-menu">
+							<li class="nav-item submenu dropdown"><a
+								href="dailyManagement" class="nav-link dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Personal  <img
+									src="img/113.png" /></a>
+                    	<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
-										href="dailyManagement">Daily Management </a></li>
-									<li class="nav-item"><a class="nav-link" href="viewTable">daily
-											time sheet</a></li>
+										href="dailyManagement"> Daily Management</a></li>
+									<li class="nav-item"><a class="nav-link" href="viewTable">daily time sheet</a></li>
 
 									<li class="nav-item"><a class="nav-link"
 										href="canvasjschart">View Graph</a></li>
-
+										
 									<li class="nav-item"><a class="nav-link"
-										href="searchTimeSheetPage">searchTimeSheet</a></li>
-								</ul></li>
-
+                                        href="searchTimeSheetPage">searchTimeSheet</a></li>
+						</ul></li>
 							<!--Group menubar!-->
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Group
-									<img class="small" src="img/08.png" />
-							</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link"
-										href="searchTimeSheet">Team</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Mento</a></li>
-								</ul></li>
+								role="button" aria-haspopup="true" aria-expanded="false">Group  <img
+									src="img/08.png" /></a></li>
+							
+						 
 
-
-							<li class="nav-item submenu dropdown"><a href="friendList"
+					<li class="nav-item submenu dropdown"><a href="logout"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Friend
-									<img class="small" src="img/112.png" />
+								role="button" aria-haspopup="true" aria-expanded="false">My Page  <img
+									src="img/10.png"/>
 							</a>
-								<ul class="dropdown-menu">
-
-									<li class="nav-item"><a class="nav-link"
-										href="searchFriendPage">Add Friend</a></li>
-									<li class="nav-item"><a class="nav-link" href="friendList">Friend
-											List</a></li>
-								</ul></li>
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">My
-									Page <img class="small" src="img/10.png" />
-							</a>
-								<ul class="dropdown-menu">
-
-									<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                                <ul class="dropdown-menu">
+                                   <li class="nav-item"><a class="nav-link"  href="MyPage">My Page</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
 								</ul></li>
 						</ul>
 					</div>
@@ -126,24 +101,24 @@
 
 	<div class="container text-center">
 		<div class="row">
-			<div class="col-lg-10 mx-auto" style="margin-top: 200px">
+			<div class="col-lg-11 mx-auto" style="margin-top: 200px">
 				<div>
-					<h2>Today's time sheet</h2>
+					<h3>Today's time sheet</h3>
 				</div>
 				<div class="todo">
-					<p class="lead mb-5">하루 일과 표</p>
-					<img src="img/watch.gif" />
+					<p class="lead mb-5"></p>
+					
 
 					<form>
-						<table class="table table-hover">
+						<table>
 							<thead>
 								<tr>
-									<td>Time</td>
-									<td>kind</td>
-									<td>work</td>
-									<td>Work detail</td>
-									<td>evaluation</td>
-									<td style="border: 0">evaluate you task!</td>
+									<th>Time</th>
+									<th>kind</th>
+									<th>work</th>
+									<th>Work detail</th>
+									<th>evaluation</tthd>
+									<th >evaluate you task!</th>
 								</tr></thead>
 								  <tbody>
 								<c:forEach items="${timeSheet_today}" var="dto">
@@ -187,7 +162,7 @@
 										</c:choose>
 
 
-										<td style="border: 0"><a
+										<td ><a
 											href="evaluate?evaluation=good&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">good</a>
 											<a
 											href="evaluate?evaluation=bad&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">bad</a>

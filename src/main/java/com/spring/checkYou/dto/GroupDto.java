@@ -7,11 +7,13 @@ public class GroupDto {
 	String groupName;
 	String groupType;
 	String purpose;
+	String memocount;
 
 	
 	// constructor
 	
 	// method
+	
 	
 	public String getConstructor() {
 		return constructor;
@@ -36,6 +38,12 @@ public class GroupDto {
 	}
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
+	}
+	public String getMemocount() {
+		return memocount;
+	}
+	public void setMemocount(String memocount) {
+		this.memocount = memocount;
 	}
 	
 	

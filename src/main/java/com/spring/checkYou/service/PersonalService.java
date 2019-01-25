@@ -48,7 +48,7 @@ public class PersonalService {
 		IPersonalDao dao = sqlSession.getMapper(IPersonalDao.class);
 
 
-		String check = dao.checkWork(workname);
+		String check = dao.checkWork(workname, id);
 		System.out.println("checkwork query test : " + check);
 
 		if (check == null) {

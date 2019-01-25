@@ -97,22 +97,15 @@ public class MemberService {
 		model.addAttribute("searchedFriend", searchedFriend);
 	}
 
-
 	// 친구 추가
-
 	public void addFriend(FriendDto dto) {
-
 		IMemberDao dao = sqlSession.getMapper(IMemberDao.class);
-
 		dao.addFriend(dto);
-
 	}
-
 
 	// 친구 추가 중복 체크
 	public boolean addFriendCheck(FriendDto dto) {
 		boolean alreadyExist;
-		
 		FriendDto list = sqlSession.selectOne("addFriendCheck", dto);
 		
 		if(list==null) {
@@ -129,7 +122,6 @@ public class MemberService {
 	public void friendList(Model model ,String id) {
 		
 		List<FriendDto> friendList = sqlSession.selectList("friendList", id);
-		
 		model.addAttribute("friendList",friendList);
 	}
 

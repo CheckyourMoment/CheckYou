@@ -30,6 +30,10 @@
 	<p>
 		<a href="MakeGroupPage">add Group</a>
 	</p>
+	
+	<p>
+		<a href="requestPage">requests</a>
+	</p>
 
 
 <%-- 	<form>
@@ -55,6 +59,24 @@
 						</a>
 					</span>
 					</br></br>
+				</c:forEach>
+				
+				
+				<c:forEach items="${grouplist_member}" var="dto">
+					<c:set var="constructor" value="${dto.constructor}" />
+					<c:set var="member" value="${dto.groupmember}" />
+					<c:set var="acception" value="${dto.acception}" />
+					<c:if test="${constructor ne member}">
+					<c:if test="${acception eq '1'}">
+						<span style="background-color:green" >
+							<a href = "selectGroup?groupName=${dto.groupname}&constructor=${dto.constructor}">
+								<font color="red">Group Name : ${dto.groupname}</font></br>
+								<font color="red"> Owner : ${dto.constructor}</font>
+							</a>
+						</span>
+						</br></br>
+					</c:if>
+					</c:if>
 				</c:forEach>
 
 

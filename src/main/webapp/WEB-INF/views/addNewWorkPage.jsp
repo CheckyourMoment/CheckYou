@@ -9,8 +9,11 @@ function pclose1(){
     window.close();
 }
 </script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/workadd.css"
+	href="${pageContext.request.contextPath}/resources/css/work.css"
 	media="all">
 <meta charset="utf-8">
 <title>add work</title>
@@ -40,34 +43,43 @@ function pclose1(){
 		
 		return true;
 	}
-	
+
+
+
 </script>
 
 
 </head>
 <body>
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-lg-8 mx-auto" style="margin-top: 130px">
+ 
 	<h3>You can add new Work on this page</h3>
 	<h3>Let's try!</h3>
-	
-	
-	
-	<form action="addNewWork" onsubmit="return check()">
+</div>	
+	<br>
+ 
+<form action="addNewWork" onsubmit="return check()">
 	<table>
 		<tr>
-		  <input type="text"  class="question" id="worktype" name="worktype" value=""/>
-		  <label for="worktype"><span>Input Type of work </span></label>
+		<div class="input">
+		  <input type="text"  class="question" id="worktype" name="worktype" placeholder="Input Type of work" value=""/>
+		  <label for="worktype"><span> </span></label>
 		</tr>
 		</br>
 	
 		<tr>
-		  <input type="text" id="workname" name="workname" value=""/>
-			  <label for="workname"><span>Input work name </span></label>
+		<div class="input">
+		  <input type="text" id="workname" name="workname" placeholder="Input work name" value=""/>
+			  <label for="workname"><span> </span></label></div>
 		</tr>
 		</br>
 		
 		<tr>
-		 - <input type="text" id="workdetail" name="workdetail" value=""/>
-		  <label for="workdetail"><span>Input detail of work </span></label>
+			<div class="input">
+		<input type="text" id="workdetail" name="workdetail" placeholder="Input detail of work" value=""/>
+		  <label for="workdetail"><span> </span></label></div>
 		</tr>
 		</br>
 		
@@ -76,7 +88,10 @@ function pclose1(){
 	<input type="submit" value="Add"/>
 	<a href="dailyManagement" onClick="pclose1();">Back</a>   
 
- 	</form>
+</form>
+<form name="addrform" id="addform" action="" method="post" onsubmit="return false;">
 
+</form>
+</div></div>
 </body>
 </html>

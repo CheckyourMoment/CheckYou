@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.checkYou.dao.IGroupDao">
+	
+	<!-- 그룹 추가  -->
+	<insert id="addGroup">
+		insert into grouplist values (#{constructor},#{groupName},#{groupType},#{purpose},#{memocount})
+	</insert> 
+	
+	<!-- 그룹명 중복 체크  -->
+	<select id="checkGroup" resultType="String">
+		select 'true' from grouplist where groupname = #{param1}
+	</select>
+	
+	<!-- groupList_owner 가져오기  -->
+	<select id="groupList_owner" resultType="com.spring.checkYou.dto.GroupDto">
+		select * from grouplist where constructor = #{param1}
+	</select>
+	
+	<!-- groupList_member 가져오기  -->
+	<select id="groupList_member" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where groupmember = #{param1}
+	</select>
+	
+	<!-- 멤버 찾기 -->
+	<select id="searchMember" resultType="String">
+		select id from checkYouMember where id = #{param1}
+	</select>
+	
+	<!-- 멤버 추가 -->
+	<insert id="addMember">
+		insert into groupmember values (#{constructor}, #{groupname}, #{groupmember}, #{acception})
+	</insert>
+	
+	<!-- 멤버 추가 중복 체크 -->
+	<select id="addMemberCheck" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember}
+	</select>
+	
+	<!-- 멤버 목록 -->
+	<select id="memberList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and acception = #{acception}
+	</select>
+	
+	<!-- 초대 목록 -->
+	<select id="inviteList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where constructor= #{constructor} and groupname = #{groupname} and acception = #{acception}
+	</select>
+	
+	<!-- 요청받은 초대 목록 -->
+	<select id="requestList" resultType="com.spring.checkYou.dto.GroupMemberDto">
+		select * from groupmember where groupmember = #{groupmember} and acception = #{acception}
+	</select>
+	
+	<!-- 초대요청 수락 -->
+	<update id="accept">
+		update groupmember set acception='1' where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</update>
+	
+	<!-- 초대요청 거절 -->
+	<delete id="refuse">
+		delete from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</delete>
+	
+	<!-- 멤버 삭제 -->
+	<delete id="deleteMember">
+		delete from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</delete>
+	
+	<!-- 멤버요청 취소 -->
+	<delete id="cancelInvite">
+		delete from groupmember where constructor= #{constructor} and groupname = #{groupname} and groupmember = #{groupmember} and acception = #{acception}
+	</delete>
+	
+	<!-- grouplist table에서  해당 그룹삭제 -->
+	<delete id="deleteGroup1">
+		delete from grouplist where groupname = #{groupname}
+	</delete>
+	
+	<!-- groupmember table에서 해당 그룹의 멤버삭제 -->
+	<delete id="deleteGroup2">
+		delete from groupmember where groupname = #{groupname}
+	</delete>
+	
+	<!-- groupmemo table에서 해당 그룹의 메모 -->
+	<delete id="deleteGroup3">
+		delete from groupmemo where groupname = #{groupname}
+	</delete>
+	
+	<!-- 그룹의 메모개수 구하기 -->
+	<select id="memoCount" resultType="String">
+		select memocount from grouplist where groupname = #{param1}
+	</select>
+	
+	<!-- 그룹 메모개수 갱신(증가) -->
+	<update id="increaseMemoCount">
+		update grouplist set memocount= #{param1} where groupname= #{param2}
+	</update>
+	
+	<!-- 실제 빈 메모 생성  -->
+	<insert id="addNewMemo">
+		insert into groupmemo(groupname,memonumber) values (#{param1},#{param2})
+	</insert>
+	
+	<!-- 메모 저장  -->
+	<insert id="saveMemo">
+		insert into groupmemo(groupname,memonumber,contents) values (#{param1},#{param2},#{param3})
+	</insert>
+	
+	
+	<!-- 메모 색 유지를 위한 저장 -->
+	<update id="saveColor">
+		update groupmemo set memocolor=#{param3} where groupname = #{param1} and memonumber=#{param2}
+	</update>
+	
+	
+	<!-- 메모 데이터 로드 -->
+	<select id="loadMemoData" resultType="String">
+		select contents from groupmemo where groupname = #{param1} order by memonumber asc
+	</select>
+	
+	
+	<!-- 메모 색상 로드 -->
+	<select id="loadMemoColor" resultType="String">
+		select memocolor from groupmemo where groupname = #{param1} order by memonumber asc
+	</select>
+	
+	<!-- 메모 갱신을 위한 모든 메모 삭제 -->
+	<delete id="deleteMemoForSave">
+		delete from groupmemo where groupname = #{param1}
+	</delete>
+	
+	<!-- 단일 메모 삭제 -->
+	<delete id="deleteOneMemo">
+		delete from groupmemo where groupname = #{param1} and memonumber = #{param2}
+	</delete>
+	
+	<!-- 삭제된 메모의 빈자리를 땡겨서 채우기 -->
+	<update id="swapMemoNum">
+		update groupmemo set memonumber=#{param1} where groupname = #{param2} and memonumber=#{param3}
+	</update>
+	
+	
+	<!-- 전체메모개수 1개 감소 -->
+	<update id="decreaseMemoCount">
+		update grouplist set memocount=#{param1} where groupname = #{param2}
+	</update>
+	
+	
+	<!-- 메모 색상 변경 -->
+	<update id="changeMemoColor">
+		update groupmemo set memocolor=#{param3} where groupname = #{param1} and memonumber = #{param2}
+	</update>
+	
+</mapper>
+

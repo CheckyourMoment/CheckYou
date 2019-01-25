@@ -12,7 +12,7 @@
 	
 	<!-- 작업명 중복 체크  -->
 	<select id="checkWork" resultType="String">
-		select 'true' from PersonalWorkList where workname = #{param1}
+		select 'true' from PersonalWorkList where workname = #{param1} and id = #{param2}
 	</select>
 	
 	<!-- 내 작업 관리 페이지  -->

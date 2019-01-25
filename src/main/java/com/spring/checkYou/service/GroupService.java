@@ -34,30 +34,35 @@ public class GroupService {
 	Formatter formatter;
 
 	// group 추가
-	public void addGroup(GroupDto dto) {
+	public void addGroup(GroupDto dto, Model model) {
 		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
 
 		// test
 		System.out.println(dto.getConstructor());
 		System.out.println(dto.getGroupName());
 
-		String check = dao.checkGroup(dto.getGroupName(), dto.getConstructor());
+		String check = dao.checkGroup(dto.getGroupName());
 		System.out.println("checkwork query test : " + check);
-
+		
 		if (check == null) {
 			System.out.println("success adding newGroup");
 			dao.addGroup(dto);
+			model.addAttribute("groupCheck", "success");
+			
+			// 자기자신을 그룹에 추가하는 로직
+			GroupMemberDto owner = new GroupMemberDto();
+			owner.setConstructor(dto.getConstructor());
+			owner.setGroupname(dto.getGroupName());
+			owner.setGroupmember(dto.getConstructor());
+			owner.setAcception("1");
+			dao.addMember(owner);
+			
 		} else {
 			System.out.println("this Groupname is already exist");
+			model.addAttribute("groupCheck", "exist");
 		}
 
-		// 자기자신을 그룹에 추가하는 로직
-		GroupMemberDto owner = new GroupMemberDto();
-		owner.setConstructor(dto.getConstructor());
-		owner.setGroupname(dto.getGroupName());
-		owner.setGroupmember(dto.getConstructor());
-		owner.setAcception("1");
-		dao.addMember(owner);
+		
 
 	}
 
@@ -89,7 +94,15 @@ public class GroupService {
 		System.out.println("searchMember()");
 		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
 		String searchedMember = dao.searchMember(id);
+		
+		// test
+		System.out.println(searchedMember);
+		if(searchedMember != null) {
 		model.addAttribute("searchedMember", searchedMember);
+		}
+		else {
+			model.addAttribute("searchedMember", "notExist");
+		}
 	}
 
 	// 멤버 추가
@@ -194,11 +207,18 @@ public class GroupService {
 		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
 		dao.increaseMemoCount(increasedMemoCount, groupname);
 	}
+	
+	// 실제 빈 메모 하나 생성
+	public void addNewMemo(String groupname, String newMemoNum) {
+		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
+		dao.addNewMemo(groupname, newMemoNum);
+	}
 
 	// 메모저장
 	public void saveMemo(ArrayList memoList) {
 		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
 		Iterator iter = memoList.iterator();
+		
 		String groupname = (String)session.getAttribute("selectedGroup");
 		String i = "1";
 		
@@ -210,6 +230,26 @@ public class GroupService {
 			int f=Integer.parseInt(i)+1;
 			i = Integer.toString(f);
 		}
+		
+	}
+	
+	public void saveColor(ArrayList colorList) {
+		System.out.println("saveColor() in service");
+		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
+		Iterator iter_color = colorList.iterator();
+		
+		String groupname = (String)session.getAttribute("selectedGroup");
+		String j = "1";
+		
+		while(iter_color.hasNext()) {
+			String memoColor = (String)iter_color.next();
+			System.out.println(j+"번쨰 메모의 색은 "+memoColor);
+			dao.saveColor(groupname,j,memoColor);
+			
+			int f=Integer.parseInt(j)+1;
+			j = Integer.toString(f);
+		}
+		
 	}
 	
 	// 메모로드
@@ -217,13 +257,17 @@ public class GroupService {
 		List<String> memoDataList = sqlSession.selectList("loadMemoData", groupname);
 		model.addAttribute("memoDataList",memoDataList);
 		
+		List<String> memoColorList = sqlSession.selectList("loadMemoColor", groupname);
+		model.addAttribute("memoColorList",memoColorList);
+		
 		// test
-		System.out.println("test");
-		Iterator iter = memoDataList.iterator();
+		System.out.println("colortest");
+		Iterator iter = memoColorList.iterator();
 		while(iter.hasNext()) {
 			String test = (String)iter.next();
 			System.out.println(test);
 		}
+		
 	}
 	
 	// 갱신을 위한 모든 메모 삭제
@@ -262,6 +306,15 @@ public class GroupService {
 		dao.decreaseMemoCount(decrease,groupname);
 		session.setAttribute("memoCount", decrease);
 		
+	}
+	
+	
+	// 메모 색상 변경
+	public void changeMemoColor(String changeNum, String memoColor) {
+		IGroupDao dao = sqlSession.getMapper(IGroupDao.class);
+		String groupname = (String)session.getAttribute("selectedGroup");
+		
+		dao.changeMemoColor(groupname, changeNum , memoColor);
 	}
 	
 	

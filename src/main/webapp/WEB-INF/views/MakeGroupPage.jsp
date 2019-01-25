@@ -64,7 +64,38 @@
 
 	<input type="submit" value="Add"/>
  	</form>
+ 	
+ 	<!-- group Check -->
+<%
+	String groupCheck = (String)request.getAttribute("groupCheck");
+%>
+	
+	<%if(groupCheck=="exist"){
+			out.print("<input type='hidden' id='exist' value='exist'></input>");
+	} 
+	else if(groupCheck=="success"){
+		out.print("<input type='hidden' id='exist' value='success'></input>");
+	}
+	%>
+	
 
+
+<script type="text/javascript">
+	window.onload = function(){
+		// GroupCheck Alert logic
+		var exist = document.getElementById("exist");
+		if(exist != null){
+			var existValue = exist.value;
+			if(existValue=="exist"){
+				window.alert("allready Exist");
+			}
+			else{
+				window.alert("success");
+			}
+		
+		}
+	}
+</script>
 
 </body>
 </html>

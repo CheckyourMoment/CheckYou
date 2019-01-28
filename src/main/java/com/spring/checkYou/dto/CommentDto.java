@@ -3,20 +3,19 @@ package com.spring.checkYou.dto;
 public class CommentDto {
 
 	// field
-	String constructor;
+//	String constructor;
 	String groupName;
 	String groupComment;
-
 	// constructor
 
 	// method
-	public String getConstructor() {
-		return constructor;
-	}
+//	public String getConstructor() {
+//		return constructor;
+//	}
 
-	public void setConstructor(String constructor) {
-		this.constructor = constructor;
-	}
+//	public void setConstructor(String constructor) {
+//		this.constructor = constructor;
+//	}
 
 	public String getGroupName() {
 		return groupName;

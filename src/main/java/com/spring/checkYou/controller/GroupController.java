@@ -60,6 +60,7 @@ public class GroupController {
 	public String selectGroup(HttpServletRequest request, Model model) {
 		System.out.println("selectGroup()");
 
+
 		String groupName = request.getParameter("groupName");
 		String constructor = request.getParameter("constructor");
 		

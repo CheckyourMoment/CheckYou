@@ -1,4 +1,4 @@
-/*메인*/
+/*개인 메인 외 다른탭들 차트같은거*/
 @import url("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Roboto:300,400,500,700");
 @import url('https://fonts.googleapis.com/css?family=Gothic+A1|Nanum+Gothic+Coding');
 
@@ -107,19 +107,17 @@ img {
 }
 
 body {
-  background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-	
   line-height: 24px;
    font-size: 14px; 
-   font-weight: normal;
-   background-size: cover;
+	font-weight: normal;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    font-size: 100%;
+    font-size: 80%;
   font-family: "Roboto", sans-serif;
      overflow-x: hidden;
  
@@ -129,13 +127,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; 
 }
-h4{
 
-    font-size: 40px;
-}
 .header_area{
-background-image: background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-
+ background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
 button:focus {
@@ -349,7 +343,6 @@ button:focus {
 		border-bottom: 0px solid #fff;
 		border-radius: 0px;
     }
- 
     .header_area .navbar .search{
         margin-left: 0px;
     }
@@ -384,19 +377,73 @@ button:focus {
 	}
     
 }
-    
-    /*menu bar 끝*/
+/*menu bar 끝*/
 
- h2{
- font-size: 25px;
+ h3{
+ font-size: 55px;
  padding: 20px;
  }
+/*검색창*/
  
+.input {
+    position: relative;
+    margin: 10px auto;
+    width:100%
+}
 
+.input span {
+    position: absolute;
+    display: block;
+    color: #f13f57;
+    left: 10px;
+    top: 12px;
+    font-size: 18px;
+}
+
+.input input {
+    width: 100%;
+    padding: 13px 5px 13px 40px;
+    display: block;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
+    transition: 0.2s ease-out;
+    color: #000;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline:none;
+    letter-spacing: 1px;
+}
+
+.input input:focus {
+    padding: 13px 5px 13px 10px;
+    border-color:#f13f57;
+   
+}
+
+
+
+
+
+
+.sub-main-w3 {
+    margin: 6vw 5vw;
+}
+.sub-main-w3 form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(25, 24, 24, 0.32);
+    padding: 3.5vw;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 13px 2px rgba(251, 251, 251, 0.09);
+    position: relative;
+    /* display: table; */
+}
+
+ 
+/*검색창끝*/
 	@media screen and (max-width: 980px) {
         
         .watch {
-           
             margin:-6px;
         }
         .DailyManagement{
@@ -432,7 +479,6 @@ button:focus {
 .todo {
     font-size: 6em;
  font-family: 'Gothic A1', sans-serif;
-	MARGIN-TOP:3REM;
 }
     
     
@@ -448,12 +494,15 @@ button:focus {
 	padding-top:10px;
 	
 }
-
+.row {
+	padding-left: 10px;
+}
  table {
+ 		 
         width: 100%;
         border-top: 1px #bbdefb;
         border-collapse: collapse;
-      
+        border-radius:10px 0 10px;
       }
   th, td {
         border-bottom: 1px solid #2E2E2E;
@@ -487,7 +536,7 @@ button:focus {
 
 @media(max-width:1920px) {
     h3 {
-        font-size: 2.5vw;
+        font-size: 3vw;
     }
 }
 
@@ -498,10 +547,16 @@ button:focus {
 }
 @media(max-width:1620px) {
     h3 {
-        font-size: 3em;
+        font-size: 4vw;
+
+       
     }
 }
-
+.box{
+  margin: 50px auto;
+  width: 300px;
+  height: 50px;
+}
 @media(max-width:900px) {
     .w3ls-social {
         left: 6%;
@@ -510,7 +565,7 @@ button:focus {
 
 @media(max-width:800px) {
     h3 {
-        font-size: 2.7em;
+        font-size: 2.4em;
     }
     .sub-main-w3 {
         float: none;
@@ -523,11 +578,7 @@ button:focus {
         left: 241px;
     }
 }
-@media(max-width:700px){
-	 h3 {
-        font-size: 2.7em;
-    }
-}
+
 @media(max-width:667px) {
     .w3ls-social h2 {
         left: 182px;
@@ -582,30 +633,41 @@ button:focus {
         margin-bottom: 1em;
     }
     .btn{
-	margin-top:40px;
+  margin-top:40px;
    width:150px;
     height: 150px;
 }
+     .form-style-agile input[type="text"],
+    .form-style-agile input[type="password"] {
+        font-size: 13px;
+        padding: 13px 15px;
+    }
 }
-
-@media(max-width:330px) {
+ 
+@media(max-width:320px) {
+    h1 {
+        font-size: 1.8em;
+    }
     h2 {
         font-size: 5em;
     }
-
+    .sub-main-w3 form {
+        padding: 25px 14px;
+    }
+    .w3ls-social h2 {
+        left: 10px;
+    }
 }
-
+ 
+.sub-main-w3 {
+    margin: 6vw 5vw;
+}
 .btn{
-	margin-top:10px;
-    background-color: #4481eb ;
-    border-color:#4481eb;
-    color: white;
-    border-radius: 90px;
-    width:80px;
-    height: 80px;
+ 	margin-bottom:20px; 
+    width:170px;
+    height: 40px;
 }
 .btn:hover, .btn:focus{
-	color:#fff;
-	border:1px solid #FFA300;
-	background-color:#FFA300}
+ }
+	
 	

@@ -55,7 +55,9 @@
 					<span style="background-color:gray" >
 						<a href = "selectGroup?groupName=${dto.groupName}&constructor=${dto.constructor}">
 							<font color="white">Group Name : ${dto.groupName}</font></br>
-							<font color="white"> Owner : ${dto.constructor}</font>
+							<font color="white"> Owner : ${dto.constructor}</font></br>
+							<%-- <font color="white"> Type : ${dto.groupType}</font></br>
+							<font color="white"> purpose : ${dto.purpose}</font></br> --%>
 						</a>
 					</span>
 					</br></br>

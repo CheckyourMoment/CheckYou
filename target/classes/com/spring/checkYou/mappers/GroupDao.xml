@@ -155,5 +155,41 @@
 		update groupmemo set memocolor=#{param3} where groupname = #{param1} and memonumber = #{param2}
 	</update>
 	
+	<!-- group task 등록  -->
+	<insert id="addWorkProgress">
+		insert into grouptask values (#{workname},#{username},#{groupname},#{progress},#{completed},#{mission},#{deadline})
+	</insert>
+	
+	<!-- 그룹 멤버의 작업 목록 -->
+	<select id="taskList" resultType="com.spring.checkYou.dto.GroupTaskDto">
+		select * from grouptask where groupname = #{groupname} and username = #{username} and mission = #{mission} and completed = #{completed}  
+	</select>
+
+	<!-- 진행률 업데이트 -->
+	<update id="updateProgress">
+		update grouptask set progress=#{progress}, completed = #{completed} where groupname = #{groupname} and username = #{username} and workname = #{workname}
+	</update>
+	
+	
+	<!-- user 작업 삭제 -->
+	<delete id="deleteProgress">
+		delete from grouptask where groupname = #{groupname} and username = #{username} and workname = #{workname}
+	</delete>
+	
+	<!-- 완료된 그룹 멤버의 작업 목록 -->
+	<select id="completedList" resultType="com.spring.checkYou.dto.GroupTaskDto">
+		select * from grouptask where groupname = #{groupname} and username = #{username} and completed = #{completed}  
+	</select>
+	
+	<!-- 미션 목록 -->
+	<select id="missionList" resultType="com.spring.checkYou.dto.GroupTaskDto">
+		select * from grouptask where groupname = #{groupname} and username = #{username} and mission = #{mission} and completed = #{completed}  
+	</select>
+	
+	<!-- 그룹 작업명(단순작업+미션) 중복 체크  -->
+	<select id="checkGroupTask" resultType="String">
+		select 'true' from grouptask where groupname = #{groupname} and username = #{username} and workname = #{workname}
+	</select>
+	
 </mapper>
 

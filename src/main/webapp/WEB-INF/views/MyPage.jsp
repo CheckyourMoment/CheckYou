@@ -6,47 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	$(function(){
-		if(${msg ne null}){
-			alert('${msg}');
-		};
-		
-		if($("#pwForm").submit(function(){
-			if($("#pw").val() !== $("#pw2").val()){
-				alert("비밀번호가 다릅니다.");
-				$("#pw").val("").focus();
-				$("#pw2").val("");
-				return false;
-			}else if ($("#pw").val().length < 8) {
-				alert("비밀번호는 8자 이상으로 설정해야 합니다.");
-				$("#pw").val("").focus();
-				return false;
-			}else if($.trim($("#pw").val()) !== $("#pw").val()){
-				alert("공백은 입력이 불가능합니다.");
-				return false;
-			}
-		}));
-	})
-</script>
+<%
+	String loginUser = (String) session.getAttribute("userId");
+	//String email = (String) session.getAttribute("nowEmail");
+%>
+
 </head>
 <body>
-<h3>My Page ${dto.id}</h3>
-	<form id="pwForm" action="modify" method="post">
-		<input type="hidden" name="id" value="${ dto.id }">
+	<h3>My Page</h3>
+	<h5 align="right"><%=loginUser%>님 환영합니다.
+	</h5>
+	<form>
+		<input type="hidden" value="<%=loginUser%>" id="loginUser"></input>
 		<p>
-			<label>Password</label> <input id="old_pw" name="old_pw"
-				type="password" required>
+			<label>ID</label> <input type="text" id="loginUser" name="loginUser"
+				value="<%=loginUser%>" readonly>
 		</p>
+
+		<!-- <p>
+			<label>Email</label> <input type="text" id="email" name="email"
+				value="<%=email%>" readonly>
+		</p> -->
 		<p>
-			<label>New Password</label> <input id="pw" name="pw" type="password"
-				required>
+			<button type="submit" id="">회원정보 수정</button>
 		</p>
+
+	</form>
+
+	<form action="modifyPW" method="post">
+		<input type="hidden" value="<%=loginUser%>" id="loginUser"></input>
+
 		<p>
-			<label>Confirm</label> <input type="password" id="pw2" required>
-		</p>
+			<label>Password</label> <input type="password" id="modifyPW"
+				name="modifyPW" required>
 		<p>
-			<button type="submit" id="joinBtn">비밀번호 변경</button>
+			<button type="submit" id="">비밀번호 변경</button>
 		</p>
 	</form>
 

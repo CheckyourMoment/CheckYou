@@ -33,4 +33,5 @@ public interface IGroupDao {
 	public void decreaseMemoCount(String decrease, String groupname);
 	public void changeMemoColor(String groupname, String changeNum , String memoColor);
 	public void addNewMemo(String groupname, String newMemoNum);
+	
 }

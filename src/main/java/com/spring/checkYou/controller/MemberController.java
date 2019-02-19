@@ -23,8 +23,10 @@ import com.spring.checkYou.dto.GroupMemberDto;
 import com.spring.checkYou.dto.MemberDto;
 import com.spring.checkYou.dto.TimeSheetDto;
 import com.spring.checkYou.dto.WorkDto;
+import com.spring.checkYou.dto.*;
 import com.spring.checkYou.service.MemberService;
 import com.spring.checkYou.service.PersonalService;
+import com.spring.checkYou.service.*;
 import com.spring.checkYou.util.Formatter;
 
 @Controller
@@ -48,6 +50,7 @@ public class MemberController {
 	// 회원가입
 	@RequestMapping("/join")
 	public String join(MemberDto dto) { // HttpServletRequest request
+		System.out.println("MemberController : join()");
 		service.join(dto);
 		return "login";
 	}
@@ -55,6 +58,7 @@ public class MemberController {
 	// 로그인
 	@RequestMapping("/login")
 	public String login(Model model, MemberDto dto) {
+		System.out.println("MemberController : login()");
 		String path = "null";
 		path = service.login(dto);
 		return path;
@@ -63,6 +67,7 @@ public class MemberController {
 	// 계정찾기:ID
 	@RequestMapping("/findID")
 	public String FindID(Model model, HttpServletRequest request) {
+		System.out.println("MemberController : FindID()");
 		String id = request.getParameter("findID");
 		service.findID(model, id);
 		return "find";
@@ -71,35 +76,34 @@ public class MemberController {
 	// 계정찾기:PW
 	@RequestMapping(value = "/findPW", method = RequestMethod.POST)
 	public String FindPW(MemberDto dto, HttpServletResponse response) throws Exception {
+		System.out.println("MemberController : FindPW()");
 		service.findPW(response, dto);
-		return "find";
+		return "login";
 	}
-	
+
 	// 회원정보 수정
-	@RequestMapping("/modify")
-	public String modify() {
-		return null;
-	
+	@RequestMapping("/modifyPW")
+	public String modifyPW(HttpServletRequest request, MemberDto dto) {
+		System.out.println("MemberController : modifyPW()");
+		//String email= (String) session.getAttribute("nowEmail");
+		String loginUser = (String) session.getAttribute("userId");
+		String modifyPW = request.getParameter("modifyPW");
+		service.modifyPW(modifyPW);
+		return "MyPage";
 	}
-
 	
-
 	@ResponseBody
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
 	public String idCheck(Model model, MemberDto dto) {
-		System.out.println("Controller.idCheck() 호출");
+		System.out.println("MemberController : idCheck()");
 		int result = 0;
-
 		String alreadyExist = service.idCheck(dto);
-
-		System.out.println(alreadyExist);
 		if (alreadyExist == "false") {
 			System.out.println("아이디 사용하셔도 됩니다.");
 			result = 1;
 		} else {
 			System.out.println("아이디는 이미 친구목록에 있습니다.");
 		}
-
 		return String.valueOf(result);
 	}
 
@@ -107,7 +111,7 @@ public class MemberController {
 	// 뿌린다.
 	@RequestMapping("/dailyManagement")
 	public String dailyManagementPage(Model model) {
-		System.out.println("dailyManagementPage()");
+		System.out.println("MemberController : dailyManagementPage()");
 		String id = (String) session.getAttribute("userId");
 		service.dailyManagementPage(model, id);
 
@@ -134,13 +138,12 @@ public class MemberController {
 			session.setAttribute("startstopwatch_minute", "0");
 			session.setAttribute("startstopwatch_second", "0");
 		}
-
 		return "main";
 	}
 
 	@RequestMapping("/startTime")
 	public String startTime(HttpServletRequest request, TimeSheetDto dto) {
-		System.out.println("startTime()");
+		System.out.println("MemberController : startTime()");
 		String runningconfirm = request.getParameter("runningconfirm");
 		System.out.println("runningconfirm : " + runningconfirm);
 		session.setAttribute("runningconfirm", runningconfirm);
@@ -178,7 +181,7 @@ public class MemberController {
 
 	@RequestMapping("/stopTime")
 	public String stopTime(HttpServletRequest request, TimeSheetDto dto) {
-		System.out.println("stopTime()");
+		System.out.println("MemberController : stopTime()");
 		String runningconfirm = request.getParameter("runningconfirm");
 		System.out.println("runningconfirm : " + runningconfirm);
 		session.setAttribute("runningconfirm", runningconfirm);
@@ -215,6 +218,7 @@ public class MemberController {
 	// 친구 찾기
 	@RequestMapping("/searchFriend")
 	public String searchFriend(Model model, HttpServletRequest request) {
+		System.out.println("MemberController : searchFriend()");
 		String id = request.getParameter("searchFriend");
 		service.searchFriend(model, id);
 		return "searchFriendPage";
@@ -223,6 +227,7 @@ public class MemberController {
 	// 친구 추가
 	@RequestMapping("/addFriend")
 	public String addFriend(FriendDto dto) {
+		System.out.println("MemberController : addFriend()");
 		String userId = (String) session.getAttribute("userId");
 		dto.setId(userId);
 
@@ -237,20 +242,16 @@ public class MemberController {
 		} else {
 			service.addFriend(dto);
 			System.out.println("친구추가 완료되었습니다.");
-
 		}
-
 		return "searchFriendPage";
 	}
 
 	// 친구 목록
 	@RequestMapping("/friendList")
 	public String friendList(Model model) {
+		System.out.println("MemberController : friendList()");
 		String userId = (String) session.getAttribute("userId");
-
 		service.friendList(model, userId);
-
 		return "friendList";
 	}
-
 }

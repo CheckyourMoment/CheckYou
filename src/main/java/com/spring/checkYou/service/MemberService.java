@@ -141,7 +141,7 @@ public class MemberService {
 			email.setSSL(true);
 			email.setHostName(hostSMTP);
 			System.out.println("mail" + mail);
-			email.setSmtpPort();
+			email.setSmtpPort(456);
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.setTLS(true);
 			email.addTo(mail, charSet);

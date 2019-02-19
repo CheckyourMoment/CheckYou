@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 
 <link
@@ -23,11 +24,10 @@ function pclose1(){
 <body>
 	<div class="container text-center">
 		<div class="row">
-			<div class="col-lg-18 mx-auto" style="margin-top: 200px">
+			<div class="col-lg-6 mx-auto" style="margin-top: 40px">
 	<form action="manageMyWorkPage" onsubmit="return check()">
 <h3>You can manage your Work on this page</h3>
-
- <br>
+ 
 
 <table width="500" cellpadding="0" cellspacing="0" border="0">
 		<tr>
@@ -49,8 +49,9 @@ function pclose1(){
 		</c:forEach>
 		
 </table>
-	<a href="dailyManagement" onClick="pclose1();">Back</a>   
-
+ 
+     <a class="btn btn-outline-danger" href="dailyManagement" role="button"  onClick="pclose1();" >Close</a>
+  
 	</form>
 	</div></div></div>
 </body>

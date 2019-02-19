@@ -30,7 +30,7 @@
 	rel="stylesheet">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Home</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
@@ -168,15 +168,13 @@ function continueTime(){
 						<ul class="nav navbar-nav menu_nav ml-auto">
 
 							<li class="nav-item active"><a class="nav-link"
-								href="dailyManagement">Home <img class="small"
-									src="img/05.png" /></a></li>
+								href="dailyManagement"> Home <img src="https://img.icons8.com/color/45/000000/dog-house.png"></a></li>
 
 							<!--personal menubar!-->
 							<li class="nav-item submenu dropdown"><a
 								href="dailyManagement" class="nav-link dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Personal  <img
-									src="img/113.png" /></a>
+								aria-expanded="false">Personal<img src="https://img.icons8.com/color/48/000000/mental-state.png"></a>
                     	<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
 
@@ -193,35 +191,22 @@ function continueTime(){
 								</ul></li>
 
 							<!--Group menubar!-->
-							<li class="nav-item submenu dropdown"><a href="#"
+							<li class="nav-item submenu dropdown"><a href="groupHome"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
 								role="button" aria-haspopup="true" aria-expanded="false">Group
-									<img class="small" src="img/08.png" />
+									<img src="https://img.icons8.com/color/48/000000/groups.png">
 							</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Team</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="single-blog.html">Mento</a></li>
+									<li class="nav-item"><a class="nav-link" href="groupHome">Invite</a></li>
+								 
 								</ul></li>
 
-							<!-- Friend -->
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Friend
-									<img class="small" src="img/112.png" />
-							</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link"
-										href="searchFriendPage">Add Friend</a></li>
-									<li class="nav-item"><a class="nav-link" href="friendList">Friend
-											List</a></li>
-								</ul></li>
+						 
 							<!-- mypage -->
 							<li class="nav-item submenu dropdown"><a href="logout"
 
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">My Page  <img
-									src="img/10.png"/>
+								role="button" aria-haspopup="true" aria-expanded="false">My Page<img src="https://img.icons8.com/color/48/000000/light.png">
 							</a>
 
 								<ul class="dropdown-menu">
@@ -255,7 +240,10 @@ function continueTime(){
 							<h2>
 								WORKLIST <a href="javascript:popupOpen();"><img alt=""
 
-									src="img/plus1.png"> </a> <a href="javascript:popupOpen1();"><img
+									src="img/plus1.png"> </a> 
+									
+									
+									<a href="javascript:popupOpen1();"><img
 
 									alt="" src="img/minus.png"> </a>
 								<!-- <input type="image" src="img/plus.png" onclick="window.openlocation.href='addNewWorkPage'"/>
@@ -278,9 +266,10 @@ function continueTime(){
 								</thead>
 			<tbody>
 							<c:forEach items="${worklist}" var="dto">
-								
+							
 								<input type="radio" id="radio1" name="workType"
-									value="${dto.worktype}" style="display: none" />
+									value="${dto.worktype}" 	style="display: none" />
+								<div></div>
 								<input type="radio" name="workName" value="${dto.workname}"
 									style="display: none" />
 								<input type="radio" name="workDetail" value="${dto.workdetail}"
@@ -289,11 +278,10 @@ function continueTime(){
 								<tr>
 
 									<td>
-									<div class="custom-control custom-radio">
-									<input type="radio" name="work" id="work"
+									 
+									<input type="radio"class="w3-radio" name="work" id="work"
 										value="worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">
-										</div>
-										
+									 
 										</td>
 									
 									<td>${dto.worktype}</td>
@@ -375,8 +363,8 @@ function continueTime(){
 		int time = time1 - time2;
 		/* 	out.print("whole Time : "+time); */
 	%>
-
-	<input type="hidden" id="continueHour" value="<%=continueHour%>">
+	
+ 	<input type="hidden" id="continueHour" value="<%=continueHour%>">
 	<input type="hidden" id="continueMinute" value="<%=continueMinute%>">
 	<input type="hidden" id="continueSecond" value="<%=continueSecond%>">
 	<input type="hidden" id="continueTime" value="<%=time%>">
@@ -390,7 +378,7 @@ function popupOpen(){
 
 	var popUrl = "addNewWorkPage";	//팝업창에 출력될 페이지 URL
 
-	var popOption = "width=550, height=500, resizable=no, scrollbars=no, status=no, location=no;";    //팝업창 옵션(optoin)
+	var popOption = "width=500, height=450, resizable=no, scrollbars=no, status=no, location=no;";    //팝업창 옵션(optoin)
 
 		window.open(popUrl,"",popOption);
 		window.opener.location.reload();  
@@ -417,7 +405,7 @@ function popupOpen1(){
 
 
 </script>
-
+</div></body></html>
 	<%-- 	
 
 	<div class=mainfish>

@@ -5,38 +5,36 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link
-	href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo|Gaegu|Gamja+Flower&amp;subset=korean"
-	rel="stylesheet">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Searchtimesheet</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300"
-	type="text/css" />
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-	crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Karla"
-	rel="stylesheet">
-<script src="//m.servedby-buysellads.com/monetization.js"
+ <script src="//m.servedby-buysellads.com/monetization.js"
+	type="text/javascript"></script>	
+	<script src="//m.servedby-buysellads.com/monetization.js"
 	type="text/javascript"></script>	
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-<title>Home</title>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
  
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/search.css"
 	media="all">
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	
+	
 <title>search timeSheet</title>
 
 <!--jQuery UI, jQuery, File Download Plugin을 포함시키는 부분 -->
@@ -92,7 +90,7 @@
 </head>
 <body>
 	<!-- 메뉴 바 시작  -->
-<header class="header_area">
+	<header class="header_area">
 		<div class="top_menu">
 			<div class="container"></div>
 		</div>
@@ -114,45 +112,54 @@
 						id="navbarSupportedContent">
 
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active">
-							    <a class="nav-link" href="dailyManagement">Home
-							    <img
-									src="img/05.png" /></a>
-				            </li>
+
+							<li class="nav-item active"><a class="nav-link"
+								href="dailyManagement"> Home <img src="https://img.icons8.com/color/45/000000/dog-house.png"></a></li>
+
 							<!--personal menubar!-->
 							<li class="nav-item submenu dropdown"><a
 								href="dailyManagement" class="nav-link dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Personal  <img
-									src="img/113.png" /></a>
-								
-								<ul class="dropdown-menu">
+								aria-expanded="false">Personal<img src="https://img.icons8.com/color/48/000000/mental-state.png"></a>
+                    	<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
-										href="dailyManagement"> Daily Management</a></li>
-									<li class="nav-item"><a class="nav-link" href="viewTable">daily time sheet</a></li>
+
+										href="dailyManagement">Daily Management </a></li>
+									<li class="nav-item"><a class="nav-link" href="viewTable">daily
+											time sheet</a></li>
 
 									<li class="nav-item"><a class="nav-link"
 										href="canvasjschart">View Graph</a></li>
 										
 									<li class="nav-item"><a class="nav-link"
-                                        href="searchTimeSheetPage">searchTimeSheet</a></li>
-						</ul></li>
-							<!--Group menubar!-->
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Group  <img
-									src="img/08.png" /></a></li>
-							
-						 
 
-					<li class="nav-item submenu dropdown"><a href="logout"
+										href="searchTimeSheetPage">searchTimeSheet</a></li>
+								</ul></li>
+
+							<!--Group menubar!-->
+							<li class="nav-item submenu dropdown"><a href="groupHome"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">My Page  <img
-									src="img/10.png"/>
+								role="button" aria-haspopup="true" aria-expanded="false">Group
+									<img src="https://img.icons8.com/color/48/000000/groups.png">
 							</a>
-                                <ul class="dropdown-menu">
-                                   <li class="nav-item"><a class="nav-link"  href="MyPage">My Page</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="groupHome">Invite</a></li>
+								 
+								</ul></li>
+
+						 
+							<!-- mypage -->
+							<li class="nav-item submenu dropdown"><a href="logout"
+
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false">My Page<img src="https://img.icons8.com/color/48/000000/light.png">
+							</a>
+
+								<ul class="dropdown-menu">
+
+									<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+									<li class="nav-item"><a class="nav-link" href="MyPage">MyPage</a></li>
+
 								</ul></li>
 						</ul>
 					</div>
@@ -161,12 +168,14 @@
 		</div>
 	</header>
 
+
 <%String searchedDate = (String)session.getAttribute("Date_TimeSheet"); %>
 
 <%
 	if(searchedDate==null){%>
-		<input type="hidden" value="NOT" id="searchedDate">
-	<%}
+	<input type="hidden" value="NOT" id="searchedDate">
+		
+<%  }
 else{%>
 <input type="hidden" value="<%=searchedDate%>" id="searchedDate">
 <% }%>
@@ -174,8 +183,9 @@ else{%>
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-10 mx-auto" style="margin-top: 200px">
-					
-<a href="dailyManagement">Back</a><div>
+	<div>				
+<a href="dailyManagement">home</a> 
+ 
 <div>
 <h3> Search another time sheet</h3></div>
 </div>
@@ -189,8 +199,9 @@ Input Format(0000-00-00)
 <!--수정수정  -->
 <form action ="searchTimeSheet" id="content">
 <div class="sub-main-w3">
+
 	<div class="input">
-						<input type="text" placeholder="Input Format(0000-00-00)" 
+						<input autocomplete="off" type="text" id="datepicker" placeholder="Input Format(yyyy-mm-dd)" 
 							class="input" name="Date_TimeSheet" 
 							/> 
 							<span>
@@ -198,13 +209,14 @@ Input Format(0000-00-00)
 							</span>
 
 					</div>
-				
+	<input type="submit" class="btn btn-success" value="search">			
  </div>
 
+ </form>
+<button type="button"  id="btn-excel" class="btn btn-danger">Exel Download</button>
  
 </form>
 <!--엑셀 다운로드 버튼과 필요한 다이얼로그를 생성할 요소들 입니다.-->
-<button type="button"  id="btn-excel" class="btn btn-danger">Exel Download</button>
 
 <form>
 	<table align="center" width="1000" cellpadding="0" cellspacing="0" border="1">
@@ -220,6 +232,7 @@ Input Format(0000-00-00)
 		</thead>
 		<tbody>
 		<c:forEach items="${timeSheet_anotherDay}" var="dto">
+	
 		<tr align="center">
 			<td>${dto.starttime}
 				</br>|</br>
@@ -245,19 +258,23 @@ Input Format(0000-00-00)
 			
 		<c:choose>
    		 <c:when test="${dto.evaluation eq 'good'}">
+   		 
    		  	<td style="background-color:blue">
+   		  		<img src="https://img.icons8.com/color/60/000000/lol.png">
       			<p style="color:white">good</p>
       	    </td>
    		 </c:when>
    		 
    		 <c:when test="${dto.evaluation eq 'bad'}">
    		 	 <td style="background-color:red">
+      	<img src="https://img.icons8.com/color/60/000000/sad.png">
       			<p style="color:white">bad</p>
       	    </td>
    		 </c:when>
    		 
    		 <c:when test="${dto.evaluation eq 'soso'}">
    		 	 <td style="background-color:gray">
+    	<img src="https://img.icons8.com/color/60/000000/boring.png">
       			<p style="color:white">soso</p>
       	    </td>
    		 </c:when>
@@ -271,23 +288,33 @@ Input Format(0000-00-00)
 		</c:choose>
 		
 		
-			<td style="border:0">
-				<a href="evaluate?evaluation=good&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">good</a>
-				<a href="evaluate?evaluation=bad&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">bad</a>
-				<a href="evaluate?evaluation=soso&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">soso</a>
+			<td>
+				<a href="evaluate?evaluation=good&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">
+				<img src="https://img.icons8.com/color/40/000000/lol.png"> </a>
+				<a href="evaluate?evaluation=bad&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">
+				<img src="https://img.icons8.com/color/40/000000/sad.png"></a>
+				<a href="evaluate?evaluation=soso&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">
+				<img src="https://img.icons8.com/color/40/000000/boring.png"></a>
+		<br><div class="express">good bad soso</div>
 			</td>
 			
-			<td>
-				<a href="deleteTimeSheet?starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">delete</a>
+			<td style="background-color: white; border:0;">
+				<a href="deleteTimeSheet?starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}&this=another">
+<img src="https://img.icons8.com/color/48/000000/delete-sign.png"></a>
 			</td>
 			
 		</tr>
 		
 		</c:forEach>
+		<c:if test="${empty timeSheet_anotherDay}">
+						<tr>
+							<td colspan="6" class="txt_center" style="margin:10px;">
+							 리스트가 없습니다.  </td>
+						</tr>
+					</c:if>
 		</tbody>
 	</table>
 </form>
-
 
 <!-- 파일 생성중 보여질 진행막대를 포함하고 있는 다이얼로그 입니다. -->
 <div title="Data Download" id="preparing-file-modal" class="ui-progressbar" style="display: none;">
@@ -301,14 +328,12 @@ Input Format(0000-00-00)
 
 
 </div></div></section>
-
+ 
 
 </body>
 </html>
 <script>
-//-
- 
-		$(".input").focusin(function() {
+  	$(".input").focusin(function() {
 			$(this).find("span").animate({
 				"opacity" : "0"
 			}, 200);
@@ -330,3 +355,18 @@ function expand() {
 }
 $('button').on('click', expand);
 </script>
+<!-- ajax  -->
+<script>
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+       dateFormat: 'yy-mm-dd' ,
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      monthNames: [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ],
+
+    });
+  } ); 
+  
+</script> 
+  

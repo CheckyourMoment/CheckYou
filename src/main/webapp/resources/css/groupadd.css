@@ -1,11 +1,12 @@
-/*work add, work delete*/
+/*group add, work delete*/
 
 body {
-    background-color:#e0c3fc;
+    background-color:#ffc0d0;
     background-size: cover;
     font-size: 15px; 
     font-family: "Roboto", sans-serif;
     overflow-x: hidden;
+    font-weight:bold;
 }
 
 
@@ -44,28 +45,7 @@ body {
     border-color:#f13f57;
    
 }
-/*  table {
-   		border-top: 1px #9A2EFE;
-        border-collapse: separate;
-        border-radius:10px 0 10px;
-      }
-  th, td {
-        border-bottom: 1px solid #2E2E2E;
-        padding-top:10px;
-        padding: 5px;
-        text-align: center;
-        font-size: 10px;
-  
-      }
-   th {
-    background-color: #5D9FFF; 
-   color:#fff;
-
-      }
-   td {
-    background-color: #E8F5FF;
-  }
- */
+ 
 .table {
 
   display: inline-block;

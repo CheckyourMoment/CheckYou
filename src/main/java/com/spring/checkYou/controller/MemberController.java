@@ -83,7 +83,7 @@ public class MemberController {
 	}
 
 	
-
+//아이디 중복 검사
 	@ResponseBody
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
 	public String idCheck(Model model, MemberDto dto) {
@@ -95,6 +95,7 @@ public class MemberController {
 		System.out.println(alreadyExist);
 		if (alreadyExist == "false") {
 			System.out.println("아이디 사용하셔도 됩니다.");
+			
 			result = 1;
 		} else {
 			System.out.println("아이디는 이미 친구목록에 있습니다.");

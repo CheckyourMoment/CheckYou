@@ -4,9 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+	
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/work.css"
+	media="all">
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>add member</title>
 </head>
+<script
+	src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script src="//m.servedby-buysellads.com/monetization.js"
+	type="text/javascript"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <body>
 
 <%String user = (String)session.getAttribute("userId"); %>

@@ -4,66 +4,65 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.checkYou.dao.IPersonalDao">
-	
-	<!-- 나의 작업 추가  -->
-	<insert id="addNewWork">
-		insert into PersonalWorkList values (#{param1}, #{param2}, #{param3}, #{param4})
-	</insert> 
-	
-	<!-- 작업명 중복 체크  -->
-	<select id="checkWork" resultType="String">
-		select 'true' from PersonalWorkList where workname = #{param1} and id = #{param2}
-	</select>
-	
-	<!-- 내 작업 관리 페이지  -->
-	<select id="manageMyWorkPage" resultType ="com.spring.checkYou.dto.WorkDto">
-		select * from PersonalWorkList where id = #{id}
-	</select>
-	
-	<delete id="deleteWork">
-		delete from PersonalWorkList where workname = #{param1} and workdetail = #{param2} and id = #{param3}
-	</delete>
-	
-	<!-- 작업 시작  -->
-	<insert id="startWork">
-		insert into dailytimesheet(id,worktype,workname,workdetail,starttime,createddate,time) values(#{id},#{worktype},#{workname},#{workdetail},#{starttime},#{createddate},#{time})
-	</insert>
-	
-	<!-- 오늘 시간관리표 보기 -->
-	<select id="viewTable" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
-	</select>
-	
-	<!-- 작업 정지 -->
-	<update id="stopWork">
-		update dailytimesheet set progresstime=#{progresstime}, endtime=#{endtime} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and endtime='-1'
-	</update>
-	
-	<!-- 내 작업 평가 -->
-	<update id="evaluate">
-		update dailytimesheet set evaluation=#{evaluation} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
-	</update>
-	
-	<!-- 일일 시간 관리 삭제 -->
-	<delete id="deleteTimeSheet">
-		delete from dailytimesheet where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
-	</delete>
-	
-	<!-- 다른 날의 시간관리표 보기 -->
-	<select id="searchTimeSheet" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
-	</select>
-	
-	<!-- excell파일로 다운로드 하기  -->
-	<select id="excellDownload" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
-	</select>
-	
-	
-		<!-- 차트 데이터 가져오기  -->
-	<select id="getChartData" resultType="com.spring.checkYou.dto.TimeSheetDto">
-		select worktype, SUM(progresstime) as progresstime from dailytimesheet where id = #{id} and createddate = #{createddate} group by worktype
-	</select>
-	
+   
+   <!-- 나의 작업 추가  -->
+   <insert id="addNewWork">
+      insert into PersonalWorkList values (#{param1}, #{param2}, #{param3}, #{param4})
+   </insert> 
+   
+   <!-- 작업명 중복 체크  -->
+   <select id="checkWork" resultType="String">
+      select 'true' from PersonalWorkList where workname = #{param1} and id = #{param2}
+   </select>
+   
+   <!-- 내 작업 관리 페이지  -->
+   <select id="manageMyWorkPage" resultType ="com.spring.checkYou.dto.WorkDto">
+      select * from PersonalWorkList where id = #{id}
+   </select>
+   
+   <delete id="deleteWork">
+      delete from PersonalWorkList where workname = #{param1} and workdetail = #{param2} and id = #{param3}
+   </delete>
+   
+   <!-- 작업 시작  -->
+   <insert id="startWork">
+      insert into dailytimesheet(id,worktype,workname,workdetail,starttime,createddate,time) values(#{id},#{worktype},#{workname},#{workdetail},#{starttime},#{createddate},#{time})
+   </insert>
+   
+   <!-- 오늘 시간관리표 보기 -->
+   <select id="viewTable" resultType="com.spring.checkYou.dto.TimeSheetDto">
+      select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
+   </select>
+   
+   <!-- 작업 정지 -->
+   <update id="stopWork">
+      update dailytimesheet set progresstime=#{progresstime}, endtime=#{endtime} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and endtime='-1'
+   </update>
+   
+   <!-- 내 작업 평가 -->
+   <update id="evaluate">
+      update dailytimesheet set evaluation=#{evaluation} where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
+   </update>
+   
+   <!-- 일일 시간 관리 삭제 -->
+   <delete id="deleteTimeSheet">
+      delete from dailytimesheet where id=#{id} and worktype=#{worktype} and workname=#{workname} and workdetail = #{workdetail} and starttime= #{starttime} and endtime=#{endtime}
+   </delete>
+   
+   <!-- 다른 날의 시간관리표 보기 -->
+   <select id="searchTimeSheet" resultType="com.spring.checkYou.dto.TimeSheetDto">
+      select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
+   </select>
+   
+   <!-- excell파일로 다운로드 하기  -->
+   <select id="excellDownload" resultType="com.spring.checkYou.dto.TimeSheetDto">
+      select * from dailytimesheet where id = #{id} and createddate = #{createddate} order by time asc
+   </select>
+   
+   
+      <!-- 차트 데이터 가져오기  -->
+   <select id="getChartData" resultType="com.spring.checkYou.dto.TimeSheetDto">
+      select worktype, SUM(progresstime) as progresstime from dailytimesheet where id = #{id} and createddate = #{createddate} group by worktype
+   </select>
+   
 </mapper>
-

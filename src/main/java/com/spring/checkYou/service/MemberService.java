@@ -119,11 +119,11 @@ public class MemberService {
 		// Mail Server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
-		String hostSMTPid = "2winkite@naver.com";
-		String hostSMTPpwd = "";
+		String hostSMTPid = "forever_757@naver.com";
+		String hostSMTPpwd = "tjdgus!00";
 
 		// 보내는 사람 EMail, 제목, 내용
-		String fromEmail = "2winkite@naver.com";
+		String fromEmail = "forever_757@naver.com";
 		String fromName = "Check You Se!ze The Day";
 		String subject = "";
 		String msg = "";

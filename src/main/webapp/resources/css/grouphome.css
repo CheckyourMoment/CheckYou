@@ -1,8 +1,7 @@
-/*메인*/
+ /*group home*/
 @import url("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Roboto:300,400,500,700");
 @import url('https://fonts.googleapis.com/css?family=Gothic+A1|Nanum+Gothic+Coding');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
-
 html,
 body,
 div,
@@ -108,20 +107,18 @@ img {
 }
 
 body {
-  background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-	
   line-height: 24px;
    font-size: 14px; 
-   font-weight: normal;
-   background-size: cover;
+	font-weight: normal;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    font-size: 100%;
-  font-family: 'Fira Sans', sans-serif;
+    font-size: 80%;
+   font-family: 'Fira Sans', sans-serif;
      overflow-x: hidden;
  
 }
@@ -130,13 +127,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; 
 }
-h4{
 
-    font-size: 40px;
-}
 .header_area{
-background-image: background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-
+ background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
 button:focus {
@@ -350,7 +343,6 @@ button:focus {
 		border-bottom: 0px solid #fff;
 		border-radius: 0px;
     }
- 
     .header_area .navbar .search{
         margin-left: 0px;
     }
@@ -385,111 +377,140 @@ button:focus {
 	}
     
 }
-    
-    /*menu bar 끝*/
+/*menu bar 끝*/
 
- h2{
- font-size: 25px;
- padding: 20px;
+.row {
+	padding-left: 10px;
+}
+.sample{
+   width: 100%;
+   margin: 0 0 2.5rem 0;
+    display: inline-flex; 
+  /*   display:화면 배치방법 결정  */
+   display: -webkit-flex;
+   display: -ms-flex;
+   display: flex;
+   /*  flex: 표준  */
+   -moz-flex-wrap: wrap;
+ /*   flex-warp:플렉스 항목을 한 줄 또는 여러줄로 배치하기, 
+   warp: 플렉스 항목을 여러 줄로 표시한다.  */
+   -webkit-flex-wrap: wrap;
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+   -moz-align-items: stretch; 
+   /* align-items:교차축 기준의 배치 방법 지정
+     stretch: 플렉스 항목을 확장해 교차축을 꽉 채운다
+    */
+    -webkit-align-items: stretch;
+   -ms-align-items: stretch;
+   align-items: stretch; 
+
+}
+
+/* 
+.col-4{
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 20px 10px rgba(0, 0, 0, 0.22);
+   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); 
+    margin:20px;
+} 
+ */
+ .box{
+ position: relative;
+height: 220px;
+ width: 250px;
+  background:white; 
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 20px 10px rgba(0, 0, 0, 0.22);
+   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); 
+  margin:25px 25px 25px 25px;
  
- }
+
+
+
+}
+ 
+.box:hover {
+ z-index: 1000;
+ box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4), 0 20px 10px rgba(0, 0, 0, 0.22);
+ -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4), 0 20px 10px rgba(0, 0, 0, 0.22);
+-moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4), 0 20px 10px rgba(0, 0, 0, 0.22);
+ 
+}
+/* 링크에서 밑줄 없애기 */
+ a:link { text-decoration: none;}
  
 
-	@media screen and (max-width: 980px) {
-        
-        .watch {
-           
-            margin:-6px;
-        }
-        .DailyManagement{
-            font-size: 47px;
-        }
-    }
-
-	@media screen and (max-width: 736px) {
-        .watch {
-            margin:-70px;
-            padding: 20px;
-        }
-        .worklist{
-            margin-top: 60px;
-            padding: 5px;
-        }
-        .table1{
-            font-size: 18px;
-        }
-        .startttt{
-          
-        }
-    }
+/* 마우스 지나갈 때만 삭제 + 강제로 없애기 */
+a.line:hover { text-decoration:none !important }
+ 
+.title{
+    padding-top:5px;
+    padding: 1px;
+    margin: 5px;
+    font-size: 20px;
+    color: #2E2E2E;
     
-    .small{
-        height: 1px;
-        font-weight: 5px;}
-
-    .startttt{
- 	    margin-top:40px;
-    }   
-
-.todo {
-    font-size: 6em;
- font-family: 'Gothic A1', sans-serif;
-	MARGIN-TOP:3REM;
 }
+.stitle{
+     color: #6610f2;
+     font-weight:bold; 
+     font-size: 25px;
+    padding-bottom: 2rem;
+}
+.title1{
+    padding-top:5px;
+    padding: 1px;
+    margin: 5px;
+    font-size: 20px;
+    color: #2E2E2E;
     
-    
- #startPause{
-        margin-top: 35px;
-    }
-
- #about {
-    padding-bottom:50px
+}
+.stitle1{
+     color: #FF0080;
+     font-weight:bold; 
+     font-size: 22px;
+    padding-bottom: 2rem;
 }
 
-.start{
-	padding-top:10px;
-	
-}
-
- table {
-        width: 100%;
-        border-top: 1px #bbdefb;
-        border-collapse: collapse;
-      
-      }
-  th, td {
-        border-bottom: 1px solid #2E2E2E;
-        padding: 10px;
-        text-align: center;
-        font-size: 25px;
-  
-      }
-   th {
-    background-color: #5D9FFF; 
-   color:#fff;
-
-      }
-   td {
-    background-color: #E8F5FF;
-  }
-
-.table {
-
+.button {
+  background-color: #fff;
+  -webkit-border-radius: 15px;
+  border-radius: 10px;
+  border: none;
+  text-decoration:none !important;
+  cursor: pointer;
   display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  
-  overflow-x: auto;
-
-  white-space: nowrap;
-
-  border-collapse: collapse;
-  border-spacing: 0;
+  font-family: Arial;
+  font-size: 20px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
 }
-
+.f{
+	font-size: 20px;
+    color: #6610f2;
+}
+.f:hover{
+	color:#FE2E9A ;
+}
+/* h3*/
+@media(max-width:1620px) {
+    h3 {
+        font-size: 4vw;
+    }
+     .box{
+ 
+height: 200px;
+ width: 230px;}
+}
 @media(max-width:1920px) {
     h3 {
-        font-size: 2.5vw;
+        font-size: 3vw;
     }
 }
 
@@ -498,134 +519,59 @@ button:focus {
         font-size: 3vw;
     }
 }
-@media(max-width:1620px) {
-    h3 {
-        font-size: 3em;
-    }
-}
-
-@media(max-width:900px) {
-    .w3ls-social {
-        left: 6%;
-    }
-}
 
 @media(max-width:800px) {
     h3 {
-        font-size: 2.7em;
+        font-size: 2.4em;
     }
-    .sub-main-w3 {
-        float: none;
-    }
-    .w3ls-social {
-        position: static;
-        margin-top: 5em;
-    }
-    .w3ls-social h2 {
-        left: 241px;
-    }
+     .box{
+height: 200px;
+ width: 180px;
+ 
+ }
 }
-@media(max-width:700px){
-	 h3 {
-        font-size: 2.7em;
-    }
-}
-@media(max-width:667px) {
-    .w3ls-social h2 {
-        left: 182px;
-    }
-    h2{
-    	font-size:20px;
-    }
-}
-
-@media(max-width:600px) {
-    .w3ls-social h2 {
-        left: 151px;
-    }
-    .footer h2 {
-        letter-spacing: 1px;
-    }
-}
-
 @media(max-width:480px) {
     h3 {
-        font-size: 2.7em;
-    }
-    .sub-main-w3 form {
-        padding: 7.5vw;
-    }
-    .footer h2 {
-        letter-spacing: 1px;
-    }
-    .w3ls-social h2 {
-        left: 91px;
-    }
-}
+        font-size: 2.4em;
+}  
+  .box{
+height: 150px;
+ width: 130px;
+ }
 
+ .title{
+    padding-top:5px;
+    padding: 1px;
+    margin: 5px;
+    font-size: 15px;
+    color: #2E2E2E;
+    
+}
+ .stitle{
+  font-size: 20px;
+  padding-bottom: 0.7rem;
+ }
+  }
 @media(max-width:414px) {
-	h2{
-	font-size: 25px;
-	}
-    h3{
-        font-size: 2.2rem;
-    }
-    .wthree-text ul li:nth-child(1),
-    .wthree-text ul li:nth-child(2) {
-        float: none;
-    }
-    .wthree-text ul li:nth-child(2) {
-        margin-top: 10px;
-    }
-    .w3ls-social h2 {
-        left: 52px;
-    }
-    .form-style-agile {
-        margin-bottom: 1em;
-    }
-    .btn{
-	margin-top:40px;
-   width:150px;
-    height: 150px;
+	h3{
+	font-size: 2.2em;
 }
-}
-
-@media(max-width:330px) {
-  	h3 {
-  	   font-size: 1.8em;
-  	}
-    h2 {
-        font-size: 1.8em;
-    }
-
-}
-
-.btn{
-	margin-top:10px;
-    background-color: #4481eb ;
-    border-color:#4481eb;
-    color: white;
-    border-radius: 90px;
-    width:80px;
-    height: 80px;
-}
-.btn:hover, .btn:focus{
-	color:#fff;
-	border:1px solid #FFA300;
-	background-color:#FFA300;}
+button{
+	border: none;
+	 text-decoration: none;
+	  text-align: center;
+	height: 15px;
+    width: 13px;
+    background-color: #4CAF50;
+     display: inline-block;	
 	
-
- 
-input[type=radio]:checked ~ .check {
-  border: 5px solid #0DFF92;
 }
-
-input[type=radio]:checked ~ .check::before{
-  background: #0DFF92;
+.ymemo{
+	background:#00f;
+  outline:none;
+  border:none;
+  padding:10px;
+  border-radius:3px;
+  color:#fff;
+  cursor:pointer;
 }
-
-input[type=radio]:checked ~ td{
-  color: #0DFF92;
-}
-
- 

@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Insert title here</title>
 </head>
 <body>
 <a href="groupHome">Back</a>  
-<h2>- request list</h2>
+<h2>request list</h2>
 
 	<table width="500" cellpadding="0" cellspacing="0" border="0">
 		

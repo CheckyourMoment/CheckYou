@@ -52,7 +52,7 @@
 		<fieldset>
 			<form action="login" method="post" id="target">
 				<h1>
-					<span>L</span>ogin <span>F</span>orm
+					<span>L</span>ogin 
 				</h1>
 
 				<div class="input">

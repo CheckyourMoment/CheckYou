@@ -113,7 +113,7 @@ public class MemberService {
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
 		String hostSMTPid = "2winkite@naver.com";
-		String hostSMTPpwd = "yseelyesll!1";
+		String hostSMTPpwd = "";
 
 		// 보내는 사람 EMail, 제목, 내용
 		String fromEmail = "2winkite@naver.com";
@@ -141,7 +141,7 @@ public class MemberService {
 			email.setSSL(true);
 			email.setHostName(hostSMTP);
 			System.out.println("mail" + mail);
-			email.setSmtpPort(465);
+			email.setSmtpPort();
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.setTLS(true);
 			email.addTo(mail, charSet);

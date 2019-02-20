@@ -26,10 +26,9 @@
 	media="all">
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-	<!-- 메뉴 바 시작  -->
 	<header class="header_area">
 		<div class="top_menu">
 			<div class="container"></div>
@@ -38,8 +37,8 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img
-						src="img/i" alt=""><img src="img/02.jpg" alt=""></a>
+					<a class="navbar-brand logo_h" href="index.html">
+					<img src="img/i" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,60 +51,54 @@
 						id="navbarSupportedContent">
 
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link"
-								href="dailyManagement">Home<img src="img/05.png" /></a></li>
-							<!--personal menubar!-->
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Personal
-									<img class="small" src="img/113.png" />
-							</a>
 
-								<ul class="dropdown-menu">
+							<li class="nav-item active"><a class="nav-link"
+								href="dailyManagement"> Home <img src="https://img.icons8.com/color/45/000000/dog-house.png"></a></li>
+
+							<!--personal menubar!-->
+							<li class="nav-item submenu dropdown"><a
+								href="dailyManagement" class="nav-link dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Personal<img src="https://img.icons8.com/color/48/000000/mental-state.png"></a>
+                    	<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
+
 										href="dailyManagement">Daily Management </a></li>
 									<li class="nav-item"><a class="nav-link" href="viewTable">daily
 											time sheet</a></li>
 
 									<li class="nav-item"><a class="nav-link"
 										href="canvasjschart">View Graph</a></li>
-									
-									
+										
 									<li class="nav-item"><a class="nav-link"
+
 										href="searchTimeSheetPage">searchTimeSheet</a></li>
 								</ul></li>
+
 							<!--Group menubar!-->
-							<li class="nav-item submenu dropdown"><a href="#"
+							<li class="nav-item submenu dropdown"><a href="groupHome"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
 								role="button" aria-haspopup="true" aria-expanded="false">Group
-									<img class="small" src="img/08.png" />
+									<img src="https://img.icons8.com/color/48/000000/groups.png">
 							</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link"
-										href="searchTimeSheet">Team</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="single-blog.html">Mento</a></li>
+									<li class="nav-item"><a class="nav-link" href="groupHome">Invite</a></li>
+								 
 								</ul></li>
-							<li class="nav-item submenu dropdown"><a href="friendList"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Friend
-									<img class="small" src="img/112.png" />
-							</a>
-								<ul class="dropdown-menu">
 
-									<li class="nav-item"><a class="nav-link"
-										href="searchFriendPage">Add Friend</a></li>
-									<li class="nav-item"><a class="nav-link" href="friendList">Friend
-											List</a></li>
-								</ul></li>
-							<li class="nav-item submenu dropdown"><a href="#"
+						 
+							<!-- mypage -->
+							<li class="nav-item submenu dropdown"><a href="logout"
+
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">My
-									Page <img class="small" src="img/10.png" />
+								role="button" aria-haspopup="true" aria-expanded="false">My Page<img src="https://img.icons8.com/color/48/000000/light.png">
 							</a>
+
 								<ul class="dropdown-menu">
 
 									<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+									<li class="nav-item"><a class="nav-link" href="MyPage">MyPage</a></li>
+
 								</ul></li>
 						</ul>
 					</div>
@@ -116,7 +109,7 @@
 
 <a href="dailyManagement">Back</a>
 
-<h2>- Search you friend and add on this page! - </h2>
+<h2>- Search you friend and add on this page!    </h2>
 	
 	<form action ="searchFriend">
 	input your friend's id : <input type="text" name="searchFriend"/></br>

@@ -92,6 +92,7 @@ public class MemberController {
 		return "MyPage";
 	}
 	
+
 	@ResponseBody
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
 	public String idCheck(Model model, MemberDto dto) {
@@ -100,6 +101,7 @@ public class MemberController {
 		String alreadyExist = service.idCheck(dto);
 		if (alreadyExist == "false") {
 			System.out.println("아이디 사용하셔도 됩니다.");
+			
 			result = 1;
 		} else {
 			System.out.println("아이디는 이미 친구목록에 있습니다.");

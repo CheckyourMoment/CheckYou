@@ -184,7 +184,7 @@ else{%>
 			<div class="row">
 				<div class="col-lg-10 mx-auto" style="margin-top: 200px">
 	<div>				
-<a href="dailyManagement">home</a> 
+ 
  
 <div>
 <h3> Search another time sheet</h3></div>

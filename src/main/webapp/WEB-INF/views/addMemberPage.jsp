@@ -152,7 +152,7 @@ function pclose1(){
 	  <button type="submit" name="submit" class="btn btn-outline-primary btn" >Search</button>
 	   <a class="btn btn-outline-danger" href="selectGroup" role="button"  onClick="pclose1();" >Close</a>
 	</form>
-	</br>
+ 
 <%
 	String id = (String)request.getAttribute("searchedMember");
 %>
@@ -160,15 +160,12 @@ function pclose1(){
 		
 	<form action="addMember">
 	<table width="500" cellpadding="0" cellspacing="0" border="0">
-		
 		<tr>
-			<td><h3> result </h3></td>
-		</tr>
+			<td><div class="result" >result <img src="https://img.icons8.com/ios-glyphs/30/000000/human-esearch-rogram.png"> </div>   	</tr>
 		<tr>
-			<td><%= id %>
+			<td style="margin-top:2rem;"> <div class="id"><%= id %></div>
 			<input type="hidden" value="<%=id%>" name="groupmember" id="groupmember"/>
-			
-			<input type="submit" value="add"/>
+		 <button type="submit" class="btn btn-dark">add</button>
 			</td>
 		</tr>
 	

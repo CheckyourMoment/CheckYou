@@ -167,7 +167,7 @@ chart.render();
 
 				<!-- <a href="dailyManagement">Back</a> -->
 
-				<a href="dailyManagement">Back</a>
+			 
 				<div>
 					<div>
 						<h3>search another day's graph</h3>

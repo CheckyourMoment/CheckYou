@@ -645,3 +645,31 @@ color:#ffff;
 /*     border-color:#f13f57;
    */ 
 }
+.result{
+	position:absolute;
+ 	margin-top:40px;
+	text-align : center;
+	font-size: 26px;
+	font-family: 'Gothic+A1', sans-serif;
+	padding-left:100px;
+}
+.id {
+	position:absolute;
+	margin-top:111px;
+	text-align : center;
+	font-size: 26px;
+	font-family: 'Gothic+A1', sans-serif;
+	padding-left:100px;
+}
+.btn-dark{
+	position:absolute;
+	margin-top:100px;
+	text-align : center;
+	font-family: 'Gothic+A1', sans-serif;
+	padding:6px;
+	margin-left:-90px;
+	margin-right:100px;
+}
+td {
+	border-bottom:1px;
+}

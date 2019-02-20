@@ -65,8 +65,8 @@ function pclose1(){
 		<div class="row">
 			<div class="col-lg-6 mx-auto" style="margin-top: 40px">
  
-	<h3>You can add new Work on this page</h3>
-	<h3>Let's try!</h3>
+	<h3> Add New Work </h3>
+ 
 
 	<br>
  

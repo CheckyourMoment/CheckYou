@@ -382,8 +382,12 @@ button:focus {
     width:100%
 }
  .input input {
-    width: 400px;
-    padding: 14px 9px 13px 48px;
+    width: 14rem !important;
+    margin-top:-20px;
+    margin-left:50px;
+    margin-bottom:30px !important;
+    padding: 14px 9px 20px 60px;
+    
     display: block;
     border: 1px solid #ffff;
     border-radius: 10px;

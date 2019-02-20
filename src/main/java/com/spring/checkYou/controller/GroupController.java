@@ -2,6 +2,7 @@ package com.spring.checkYou.controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.checkYou.dto.FriendDto;
 import com.spring.checkYou.dto.GroupDto;
 import com.spring.checkYou.dto.GroupMemberDto;
+import com.spring.checkYou.dto.GroupTaskDto;
 import com.spring.checkYou.service.GroupService;
 
 @Controller
@@ -63,6 +65,9 @@ public class GroupController {
 
 		String groupName = request.getParameter("groupName");
 		String constructor = request.getParameter("constructor");
+		//String grouptype = request.getParameter("grouptype");
+		//String purpose = request.getParameter("purpose");
+		
 		
 		if (groupName != null && constructor != null) {
 			session.setAttribute("selectedGroup", groupName);
@@ -407,6 +412,165 @@ public class GroupController {
 		return "redirect:selectGroup";
 	}
 	
+	// task 진행률을 그래프로 뿌려주는 페이지
+	@RequestMapping("/task_group")
+	public String task_group(Model model) {
+		System.out.println("task_group() in controller");
+		
+		List<GroupTaskDto> taskList = service.taskList();
+		model.addAttribute("taskList",taskList);
+		
+		List<GroupTaskDto> missionList = service.missionList();
+		model.addAttribute("missionList",missionList);
+		
+		return "task_group";
+	}
+	
+	// 
+	@RequestMapping("/addWorkProgress")
+	public String addWorkProgress(HttpServletRequest request, GroupTaskDto dto) {
+		
+		String workname = request.getParameter("work");
+		String username = (String)session.getAttribute("userId");
+		String groupname = (String)session.getAttribute("selectedGroup");
+		String progress = "0";
+		String completed = "0";
+		String mission = "0"; // 0이면 미션이 아닌 user가 스스로 등록한 task이다.
+		String deadline = "no deadline"; // user가 등록한 task는 마감일 등록x
+		
+		dto.setWorkname(workname);
+		dto.setUsername(username);
+		dto.setGroupname(groupname);
+		dto.setProgress(progress);
+		dto.setCompleted(completed);
+		dto.setMission(mission);
+		dto.setDeadline(deadline);
+		
+		String result = service.addWorkProgress(dto);
+		return "redirect:task_group";
+	}
+	
+	// 등록한 작업 목록
+	@RequestMapping("/taskList")
+	public String taskList(Model model) {
+		System.out.println("taskList() in controller");
+		List<GroupTaskDto> taskList = service.taskList();
+		
+		model.addAttribute("taskList",taskList);
+		model.addAttribute("dispList","true");
+		
+		List<GroupTaskDto> missionList = service.missionList();
+		model.addAttribute("missionList",missionList);
+		
+		return "task_group";
+	}
+	
+	// 진행률 업데이트 로직
+	@RequestMapping("/updateProgress")
+	public String updateProgress(HttpServletRequest request, GroupTaskDto dto) {
+		System.out.println("updatePrgress() in controller");
+		
+		String workname = request.getParameter("work");
+		String username = (String)session.getAttribute("userId");
+		String groupname = (String)session.getAttribute("selectedGroup");
+		String progress = request.getParameter("progress");
+		String completed = null;
+		if(progress.equals("100")) {
+			completed = "1";
+		}
+		else {
+			completed = "0";
+		}
+		
+		dto.setWorkname(workname);
+		dto.setUsername(username);
+		dto.setGroupname(groupname);
+		dto.setProgress(progress);
+		dto.setCompleted(completed);
+		
+		service.updateProgress(dto);
+		
+		return "redirect:task_group";
+	}
+	
+	// 등록한 작업 삭제
+	@RequestMapping("/deleteProgress")
+	public String deleteProgress(HttpServletRequest request, GroupTaskDto dto) {
+		System.out.println("deleteProgress() in controller");
+		
+		String workname = request.getParameter("work");
+		String username = (String)session.getAttribute("userId");
+		String groupname = (String)session.getAttribute("selectedGroup");
+		
+		dto.setWorkname(workname);
+		dto.setUsername(username);
+		dto.setGroupname(groupname);
+		
+		service.deleteProgress(dto);
+		
+		return "redirect:task_group";
+	}
+	
+	// 완료된 작업 목록
+	@RequestMapping("/completedList")
+	public String completedList(Model model) {
+		System.out.println("completedList() in controller");
+		
+		// 그래프를 뿌리기 위한 taskList(disp x)
+		List<GroupTaskDto> taskList = service.taskList();
+		model.addAttribute("taskList",taskList);
+		
+		List<GroupTaskDto> missionList = service.missionList();
+		model.addAttribute("missionList",missionList);
+		
+		List<GroupTaskDto> completedList = service.completedList();
+		model.addAttribute("completedList",completedList);
+		
+		
+		return "task_group";
+	}
+	
+	// 미션 목록
+	@RequestMapping("/missionList")
+	public String missionList(Model model) {
+		System.out.println("missionList() in controller");
+		
+		// 그래프를 뿌리기 위한 taskList(disp x)
+		List<GroupTaskDto> taskList = service.taskList();
+		model.addAttribute("taskList",taskList);
+		
+		List<GroupTaskDto> missionList = service.missionList();
+		model.addAttribute("missionList",missionList);
+		model.addAttribute("dispMissionList","true");
+		
+		return "task_group";
+	}
+	
+	// 미션 추가
+	@RequestMapping("/addMission")
+	public String addMission(HttpServletRequest request, GroupTaskDto dto) {
+		System.out.println("addMission() in controller");
+		
+		String workname = request.getParameter("work");
+		String username = (String)session.getAttribute("userId");
+		String groupname = (String)session.getAttribute("selectedGroup");
+		String progress = "0";
+		String completed = "0";
+		String mission = "1"; // 0이면 미션이 아닌 user가 스스로 등록한 task이다.
+		String deadline = request.getParameter("deadline");
+		
+		dto.setWorkname(workname);
+		dto.setUsername(username);
+		dto.setGroupname(groupname);
+		dto.setProgress(progress);
+		dto.setCompleted(completed);
+		dto.setMission(mission);
+		dto.setDeadline(deadline);
+		
+		service.addWorkProgress(dto);
+		
+		return "redirect:task_group";
+	}
 	
 	
 }

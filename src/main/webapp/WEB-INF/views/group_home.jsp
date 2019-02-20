@@ -199,6 +199,7 @@
 					<div class="box">
 					 
 						<a href = "selectGroup?groupName=${dto.groupName}&constructor=${dto.constructor}">
+
 							<div class="title">Group Name :</div> 
 							<div class="stitle"> ${dto.groupName}</div></br>
 							<div class="title"> Owner :</div> 

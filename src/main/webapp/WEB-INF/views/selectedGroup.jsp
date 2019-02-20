@@ -287,6 +287,11 @@ while(iter.hasNext()) {
 	</br>
 	<a href="#" onclick="saveMemo('MemberList')"><img src="https://img.icons8.com/dusk/64/000000/conference.png"></a>
 	</br>
+	<a href="#" onclick="saveMemo('task_group')">Task Progress</a>
+	
+	
+	
+	
 	
 	<c:set var="constructor" value="<%=constructor %>"/>
 	<c:set var="loginUser" value="<%=loginUser %>" />

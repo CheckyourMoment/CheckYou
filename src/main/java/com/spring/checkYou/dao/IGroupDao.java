@@ -41,4 +41,5 @@ public interface IGroupDao {
 	public void updateProgress(GroupTaskDto dto);
 	public void deleteProgress(GroupTaskDto dto);
 	public String checkGroupTask(GroupTaskDto dto);
+
 }

@@ -1,9 +1,10 @@
-/*메인*/
-@import url("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Roboto:300,400,500,700");
+ @import url("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Roboto:300,400,500,700");
 @import url('https://fonts.googleapis.com/css?family=Gothic+A1|Nanum+Gothic+Coding');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
-
-html,
+  
+/*icon ba*/
+ 
+ html,
 body,
 div,
 span,
@@ -108,20 +109,18 @@ img {
 }
 
 body {
-  background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-	
   line-height: 24px;
    font-size: 14px; 
-   font-weight: normal;
-   background-size: cover;
+	font-weight: normal;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    font-size: 100%;
-  font-family: 'Fira Sans', sans-serif;
+    font-size: 80%;
+   font-family: 'Fira Sans', sans-serif;
      overflow-x: hidden;
  
 }
@@ -130,13 +129,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; 
 }
-h4{
 
-    font-size: 40px;
-}
 .header_area{
-background-image: background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-
+ background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
 button:focus {
@@ -247,7 +242,7 @@ button:focus {
              background:#8ec5fc;
               color: #fff; }
                 
-        @media (min-width: 992px) {
+        @media (min-width: 992px ) {
           .header_area .navbar .nav .nav-item.submenu:hover ul {
             visibility: visible;
             opacity: 1;
@@ -350,7 +345,6 @@ button:focus {
 		border-bottom: 0px solid #fff;
 		border-radius: 0px;
     }
- 
     .header_area .navbar .search{
         margin-left: 0px;
     }
@@ -385,247 +379,297 @@ button:focus {
 	}
     
 }
-    
-    /*menu bar 끝*/
+/*menu bar 끝*/ 
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
 
- h2{
- font-size: 25px;
- padding: 20px;
+body {
+  overflow-x: hidden;
+}
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+/*메모와 메뉴바 간격*/
+#wrapper.toggled {
+  padding-right: 200px;
+    
+}
+/*사이드바*/
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  right: 290px;
+  width: 0;
+  height: 370px;
+  margin-right: -250px;
+/*사이드바 길이*/
+  margin-top: 0px;
+ overflow-x: hidden;
+  overflow-y: hidden;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
  
- }
- 
-
-	@media screen and (max-width: 980px) {
-        
-        .watch {
-           
-            margin:-6px;
-        }
-        .DailyManagement{
-            font-size: 47px;
-        }
-    }
-
-	@media screen and (max-width: 736px) {
-        .watch {
-            margin:-70px;
-            padding: 20px;
-        }
-        .worklist{
-            margin-top: 60px;
-            padding: 5px;
-        }
-        .table1{
-            font-size: 18px;
-        }
-        .startttt{
-          
-        }
-    }
-    
-    .small{
-        height: 1px;
-        font-weight: 5px;}
-
-    .startttt{
- 	    margin-top:40px;
-    }   
-
-.todo {
-    font-size: 6em;
- font-family: 'Gothic A1', sans-serif;
-	MARGIN-TOP:3REM;
-}
-    
-    
- #startPause{
-        margin-top: 35px;
-    }
-
- #about {
-    padding-bottom:50px
 }
 
-.start{
-	padding-top:10px;
-	
+#wrapper.toggled #sidebar-wrapper {
+  width: 0px;
+}
+/*안에 내용*/
+#page-content-wrapper {
+  width: 100%;
+  position: relative;
+  margin-top: 150px;
+
 }
 
- table {
-        width: 100%;
-        border-top: 1px #bbdefb;
-        border-collapse: collapse;
-      
-      }
-  th, td {
-        border-bottom: 1px solid #2E2E2E;
-        padding: 10px;
-        text-align: center;
-        font-size: 25px;
+#wrapper.toggled #page-content-wrapper {
+  position: relative;
   
-      }
-   th {
-    background-color: #5D9FFF; 
-   color:#fff;
+}
 
-      }
-   td {
-    background-color: #E8F5FF;
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+    /*아이콘 중앙으로*/
+  text-indent: 50px;
+  line-height: 30px;
+}
+/*사이드바 선*/
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #4D00FF;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav>.sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav>.sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  #wrapper.toggled {
+    padding-right: 260px;
+  }
+  #sidebar-wrapper {
+    width: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 170px;
+   padding-top:169px;    }
+  #page-content-wrapper {
+    padding: 10px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
   }
 
-.table {
+} 
+@media(max-width:800px) and (min-width:615px ){
+       #page-content-wrapper {
+              margin-top: 176px;
 
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  
-  overflow-x: auto;
+} 
+}
+.sample{
+   width: 100%;
+   margin: 0 0 2.5rem 0;
+    display: inline-flex; 
+  /*   display:화면 배치방법 결정  */
+   display: -webkit-flex;
+   display: -ms-flex;
+   display: flex;
+   /*  flex: 표준  */
+   -moz-flex-wrap: wrap;
+ /*   flex-warp:플렉스 항목을 한 줄 또는 여러줄로 배치하기, 
+   warp: 플렉스 항목을 여러 줄로 표시한다.  */
+   -webkit-flex-wrap: wrap;
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+   -moz-align-items: stretch; 
+   /* align-items:교차축 기준의 배치 방법 지정
+     stretch: 플렉스 항목을 확장해 교차축을 꽉 채운다
+    */
+    -webkit-align-items: stretch;
+   -ms-align-items: stretch;
+   align-items: stretch; 
 
-  white-space: nowrap;
-
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 
-@media(max-width:1920px) {
+.new-btn {
+position:relative;
+width:150px;
+height:60px;
+border:0;
+margin :25px;
+ margin-bottom :25px;
+ 
+cursor: pointer;
+background-color:#6BBBFF;
+border-radius:10px;
+font-size:21px;
+color:#ffff;
+ 
+}
+.new-btn:hover {
+	background-color:#6BBBFF;
+}
+  .groupname{
+	text-align:center;
+	margin-left:-10px;
+ 	color:#222831;
+}  
+.groupname1{
+	padding-top:30px;
+	color:#a275e3;
+}
+@media(max-width:1620px) {
     h3 {
-        font-size: 2.5vw;
+        font-size: 3vw;
     }
+ 
 }
-
-@media(max-width:1024px) {
+@media(max-width:1920px) {
     h3 {
         font-size: 3vw;
     }
 }
-@media(max-width:1620px) {
-    h3 {
-        font-size: 3em;
-    }
-}
 
-@media(max-width:900px) {
-    .w3ls-social {
-        left: 6%;
+@media(max-width:1024px) {
+   h3 {
+        font-size: 3vw;
     }
 }
 
 @media(max-width:800px) {
     h3 {
-        font-size: 2.7em;
+        font-size:2.4em;
     }
-    .sub-main-w3 {
-        float: none;
-    }
-    .w3ls-social {
-        position: static;
-        margin-top: 5em;
-    }
-    .w3ls-social h2 {
-        left: 241px;
-    }
+     
 }
-@media(max-width:700px){
-	 h3 {
-        font-size: 2.7em;
-    }
-}
-@media(max-width:667px) {
-    .w3ls-social h2 {
-        left: 182px;
-    }
-    h2{
-    	font-size:20px;
-    }
-}
-
-@media(max-width:600px) {
-    .w3ls-social h2 {
-        left: 151px;
-    }
-    .footer h2 {
-        letter-spacing: 1px;
-    }
-}
-
 @media(max-width:480px) {
     h3 {
-        font-size: 2.7em;
-    }
-    .sub-main-w3 form {
-        padding: 7.5vw;
-    }
-    .footer h2 {
-        letter-spacing: 1px;
-    }
-    .w3ls-social h2 {
-        left: 91px;
-    }
-}
+ font-size: 2.4em;
+}  
+ 
 
+  
+}
+ 
 @media(max-width:414px) {
-	h2{
-	font-size: 25px;
-	}
-    h3{
-        font-size: 2.2rem;
-    }
-    .wthree-text ul li:nth-child(1),
-    .wthree-text ul li:nth-child(2) {
-        float: none;
-    }
-    .wthree-text ul li:nth-child(2) {
-        margin-top: 10px;
-    }
-    .w3ls-social h2 {
-        left: 52px;
-    }
-    .form-style-agile {
-        margin-bottom: 1em;
-    }
-    .btn{
-	margin-top:40px;
-   width:150px;
-    height: 150px;
+	h3{
+ font-size: 2.2em;
 }
 }
-
-@media(max-width:330px) {
-  	h3 {
-  	   font-size: 1.8em;
-  	}
-    h2 {
-        font-size: 1.8em;
-    }
-
+.title1 {
+	font-size: 2em;
 }
 
-.btn{
-	margin-top:10px;
-    background-color: #4481eb ;
-    border-color:#4481eb;
-    color: white;
-    border-radius: 90px;
-    width:80px;
-    height: 80px;
-}
-.btn:hover, .btn:focus{
-	color:#fff;
-	border:1px solid #FFA300;
-	background-color:#FFA300;}
-	
 
- 
-input[type=radio]:checked ~ .check {
-  border: 5px solid #0DFF92;
+.input {
+    position: relative;
+    margin: 6px auto;
+    width:70%
 }
 
-input[type=radio]:checked ~ .check::before{
-  background: #0DFF92;
+.input span {
+    position: absolute;
+    display: block;
+   color: #f13f57; 
+    left: 10px;
+    top: 26px;
+    font-size: 18px;
 }
 
-input[type=radio]:checked ~ td{
-  color: #0DFF92;
+.input input {
+    width: 100%;
+    padding: 13px 5px 13px 40px;
+    display: block;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
+    transition: 0.2s ease-out;
+    color: #000;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline:none;
+    letter-spacing: 1px;
 }
 
- 
+.input input:focus {
+    padding: 13px 5px 13px 10px;
+/*     border-color:#f13f57;
+   */ 
+}
+.result{
+	position:absolute;
+ 	margin-top:40px;
+	text-align : center;
+	font-size: 26px;
+	font-family: 'Gothic+A1', sans-serif;
+	padding-left:100px;
+}
+.id {
+	position:absolute;
+	margin-top:111px;
+	text-align : center;
+	font-size: 26px;
+	font-family: 'Gothic+A1', sans-serif;
+	padding-left:100px;
+}
+.btn-dark{
+	position:absolute;
+	margin-top:100px;
+	text-align : center;
+	font-family: 'Gothic+A1', sans-serif;
+	padding:6px;
+	margin-left:-90px;
+	margin-right:100px;
+}
+td {
+	border-bottom:1px;
+}

@@ -8,6 +8,7 @@ import com.spring.checkYou.dto.FriendDto;
 import com.spring.checkYou.dto.GroupDto;
 import com.spring.checkYou.dto.MemberDto;
 import com.spring.checkYou.dto.WorkDto;
+import com.spring.checkYou.dto.*;
 
 public interface IMemberDao {
 
@@ -31,8 +32,5 @@ public interface IMemberDao {
 
 	public int findPW(MemberDto dto);
 
-	
-
-	
-
+	public void modifyPW(String loginUser, String modifyPW);
 }

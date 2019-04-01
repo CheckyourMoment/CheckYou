@@ -13,7 +13,8 @@
 	rel="stylesheet" id="bootstrap-css">
 <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 <script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/
+	3.2.1/jquery.min.js"></script>
  <script src="//m.servedby-buysellads.com/monetization.js"
 	type="text/javascript"></script>	
 	<script src="//m.servedby-buysellads.com/monetization.js"
@@ -67,8 +68,7 @@
 									<li class="nav-item"><a class="nav-link"
 
 										href="dailyManagement">Daily Management </a></li>
-									<li class="nav-item"><a class="nav-link" href="viewTable">daily
-											time sheet</a></li>
+									<li class="nav-item"><a class="nav-link" href="viewTable">daily time sheet</a></li>
 
 									<li class="nav-item"><a class="nav-link"
 										href="canvasjschart">View Graph</a></li>
@@ -125,7 +125,7 @@
                     <li> <a href="groupHome"> 
      <img src="https://img.icons8.com/dusk/64/000000/dog-house.png"><!--<span class="iconname" >GroupHome</span>-->
    </a> </li>
-                    <li> <a href="comment">
+                    <li> <a href="task_group">
  <img src="https://img.icons8.com/dusk/64/000000/combo-chart.png"><!--<span class="iconname" >Comment</span>-->
  </a>
 </li>
@@ -135,6 +135,8 @@
                     <li>    <a href="#" onclick="saveMemo('MemberList')"><img src="https://img.icons8.com/dusk/64/000000/conference.png">
                   <!--  <span class="iconname" >Member List </span>--></a>
  </li>
+ 					
+  	
  <li>
  <c:set var="constructor" value="<%=constructor %>"/>
 	<c:set var="loginUser" value="<%=loginUser %>" />

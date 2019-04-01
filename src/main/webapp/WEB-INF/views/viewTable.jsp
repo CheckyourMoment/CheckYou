@@ -11,6 +11,7 @@
 <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 <!-- 
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -23,12 +24,13 @@
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <meta charset="utf-8">
+
 <title>today's time sheet</title>
 </head>
 <body>
 
 	<!-- 메뉴 바 시작  -->
-<header class="header_area">
+	<header class="header_area">
 		<div class="top_menu">
 			<div class="container"></div>
 		</div>
@@ -50,44 +52,54 @@
 						id="navbarSupportedContent">
 
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active">
-							    <a class="nav-link" href="dailyManagement">Home
-							    <img
-									src="img/05.png" /></a>
-				            </li>
+
+							<li class="nav-item active"><a class="nav-link"
+								href="dailyManagement"> Home <img src="https://img.icons8.com/color/45/000000/dog-house.png"></a></li>
+
 							<!--personal menubar!-->
 							<li class="nav-item submenu dropdown"><a
 								href="dailyManagement" class="nav-link dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Personal  <img
-									src="img/113.png" /></a>
+								aria-expanded="false">Personal<img src="https://img.icons8.com/color/48/000000/mental-state.png"></a>
                     	<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
-										href="dailyManagement"> Daily Management</a></li>
-									<li class="nav-item"><a class="nav-link" href="viewTable">daily time sheet</a></li>
+
+										href="dailyManagement">Daily Management </a></li>
+									<li class="nav-item"><a class="nav-link" href="viewTable">daily
+											time sheet</a></li>
 
 									<li class="nav-item"><a class="nav-link"
 										href="canvasjschart">View Graph</a></li>
 										
 									<li class="nav-item"><a class="nav-link"
-                                        href="searchTimeSheetPage">searchTimeSheet</a></li>
-						</ul></li>
-							<!--Group menubar!-->
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Group  <img
-									src="img/08.png" /></a></li>
-							
-						 
 
-					<li class="nav-item submenu dropdown"><a href="logout"
+										href="searchTimeSheetPage">searchTimeSheet</a></li>
+								</ul></li>
+
+							<!--Group menubar!-->
+							<li class="nav-item submenu dropdown"><a href="groupHome"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">My Page  <img
-									src="img/10.png"/>
+								role="button" aria-haspopup="true" aria-expanded="false">Group
+									<img src="https://img.icons8.com/color/48/000000/groups.png">
 							</a>
-                                <ul class="dropdown-menu">
-                                   <li class="nav-item"><a class="nav-link"  href="MyPage">My Page</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="groupHome">Invite</a></li>
+								 
+								</ul></li>
+
+						 
+							<!-- mypage -->
+							<li class="nav-item submenu dropdown"><a href="logout"
+
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false">My Page<img src="https://img.icons8.com/color/48/000000/light.png">
+							</a>
+
+								<ul class="dropdown-menu">
+
+									<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+									<li class="nav-item"><a class="nav-link" href="MyPage">MyPage</a></li>
+
 								</ul></li>
 						</ul>
 					</div>
@@ -95,8 +107,6 @@
 			</nav>
 		</div>
 	</header>
-
-	<!-- 메뉴 바 끝 -->
 
 
 	<div class="container text-center">
@@ -118,7 +128,7 @@
 									<th>work</th>
 									<th>Work detail</th>
 									<th>evaluation</tthd>
-									<th >evaluate you task!</th>
+									<th style="width:250px;">evaluate you task!</th>
 								</tr></thead>
 								  <tbody>
 								<c:forEach items="${timeSheet_today}" var="dto">
@@ -137,19 +147,23 @@
 										<c:choose>
 											<c:when test="${dto.evaluation eq 'good'}">
 												<td style="background-color: blue">
-													<p style="color: white">good</p>
+										 	
+											<img src="https://img.icons8.com/color/60/000000/lol.png">
+												<p style="color: white">good</p>   
 												</td>
 											</c:when>
 
 											<c:when test="${dto.evaluation eq 'bad'}">
 												<td style="background-color: red">
-													<p style="color: white">bad</p>
+													<img src="https://img.icons8.com/color/60/000000/sad.png">
+													<p style="color: white">bad</p>   
 												</td>
 											</c:when>
 
 											<c:when test="${dto.evaluation eq 'soso'}">
 												<td style="background-color: gray">
-													<p style="color: white">soso</p>
+													<img src="https://img.icons8.com/color/60/000000/boring.png">
+													<p style="color: white; ">soso</p>   
 												</td>
 											</c:when>
 
@@ -163,15 +177,19 @@
 
 
 										<td ><a
-											href="evaluate?evaluation=good&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">good</a>
+											href="evaluate?evaluation=good&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">
+												<img src="https://img.icons8.com/color/40/000000/lol.png"></a>
 											<a
-											href="evaluate?evaluation=bad&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">bad</a>
+											href="evaluate?evaluation=bad&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">
+													<img src="https://img.icons8.com/color/40/000000/sad.png"></a>
 											<a
-											href="evaluate?evaluation=soso&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">soso</a>
+											href="evaluate?evaluation=soso&starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">
+											<img src="https://img.icons8.com/color/40/000000/boring.png"></a>
+										<br>	<div class="express">good bad soso</div>
 										</td>
 
-										<td><a
-											href="deleteTimeSheet?starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">delete</a>
+										<td style="background-color:white; border:0;"><a
+											href="deleteTimeSheet?starttime=${dto.starttime}&endtime=${dto.endtime}&worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}"><img src="https://img.icons8.com/color/48/000000/delete-sign.png"></a>
 										</td>
 
 									</tr>

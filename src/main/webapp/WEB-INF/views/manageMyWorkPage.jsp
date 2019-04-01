@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 
 <link
@@ -23,18 +24,20 @@ function pclose1(){
 <body>
 	<div class="container text-center">
 		<div class="row">
-			<div class="col-lg-18 mx-auto" style="margin-top: 140px">
+			<div class="col-lg-6 mx-auto" style="margin-top: 40px">
 	<form action="manageMyWorkPage" onsubmit="return check()">
-<h3>You can manage your Work on this page</h3>
 
- <br>
+ <h3>Manage Your Work</h3>
+ 
 
-<table width="500" cellpadding="0" cellspacing="0" border="0">
+<table width="500" cellpadding="0" cellspacing="0"  >
 		<tr>
 			<td>Work type</td>
 			<td>Work name</td>
 			<td>Work detail</td>
+				<hr>
 		</tr>
+	
 		<c:forEach items="${ManageWorklist}" var="dto">
 		
 		<tr>
@@ -42,15 +45,16 @@ function pclose1(){
 			<td>${dto.workname}</td>
 			<td>${dto.workdetail}</td>
 			<td>
-				<a href="deleteWork?workname=${dto.workname}&workdetail=${dto.workdetail}">delete</a>
+				<a href="deleteWork?workname=${dto.workname}&workdetail=${dto.workdetail}"><img src="https://img.icons8.com/color/48/000000/multiply.png"></a>
 			</td>
 		</tr>
 		
 		</c:forEach>
 		
 </table>
-	<a href="dailyManagement" onClick="pclose1();">Back</a>   
-
+ 
+     <a class="btn btn-outline-danger" href="dailyManagement" role="button"  onClick="pclose1();" >Close</a>
+  
 	</form>
 	</div></div></div>
 </body>

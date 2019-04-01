@@ -13,7 +13,6 @@
 						http://www.springframework.org/schema/context
 						http://www.springframework.org/schema/context/spring-context.xsd">
 
-
 	<!-- 컨트롤러 없이 페이지 이동 로직 처리 -->
 	<mvc:view-controller path="/" view-name="login" />
 	<mvc:view-controller path="/joinForm"

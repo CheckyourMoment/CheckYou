@@ -10,10 +10,32 @@
 <head>
 <meta charset="utf-8">
 
-<title>JOIN</title>
+<title>task_group</title>
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8" />
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/
+	3.2.1/jquery.min.js"></script>
+ <script src="//m.servedby-buysellads.com/monetization.js"
+	type="text/javascript"></script>	
+	<script src="//m.servedby-buysellads.com/monetization.js"
+	type="text/javascript"></script>	
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/selectedGroup.css"
+	media="all">
+<script
+	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>
 window.onload = function () {
 	
@@ -108,73 +130,224 @@ chart.render();
 
 </head>
 <body>
-<a href="selectGroup">Back</a>  
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<header class="header_area">
+		<div class="top_menu">
+			<div class="container"></div>
+		</div>
+		<div class="main_menu" id="mainNav">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="index.html">
+					<img src="img/i" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset"
+						id="navbarSupportedContent">
 
-</br></br></br>
+						<ul class="nav navbar-nav menu_nav ml-auto">
+
+							<li class="nav-item active"><a class="nav-link"
+								href="dailyManagement"> Home <img src="https://img.icons8.com/color/45/000000/dog-house.png"></a></li>
+
+							<!--personal menubar!-->
+							<li class="nav-item submenu dropdown"><a
+								href="dailyManagement" class="nav-link dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Personal<img src="https://img.icons8.com/color/48/000000/mental-state.png"></a>
+                    	<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link"
+
+										href="dailyManagement">Daily Management </a></li>
+									<li class="nav-item"><a class="nav-link" href="viewTable">daily time sheet</a></li>
+
+									<li class="nav-item"><a class="nav-link"
+										href="canvasjschart">View Graph</a></li>
+										
+									<li class="nav-item"><a class="nav-link"
+
+										href="searchTimeSheetPage">searchTimeSheet</a></li>
+								</ul></li>
+
+							<!--Group menubar!-->
+							<li class="nav-item submenu dropdown"><a href="groupHome"
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false">Group
+									<img src="https://img.icons8.com/color/48/000000/groups.png">
+							</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="groupHome">Invite</a></li>
+								 
+								</ul></li>
+
+						 
+							<!-- mypage -->
+							<li class="nav-item submenu dropdown"><a href="logout"
+
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false">My Page<img src="https://img.icons8.com/color/48/000000/light.png">
+							</a>
+
+								<ul class="dropdown-menu">
+
+									<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+									<li class="nav-item"><a class="nav-link" href="MyPage">MyPage</a></li>
+
+								</ul></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	
+ <%String selectedGroup = (String)session.getAttribute("selectedGroup"); %>
+<%String constructor = (String)session.getAttribute("constructor"); %>
+<%String loginUser = (String)session.getAttribute("userId"); %>
+	
+	
+ 	
+  <div id="wrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li> <a href="selectGroup"> 
+<img src="https://img.icons8.com/dusk/64/000000/circled-left-2.png"><!--<span class="iconname" >GroupHome</span>-->
+   </a> </li>
+                    <li> <a href="task_group">
+ <img src="https://img.icons8.com/dusk/64/000000/combo-chart.png"><!--<span class="iconname" >Comment</span>-->
+ </a>
+</li>
+                    <li>    <a href="addMemberPage" onclick="saveMemo('addMemberPage')"><img src="https://img.icons8.com/dusk/64/000000/find-user-female.png">
+                   <!-- <span class="iconname" >Search Friend</span> --></a>
+   </li>
+                    <li>    <a href="MemberList" onclick="saveMemo('MemberList')"><img src="https://img.icons8.com/dusk/64/000000/conference.png">
+                  <!--  <span class="iconname" >Member List </span>--></a>
+ </li>
+ 					
+  	
+ <li>
+ 
+ <c:set var="constructor" value="<%=constructor %>"/>
+	<c:set var="loginUser" value="<%=loginUser %>" />
+					
+	<c:if test="${constructor eq loginUser}">
+		<a onclick="deleteGroup('<%=selectedGroup %>')"><img src="https://img.icons8.com/dusk/64/000000/delete.png"></a>
+	</c:if>	
+ </li>
+ </ul>
+            </div>	</div>
+            
+            
+            
+<div id="page-content-wrapper">
+<div class="container-fluid">	
+<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-10 mx-auto" style="margin-top: 80px">
+
+ 
+<div id="chartContainer" style="height: 370px; width:100%;">
+
+</div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js">
+</script>
+ 
+<button type="button" class="btn btn-primary" onclick="addWorkProgress()"
+	style="height:50px;margin-bottom:50px;">Add Task</button>
+
+<button type="button" class="btn btn-primary" onclick="addMission()"
+style="height:50px;margin-bottom:50px;">Add Mission</button>
 
 
-<button onclick="addWorkProgress()">Add Task</button>
 
-<button onclick="addMission()">Add Mission</button>
+<table>
+
+<tr style="border: 80px"><td>
 
 <form action="taskList">
-	<input type="submit" value="Task List"></input> 
+	<input class="btn btn-link" type="submit" value="Task List"></input> 
 </form>
-
+ 
+  
+</td>
+<td>
 <form action="missionList">
-	<input type="submit" value="Mission List"></input>
+	<input  class="btn btn-link"  type="submit" value="Mission List"></input>
 </form>
+</td>
 
+<td>
 <form action="completedList">
-	<input type="submit" value="Completed List"></input>
-</form>
+	<input class="btn btn-link"  type="submit" value="Completed List"></input>
+</form></td>
+
+</table>
 
 <!-- taskList -->
 <%String dispList = (String)request.getAttribute("dispList"); %>
 <%if(dispList != null){ %>
-<table width="500" cellpadding="0" cellspacing="0" border="0">
+<table style="width: 100%";
+    border: 1px; solid #444444;font-size="60px";" width="200" cellpadding="0" cellspacing="0" border="0">
+	 <hr>
 		<c:forEach items="${taskList}" var="dto">
+		
+
+		
 		<tr>
 			<td>${dto.workname}</td>
 			<td>${dto.progress}%</td>
-			<td><button onclick="updateProgress('${dto.workname}')">update</button></td>
-			<td><button onclick="deleteProgress('${dto.workname}')">delete</button></td>
-		</tr>
+			<td><a onclick="updateProgress('${dto.workname}')"><img src="https://img.icons8.com/color/30/000000/approve-and-update.png"></a></td>
+			<td><a onclick="deleteProgress('${dto.workname}')"><img src="https://img.icons8.com/office/30/000000/cancel.png"></a>
+	</tr>
 		</c:forEach>
 </table>
 <%} %>
-
-<!-- completedList -->
-<table width="500" cellpadding="0" cellspacing="0" border="0">
-		<c:forEach items="${completedList}" var="dto">
-		<tr>
-			<td>${dto.workname}</td>
-			<td>${dto.progress}%</td>
-			<td><button onclick="updateProgress('${dto.workname}')">update</button></td>
-			<td><button onclick="deleteProgress('${dto.workname}')">delete</button></td>
-		</tr>
-		</c:forEach>
-</table>
-
-<!-- missionList -->
+ <!-- missionList -->
 <%String dispMissionList = (String)request.getAttribute("dispMissionList"); %>
 <%if(dispMissionList != null){ %>
-<table width="500" cellpadding="0" cellspacing="0" border="0">
+<table style="width: 100%";
+    border: 1px; solid #444444;" width="200" cellpadding="0" cellspacing="0" border="0">
+ 	<hr>
 		<c:forEach items="${missionList}" var="dto">
 		<tr>
 			<td>${dto.workname}</td>
 			<td>${dto.deadline}</td>
 			<td>${dto.progress}%</td>
-			<td><button onclick="updateProgress('${dto.workname}')">update</button></td>
-			<td><button onclick="deleteProgress('${dto.workname}')">delete</button></td>
+			<td><a onclick="updateProgress('${dto.workname}')"><img src="https://img.icons8.com/color/30/000000/approve-and-update.png"></a></td>
+			 <td><a onclick="deleteProgress('${dto.workname}')"><img src="https://img.icons8.com/office/30/000000/cancel.png"></a>
+	</td>
 		</tr>
 		</c:forEach>
 </table>
 <%} %>
+ <!-- completedList -->
+<table   style="width: 100%";
+    border: 0; solid #444444;" width="200" cellpadding="0" cellspacing="0" border="0">
+
+	 <hr>
+		<c:forEach items="${completedList}" var="dto">
+			<td>${dto.workname}</td>
+			<td>${dto.progress}%</td>
+			<td><a onclick="updateProgress('${dto.workname}')"><img src="https://img.icons8.com/color/30/000000/approve-and-update.png"></a></td>
+			<td><a onclick="deleteProgress('${dto.workname}')"><img src="https://img.icons8.com/office/30/000000/cancel.png"></a>
+	</td>
+		
+		</tr>
+		</c:forEach>
+		 
+</table>
 
 
+
+</div></div></div></div></div>
 
 
 
@@ -319,19 +492,21 @@ while(iter2.hasNext()) {
 	function addMission(){
 		
 		 var Result = prompt( 'work name', '' );
-	    
+	 
 		 if(Result != null){// 확인
 			 if(Result == ""){
 				 window.alert("Please input task name");
 				 return addMission();
 			 }
 		 
-		 	var Result2 = prompt( 'Deadline(0000-00-00)', '' );
+		 	var Result2 = prompt( 'Deadline(0000-00-00)', '2019-mm-dd' );
+		  
 		 	if(Result2 != null){// 확인
-				 if(Result2 == ""){
+		 		if(Result2 == ""){
 					 window.alert("Please input Deadline");
 					 return addMission();
 				 }
+		 	
 		 // 모두 통과시
 		 	location.href="addMission?work="+Result+"&deadline="+Result2;
 		 }
@@ -342,3 +517,19 @@ while(iter2.hasNext()) {
 
 </body>
 </html>
+
+<!-- ajax  -->
+<script>
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+       dateFormat: 'yy-mm-dd' ,
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      monthNames: [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ],
+
+    });
+  } ); 
+  
+</script> 
+  

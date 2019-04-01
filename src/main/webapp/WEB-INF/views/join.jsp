@@ -32,6 +32,7 @@
 	href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
 	rel="stylesheet">
 <!-- //web-fonts -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <script
@@ -76,7 +77,7 @@
 
 					</div>
 					<div class="input">
-						<input type="email" placeholder="Email" id="email" name="email" autofocus/>
+						<input type="email" placeholder="Email" id="email" name="email" required autofocus/>
 						<span> <i class="fas fa-envelope-square"></i>
 						</span>
 
@@ -96,9 +97,9 @@
 
 	<!-- copyright -->
 	<div class="footer">
-		<h2>
-			&copy; 2018 Modish Login Form. All rights reserved | Design by <a
-				href="http://www.bit.com">W3layouts</a>
+		<h2> 
+		&copy; 2018 CHECK YOU Login Form. All rights reserved | Design by
+			<a href="http://www.bit.com">FISH</a>
 		</h2>
 	</div>
 
@@ -227,16 +228,15 @@ function mailValidate(){
 				},
 				//result = 1 아이디 사용가능  0이면 사용 불가
 				success : function(data) {
-					alert("success!");
+				
 					if ($.trim(data) == 1 && id == "") {
-						alert(data);
-						$(".submit").prop("disabled", true);
+					    $(".submit").prop("disabled", true);
 						$(".submit").css("background-color", "#aaaaaa");
 						$("#id").css("background-color", "#FFCECE");
 
 						idCheck = 0;
 					} else if ($.trim(data) == 1) {
-						alert(data);
+					
 						$("#id").css("background-color", "#B0F6AC");
 						idCheck = 1;
 						if (idCheck == 1 && pwdCheck == 1) {
@@ -245,7 +245,7 @@ function mailValidate(){
 						}
 
 					} else if ($.trim(data) == 0) {
-						alert(data);
+					
 						 $(".submit").prop("disabled", true);
 		                   $(".submit").css("background-color", "#aaaaaa");
 						$("#id").css("background-color", "#FFCECE");

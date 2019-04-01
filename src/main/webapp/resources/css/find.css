@@ -1,5 +1,4 @@
- @import url("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Roboto:300,400,500,700");
-
+/*회원가입*/
 html,
 body,
 div,
@@ -87,7 +86,6 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
-
 article,
 aside,
 details,
@@ -130,7 +128,6 @@ table {
 /* start editing from here */
 
 a {
-	
     text-decoration: none;
 }
 
@@ -212,9 +209,9 @@ img {
 
 /*end reset*/
 
-body {    
-		/*배경색 바꾸는거*/
-	background-color: #9055A2;
+body {
+	/*배경색 바꾸는거*/
+	background-color: #814794;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -230,19 +227,20 @@ body {
 /*-- title --*/
 
 h1 {
-	margin: 1px 2px 45px 2px;
-    font-size: 3.5em;
+    margin: 1px 2px 45px 2px;  
+    font-size: 5.5em;
     color: #fff;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     font-weight: bold;
     text-align: center;
-    text-shadow: 2px 1px 4px rgba(19, 19, 19, 0.52);
+    text-shadow: 2px 1px 6px rgba(19, 19, 19, 0.52);
     font-style: italic;
-  	 font-family: 'Noto Sans Kannada', sans-serif;
+    font-family: 'Tangerine', cursive;
 }
 
 h1 span {
     color:#f13f57;
+    border-bottom: 3px;
 }
 
 /*-- //title --*/
@@ -250,12 +248,15 @@ h1 span {
 /*-- content --*/
 .sub-main-w3 {
     margin: 6vw 5vw;
+  
+   
 }
 .sub-main-w3 form {
+	
     max-width: 500px;
     margin: 0 auto;
     background: rgba(25, 24, 24, 0.32);
-    padding: 2.5vw;
+    padding: 3.5vw;
     box-sizing: border-box;
     box-shadow: 0px 1px 13px 2px rgba(251, 251, 251, 0.09);
     position: relative;
@@ -274,7 +275,7 @@ p.legend {
 p.legend i{
     color: #fff;
     margin-left:10px;
-}
+ }
 
 .input {
     position: relative;
@@ -308,13 +309,14 @@ p.legend i{
 .input input:focus {
     padding: 13px 5px 13px 10px;
     border-color:#f13f57;
+   
 }
 
 .submit {
     width: 45px;
     height: 45px;
     display: block;
-    margin: 1.5em auto 0;
+    margin: 2em auto 0;
     background: rgba(12, 10, 10, 0.2);
     border-radius: 100%;
     border: none;
@@ -330,7 +332,6 @@ p.legend i{
     background: #f13f57;
     color: #fff;
 }
-
 
 .feedback {
     position: absolute;
@@ -374,19 +375,7 @@ p.legend i{
     text-align: center;
     line-height: 1.8;
 }
-a {
-	font-size: 20px;
-	color: #fff;
 
-}
-a :hover {
-	color: #f13f57;
-	 -webkit-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-    transition: 0.5s all;
-}
 .footer h2 a {
     color: #f13f57;
     -webkit-transition: 0.5s all;
@@ -509,3 +498,6 @@ a :hover {
 }
 
 /*--//responsive--*/
+
+
+

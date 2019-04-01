@@ -1,8 +1,7 @@
-/*메인*/
+/*개인 메인 외 다른탭들 차트같은거*/
 @import url("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Roboto:300,400,500,700");
 @import url('https://fonts.googleapis.com/css?family=Gothic+A1|Nanum+Gothic+Coding');
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
-
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
 html,
 body,
 div,
@@ -108,20 +107,18 @@ img {
 }
 
 body {
-  background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-	
   line-height: 24px;
    font-size: 14px; 
-   font-weight: normal;
-   background-size: cover;
+	font-weight: normal;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    font-size: 100%;
-  font-family: 'Fira Sans', sans-serif;
+    font-size: 60%;
+  font-family: 'PT Sans', sans-serif;
      overflow-x: hidden;
  
 }
@@ -130,13 +127,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; 
 }
-h4{
 
-    font-size: 40px;
-}
 .header_area{
-background-image: background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-
+ background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
 button:focus {
@@ -350,7 +343,6 @@ button:focus {
 		border-bottom: 0px solid #fff;
 		border-radius: 0px;
     }
- 
     .header_area .navbar .search{
         margin-left: 0px;
     }
@@ -385,20 +377,73 @@ button:focus {
 	}
     
 }
-    
-    /*menu bar 끝*/
+/*menu bar 끝*/
 
- h2{
- font-size: 25px;
+ h3{
+ font-size: 55px;
  padding: 20px;
- 
  }
+/*검색창*/
  
+.input {
+    position: relative;
+    margin: 6px auto;
+    width:70%
+}
 
+.input span {
+    position: absolute;
+    display: block;
+   color: #f13f57; 
+    left: 10px;
+    top: 12px;
+    font-size: 18px;
+}
+
+.input input {
+    width: 100%;
+    padding: 13px 5px 13px 40px;
+    display: block;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
+    transition: 0.2s ease-out;
+    color: #000;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline:none;
+    letter-spacing: 1px;
+}
+
+.input input:focus {
+    padding: 13px 5px 13px 10px;
+/*     border-color:#f13f57;
+   */ 
+}
+
+
+
+
+
+
+.sub-main-w3 {
+    margin: 6vw 5vw;
+}
+.sub-main-w3 form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(25, 24, 24, 0.32);
+    padding: 3.5vw;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 13px 2px rgba(251, 251, 251, 0.09);
+    position: relative;
+    /* display: table; */
+}
+
+ 
+/*검색창끝*/
 	@media screen and (max-width: 980px) {
         
         .watch {
-           
             margin:-6px;
         }
         .DailyManagement{
@@ -434,7 +479,6 @@ button:focus {
 .todo {
     font-size: 6em;
  font-family: 'Gothic A1', sans-serif;
-	MARGIN-TOP:3REM;
 }
     
     
@@ -450,16 +494,19 @@ button:focus {
 	padding-top:10px;
 	
 }
-
+.row {
+	padding-left: 10px;
+}
  table {
+ 		 
         width: 100%;
         border-top: 1px #bbdefb;
         border-collapse: collapse;
-      
+        border-radius:10px 0 10px;
       }
   th, td {
         border-bottom: 1px solid #2E2E2E;
-        padding: 10px;
+     	
         text-align: center;
         font-size: 25px;
   
@@ -467,6 +514,7 @@ button:focus {
    th {
     background-color: #5D9FFF; 
    color:#fff;
+   padding:10px;
 
       }
    td {
@@ -487,9 +535,10 @@ button:focus {
   border-spacing: 0;
 }
 
+
 @media(max-width:1920px) {
     h3 {
-        font-size: 2.5vw;
+        font-size: 3vw;
     }
 }
 
@@ -500,10 +549,16 @@ button:focus {
 }
 @media(max-width:1620px) {
     h3 {
-        font-size: 3em;
+        font-size: 4vw;
+
+       
     }
 }
-
+.box{
+  margin: 50px auto;
+  width: 300px;
+  height: 50px;
+}
 @media(max-width:900px) {
     .w3ls-social {
         left: 6%;
@@ -512,7 +567,7 @@ button:focus {
 
 @media(max-width:800px) {
     h3 {
-        font-size: 2.7em;
+        font-size: 2.4em;
     }
     .sub-main-w3 {
         float: none;
@@ -525,17 +580,16 @@ button:focus {
         left: 241px;
     }
 }
-@media(max-width:700px){
-	 h3 {
-        font-size: 2.7em;
-    }
-}
+
 @media(max-width:667px) {
     .w3ls-social h2 {
         left: 182px;
     }
     h2{
-    	font-size:20px;
+    	font-size:25px;
+    }
+    .express{
+  display:none;
     }
 }
 
@@ -546,11 +600,14 @@ button:focus {
     .footer h2 {
         letter-spacing: 1px;
     }
+       .express{
+  display:none;
+    }
 }
 
 @media(max-width:480px) {
     h3 {
-        font-size: 2.7em;
+        font-size: 2.4em;
     }
     .sub-main-w3 form {
         padding: 7.5vw;
@@ -560,6 +617,9 @@ button:focus {
     }
     .w3ls-social h2 {
         left: 91px;
+    }
+       .express{
+  display:none;
     }
 }
 
@@ -583,49 +643,230 @@ button:focus {
     .form-style-agile {
         margin-bottom: 1em;
     }
-    .btn{
-	margin-top:40px;
-   width:150px;
-    height: 150px;
-}
-}
 
-@media(max-width:330px) {
-  	h3 {
-  	   font-size: 1.8em;
-  	}
-    h2 {
+     .form-style-agile input[type="text"],
+    .form-style-agile input[type="password"] {
+        font-size: 13px;
+        padding: 13px 15px;
+    }
+   .express{
+  display:none;
+    }
+}
+ 
+@media(max-width:320px) {
+    h1 {
         font-size: 1.8em;
     }
-
+    h2 {
+        font-size: 5em;
+    }
+    .sub-main-w3 form {
+        padding: 25px 14px;
+    }
+    .w3ls-social h2 {
+        left: 10px;
+    }
+       .express{
+  display:none;
+    }
 }
-
+ 
+.sub-main-w3 {
+    margin: 6vw 5vw;
+}
 .btn{
-	margin-top:10px;
-    background-color: #4481eb ;
-    border-color:#4481eb;
-    color: white;
-    border-radius: 90px;
-    width:80px;
-    height: 80px;
+  	margin-bottom:10px; 
+    width:170px;
+    height: 40px; 
+
 }
+ 
+.btn-success{
+	position: relative;
+  	font-size:13px;
+	width:70px;
+    height: 30px; 
+ 
+}
+
 .btn:hover, .btn:focus{
-	color:#fff;
-	border:1px solid #FFA300;
-	background-color:#FFA300;}
-	
+ }
 
- 
-input[type=radio]:checked ~ .check {
-  border: 5px solid #0DFF92;
-}
+<!--datepicker!-->
+.ui-datepicker { 
+width: 17%; 
+padding: .2em .2em 0; 
+display: none; 
+} 
+.ui-datepicker-calendar { 
+width: 100%; 
+background-color: red; 
+} 
+.ui-datepicker .ui-datepicker-header { 
+position: relative; 
+padding: .2em 0; 
+width:100%; 
+} 
+.ui-datepicker-header{ 
+width:100%; 
+} 
+.ui-datepicker .ui-datepicker-prev, 
+.ui-datepicker .ui-datepicker-next { 
+position: absolute; 
+top: 2px; 
+width: 1.8em; 
+height: 1.8em; 
+} 
+.ui-datepicker .ui-datepicker-prev-hover, 
+.ui-datepicker .ui-datepicker-next-hover { 
+top: 1px; 
+} 
+.ui-datepicker .ui-datepicker-prev { 
+left: 2px; 
+} 
+.ui-datepicker .ui-datepicker-next { 
+right: 2px; 
+} 
+.ui-datepicker .ui-datepicker-prev-hover { 
+left: 1px; 
+} 
+.ui-datepicker .ui-datepicker-next-hover { 
+right: 1px; 
+} 
+.ui-datepicker .ui-datepicker-prev span, 
+.ui-datepicker .ui-datepicker-next span { 
+display: block; 
+position: absolute; 
+left: 50%; 
+margin-left: -8px; 
+top: 50%; 
+margin-top: -8px; 
+} 
+.ui-datepicker .ui-datepicker-title { 
+margin: 0 2.3em; 
+line-height: 1.8em; 
+text-align: center; 
+} 
+.ui-datepicker .ui-datepicker-title select { 
+font-size: 1em; 
+margin: 1px 0; 
+} 
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { 
+width: 45%; 
+} 
+.ui-datepicker table { 
+width: 100%; 
+font-size: .9em; 
+border-collapse: collapse; 
+margin: 0 0 .4em; 
+} 
+.ui-datepicker th { 
+padding: .7em .3em; 
+text-align: center; 
+font-weight: bold; 
+border: 0; 
+} 
+.ui-datepicker td { 
+border: 0; 
+padding: 1px; 
+} 
+.ui-datepicker td span, 
+.ui-datepicker td a { 
+display: block; 
+padding: .2em; 
+text-align: right; 
+text-decoration: none; 
+} 
+.ui-datepicker .ui-datepicker-buttonpane { 
+background-image: none; 
+margin: .7em 0 0 0; 
+padding: 0 .2em; 
+border-left: 0; 
+border-right: 0; 
+border-bottom: 0; 
+} 
+.ui-datepicker .ui-datepicker-buttonpane button { 
+float: right; 
+margin: .5em .2em .4em; 
+cursor: pointer; 
+padding: .2em .6em .3em .6em; 
+width: auto; 
+overflow: visible; 
+} 
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { 
+float: left; 
+} 
 
-input[type=radio]:checked ~ .check::before{
-  background: #0DFF92;
-}
+/* with multiple calendars */ 
+.ui-datepicker.ui-datepicker-multi { 
+width: auto; 
+} 
+.ui-datepicker-multi .ui-datepicker-group { 
+float: left; 
+} 
+.ui-datepicker-multi .ui-datepicker-group table { 
+width: 95%; 
+margin: 0 auto .4em; 
+} 
+.ui-datepicker-multi-2 .ui-datepicker-group { 
+width: 50%; 
+} 
+.ui-datepicker-multi-3 .ui-datepicker-group { 
+width: 33.3%; 
+} 
+.ui-datepicker-multi-4 .ui-datepicker-group { 
+width: 25%; 
+} 
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header, 
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { 
+border-left-width: 0; 
+} 
+.ui-datepicker-multi .ui-datepicker-buttonpane { 
+clear: left; 
+} 
+.ui-datepicker-row-break { 
+clear: both; 
+width: 100%; 
+font-size: 0; 
+} 
 
-input[type=radio]:checked ~ td{
-  color: #0DFF92;
-}
-
- 
+/* RTL support */ 
+.ui-datepicker-rtl { 
+direction: rtl; 
+} 
+.ui-datepicker-rtl .ui-datepicker-prev { 
+right: 2px; 
+left: auto; 
+} 
+.ui-datepicker-rtl .ui-datepicker-next { 
+left: 2px; 
+right: auto; 
+} 
+.ui-datepicker-rtl .ui-datepicker-prev:hover { 
+right: 1px; 
+left: auto; 
+} 
+.ui-datepicker-rtl .ui-datepicker-next:hover { 
+left: 1px; 
+right: auto; 
+} 
+.ui-datepicker-rtl .ui-datepicker-buttonpane { 
+clear: right; 
+} 
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { 
+float: left; 
+} 
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current, 
+.ui-datepicker-rtl .ui-datepicker-group { 
+float: right; 
+} 
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header, 
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { 
+border-right-width: 0; 
+border-left-width: 1px; 
+} 
+.txt_center{
+margin-bottom : 2px;
+};

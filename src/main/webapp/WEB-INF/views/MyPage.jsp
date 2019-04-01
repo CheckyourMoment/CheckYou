@@ -1,32 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+ 
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300"
-	type="text/css" />
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-	crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Karla"
-	rel="stylesheet">
-<meta charset="utf-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/mainstyle.css"
-	media="all">
+ <script src="//m.servedby-buysellads.com/monetization.js"
+	type="text/javascript"></script>	
+	<script src="//m.servedby-buysellads.com/monetization.js"
+	type="text/javascript"></script>	
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/mypage.css"
+	media="all">
+        
+<title>Insert title here</title>
+<!-- <script>
+	$(function(){
+		if(${msg ne null}){
+			alert('${msg}');
+		};
+		
+		if($("#pwForm").submit(function(){
+			if($("#pw").val() !== $("#pw2").val()){
+				alert("비밀번호가 다릅니다.");
+				$("#pw").val("").focus();
+				$("#pw2").val("");
+				return false;
+			}else if ($("#pw").val().length < 8) {
+				alert("비밀번호는 8자 이상으로 설정해야 합니다.");
+				$("#pw").val("").focus();
+				return false;
+			}else if($.trim($("#pw").val()) !== $("#pw").val()){
+				alert("공백은 입력이 불가능합니다.");
+				return false;
+			}
+		}));
+	})
+</script> -->
 </head>
 <body>
 	<header class="header_area">
@@ -72,6 +95,7 @@
 										
 									<li class="nav-item"><a class="nav-link"
 
+
 										href="searchTimeSheetPage">searchTimeSheet</a></li>
 								</ul></li>
 
@@ -106,44 +130,42 @@
 			</nav>
 		</div>
 	</header>
-
-<a href="dailyManagement">Back</a>
-
-<h2>- Search you friend and add on this page!    </h2>
-	
-	<form action ="searchFriend">
-	input your friend's id : <input type="text" name="searchFriend"/></br>
-	<input type="submit" value="search"/>
+ 
+	<div class="sub-main-w3" style="margin-top: 200px"> 	
+				 <div class="mypage">
+         
+              <h3>My Page ${dto.id}</h3></div>
+               <h2>비밀번호는 6개월에 한번씩 바꿔주시는게 보안상 좋습니다 </h2>
+  <section>
+  
+   <fieldset>
+	<form class="cleanForm" id="pwForm" action="modify" method="post">
+		
+		<div class="input">
+		<input type="hidden" name="id" value="${ dto.id }">
+		 </div>
+		 <div class="input">
+			 <input id="old_pw" name="old_pw" class="field1"
+				type="password" placeholder="password" required>
+		</div> <div class="input">
+			 <input id="pw" name="pw" type="password" class="field1"
+			 placeholder="New Password"	required>
+		</div><div class="input">
+			 <input type="password" id="pw2" class="field1" placeholder="Confirm Password" required>
+		</div> 
+			<button type="submit" class="passwordbtn hover"id="joinBtn">submit</button>
+ </fieldset>
 	</form>
-	</br>
-<%
-	String id = (String)request.getAttribute("searchedFriend");
-%>
-	<%if(id!=null){%>
-		
-	<form action="addFriend">
-	<table width="500" cellpadding="0" cellspacing="0" border="0">
-		
-		<tr>
-			<td><h3>- result -</h2></td>
-		</tr>
-		<tr>
-			<td><%= id %>
-			<input type="hidden" value="<%=id%>" name="friend"/>
-			<input type="submit" value="add"/>
-			</td>
-		</tr>
-	
-		
-	</table>
-	</form>
-	<%} else{%>
-			this id is not
-
-	<%} %>
-	
-	
-	
-
+ 
+</section>
+</div> 
+ 	
 </body>
 </html>
+<script>
+$(".hover").mouseleave(
+		  function() {
+		    $(this).removeClass("hover");
+		  }
+		);
+		</script>

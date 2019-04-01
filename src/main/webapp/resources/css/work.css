@@ -1,0 +1,50 @@
+/*work add, work delete*/
+
+body {
+    background-color:#e0c3fc;
+    background-size: cover;
+    font-size: 20px; 
+    font-family: "Roboto", sans-serif;
+    overflow-x: hidden;
+    	padding: 26px;
+}
+table {
+		 text-align : center;
+	 margin-left: auto;
+     margin-right: auto;
+}
+
+ 
+.input {
+   position: center;
+    margin:1px 1px 1px 1px;
+    width:100%
+}
+
+.input span {
+    position: absolute;
+    display: block;
+    color: #f13f57;
+    left: 20px;
+    top: 12px;
+    font-size: 18px;
+}
+
+.input input {
+    width: 100%;
+    padding: 13px 5px 13px 40px;
+    display: block;
+    border: 3px solid #EDEDED;
+    border-radius: 8px;
+    transition: 0.2s ease-out;
+    color: #000;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline:none;
+    letter-spacing: 1px;
+}
+
+.btn {
+ 	margin-top:25px;
+	 text-align: center;
+}

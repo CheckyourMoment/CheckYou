@@ -30,7 +30,7 @@
 	rel="stylesheet">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Home</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
@@ -46,8 +46,7 @@ var running = 0;	//  0:정지상태 	1:스톱워치 실행상태
 function startPause(continueTime){	// 시작 정지 버튼 클릭 이벤트 처리 메소드
     if(running == 0){	// start
     	time = continueTime*10;
-    	
-        running = 1;	// 스톱워치가 정지상태이면 실행상태로 변경한 후
+    	 running = 1;	// 스톱워치가 정지상태이면 실행상태로 변경한 후
         var runningconfirm = document.getElementById("runningconfirm");
         
         
@@ -78,7 +77,10 @@ function startPause(continueTime){	// 시작 정지 버튼 클릭 이벤트 처�
         }
         
     	increment();	// increment()메소드 실행
-   	 	document.getElementById("start").innerHTML = "Pause";	// start버튼을 pause버튼으로 변경
+   	 document.getElementById("start").innerHTML = "Pause";	// start버튼을 pause버튼으로 변경
+   	 document.getElementById("startPause").style.backgroundColor ="red";
+   	 document.getElementById("startPause").style.borderColor ="red";
+	 	
     }
     
     else{ // stop
@@ -86,7 +88,9 @@ function startPause(continueTime){	// 시작 정지 버튼 클릭 이벤트 처�
         location.href = "stopTime?runningconfirm="+running+"&progresstime="+time;
         
         document.getElementById("start").innerHTML = "start"; // start버튼을 start버튼으로 변경
-   
+      	 document.getElementById("startPause").style.backgroundColor ="green";
+       	 document.getElementById("startPause").style.borderColor ="green";
+    
     }
 }
 
@@ -138,7 +142,6 @@ function continueTime(){
 <!-- 스톱워치 함수 끝  -->
 </head>
 
-
 <body onload="continueTime();">
 
 	<header class="header_area">
@@ -149,8 +152,8 @@ function continueTime(){
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img
-						src="img/i" alt=""></a>
+					<a class="navbar-brand logo_h" href="index.html">
+					<img src="img/i" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -163,59 +166,54 @@ function continueTime(){
 						id="navbarSupportedContent">
 
 						<ul class="nav navbar-nav menu_nav ml-auto">
+
 							<li class="nav-item active"><a class="nav-link"
-								href="dailyManagement">Home <img class="small"
-									src="img/05.png" /></a></li>
+								href="dailyManagement"> Home <img src="https://img.icons8.com/color/45/000000/dog-house.png"></a></li>
+
 							<!--personal menubar!-->
 							<li class="nav-item submenu dropdown"><a
 								href="dailyManagement" class="nav-link dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Personal <img class="small"
-									src="img/113.png" /></a>
-
-								<ul class="dropdown-menu">
+								aria-expanded="false">Personal<img src="https://img.icons8.com/color/48/000000/mental-state.png"></a>
+                    	<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
+
 										href="dailyManagement">Daily Management </a></li>
 									<li class="nav-item"><a class="nav-link" href="viewTable">daily
 											time sheet</a></li>
 
-
 									<li class="nav-item"><a class="nav-link"
 										href="canvasjschart">View Graph</a></li>
-
+										
 									<li class="nav-item"><a class="nav-link"
+
 										href="searchTimeSheetPage">searchTimeSheet</a></li>
 								</ul></li>
+
 							<!--Group menubar!-->
-							<li class="nav-item submenu dropdown"><a href="#"
+							<li class="nav-item submenu dropdown"><a href="groupHome"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
 								role="button" aria-haspopup="true" aria-expanded="false">Group
-									<img class="small" src="img/08.png" />
+									<img src="https://img.icons8.com/color/48/000000/groups.png">
 							</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Team</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="single-blog.html">Mento</a></li>
+									<li class="nav-item"><a class="nav-link" href="groupHome">Invite</a></li>
+								 
 								</ul></li>
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Friend
-									<img class="small" src="img/112.png" />
-							</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link"
-										href="searchFriendPage">Add Friend</a></li>
-									<li class="nav-item"><a class="nav-link" href="friendList">Friend
-											List</a></li>
-								</ul></li>
+
+						 
+							<!-- mypage -->
 							<li class="nav-item submenu dropdown"><a href="logout"
+
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">My
-									Page <img class="small" src="img/10.png" />
+								role="button" aria-haspopup="true" aria-expanded="false">My Page<img src="https://img.icons8.com/color/48/000000/light.png">
 							</a>
+
 								<ul class="dropdown-menu">
 
 									<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+									<li class="nav-item"><a class="nav-link" href="MyPage">MyPage</a></li>
+
 								</ul></li>
 						</ul>
 					</div>
@@ -223,76 +221,87 @@ function continueTime(){
 			</nav>
 		</div>
 	</header>
-	<!-- 메뉴 바 끝 -->
 
-	<section class="content-section bg-light" id="about">
+	
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-10 mx-auto" style="margin-top: 200px">
 					<div>
-						<h2>Daily Management</h2>
+						<h3>Daily Management</h3>
 					</div>
 					<div class="todo">
-						<div class="todo1">
-							<p class="lead mb-5">할일을 추가하고 시간을 재어 보세요</p>
-						</div>
-						<img src="img/watch.gif" />
+					 
+						<span class="watch">
+						<img src="img/watch.gif" /></span>
 
 					</div>
 					<div>
 						<div class="worklist">
-							<h3>
+							<h2>
 								WORKLIST <a href="javascript:popupOpen();"><img alt=""
-									src="img/plus1.png"> 
+
+									src="img/plus1.png"> </a> 
 									
-									</a> <a href="javascript:popupOpen1();"><img
+									
+									<a href="javascript:popupOpen1();"><img
+
 									alt="" src="img/minus.png"> </a>
 								<!-- <input type="image" src="img/plus.png" onclick="window.openlocation.href='addNewWorkPage'"/>
 					 -->
 
-							</h3>
+							</h2>
 						</div>
-
 					</div>
 
 					<div class="col-lg-6 mx-auto" id="table" style="margin-top: 15px">
 						<table align="center" width="300" cellpadding="0" cellspacing="0"
 							border="0">
-							<tr>
-								<td></td>
-								<td>Work type</td>
-								<td>Work name</td>
-								<td>Work detail</td>
-							</tr>
-
+							<thead>
+								<tr >
+								<th></th>
+								<th>type</th>
+								<th>name</th>
+								<th>detail</th>
+								</tr>
+								</thead>
+			<tbody>
 							<c:forEach items="${worklist}" var="dto">
-
+							
 								<input type="radio" id="radio1" name="workType"
-									value="${dto.worktype}" style="display: none" />
+									value="${dto.worktype}" 	style="display: none" />
+								<div></div>
 								<input type="radio" name="workName" value="${dto.workname}"
 									style="display: none" />
 								<input type="radio" name="workDetail" value="${dto.workdetail}"
 									style="display: none" /></input>
+							
 								<tr>
 
-									<td><input type="radio" name="work" id="work"
-										value="worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}"></td>
-
+									<td>
+									 
+									<input type="radio"class="w3-radio" name="work" id="work"
+										value="worktype=${dto.worktype}&workname=${dto.workname}&workdetail=${dto.workdetail}">
+									 
+										</td>
+									
 									<td>${dto.worktype}</td>
 									<td>${dto.workname}</td>
 									<td>${dto.workdetail}</td>
 								</tr>
 							</c:forEach>
+					</tbody>
 						</table>
-						<br>
+					
 						<div class="startttt">
-							<button type="button" class="btn btn-dark" id="startPause"
-								onclick="startPause(0);">
-								<b>Start</b>
+							<button type="button" class="btn" id="startPause"
+								onclick="startPause(0); ">
+								<b id="start">Start</b>
 							</button>
 							<br>
 							<!--        <a class="btn btn-dark" id="startPause" onclick="startPause(0)"><b id="start">Start</b></a> -->
-							<h3>
+						     
+						     <br>
+						     <h3>
 								<p id="output">
 									<b>0:00:00:00</b>
 								</p>
@@ -301,23 +310,10 @@ function continueTime(){
 					</div>
 				</div>
 			</div>
-	</section>
+	 
 
 	<!-- 타이머 끝 -->
-	<section class="content-section bg-light" id="about">
-		<div class="container text-center">
-			<div class="row">
-				<div class="col-lg-10 mx-auto" style="margin-top: 180px"></div>
-
-			</div>
-		</div>
-		</div>
-	</section>
-	<section class="content-section bg-light" id="about">
-		<div class="container text-center">
-			<div class="row"></div>
-		</div>
-	</section>
+ 
 	<%
 		// 스톱워치 진행 여부
 		String runningconfirm = (String) session.getAttribute("runningconfirm");
@@ -367,8 +363,8 @@ function continueTime(){
 		int time = time1 - time2;
 		/* 	out.print("whole Time : "+time); */
 	%>
-
-	<input type="hidden" id="continueHour" value="<%=continueHour%>">
+	
+ 	<input type="hidden" id="continueHour" value="<%=continueHour%>">
 	<input type="hidden" id="continueMinute" value="<%=continueMinute%>">
 	<input type="hidden" id="continueSecond" value="<%=continueSecond%>">
 	<input type="hidden" id="continueTime" value="<%=time%>">
@@ -382,7 +378,7 @@ function popupOpen(){
 
 	var popUrl = "addNewWorkPage";	//팝업창에 출력될 페이지 URL
 
-	var popOption = "width=550, height=500, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+	var popOption = "width=500, height=450, resizable=no, scrollbars=no, status=no, location=no;";    //팝업창 옵션(optoin)
 
 		window.open(popUrl,"",popOption);
 		window.opener.location.reload();  
@@ -397,7 +393,7 @@ function popupOpen1(){
 
 	var popUrl = "manageMyWorkPage";	//팝업창에 출력될 페이지 URL
 
-	var popOption = "width=570, height=500, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+	var popOption = "width=570, height=500, resizable=no, scrollbars=no, status=no, location=no;";    //팝업창 옵션(optoin)
 
 		window.open(popUrl,"",popOption);
 		window.opener.location.reload();  
@@ -409,7 +405,7 @@ function popupOpen1(){
 
 
 </script>
-
+</div></body></html>
 	<%-- 	
 
 	<div class=mainfish>

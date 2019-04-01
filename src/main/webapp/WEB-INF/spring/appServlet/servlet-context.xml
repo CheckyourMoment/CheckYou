@@ -13,13 +13,16 @@
 						http://www.springframework.org/schema/context
 						http://www.springframework.org/schema/context/spring-context.xsd">
 
-
 	<!-- 컨트롤러 없이 페이지 이동 로직 처리 -->
 	<mvc:view-controller path="/" view-name="login" />
 	<mvc:view-controller path="/joinForm"
 		view-name="join" />
+	<mvc:view-controller path="/findForm"
+		view-name="find" />
 	<mvc:view-controller path="/logout"
 		view-name="login" />
+	<mvc:view-controller path="/MyPage"
+		view-name="/MyPage" />
 	<mvc:view-controller path="/addNewWorkPage"
 		view-name="addNewWorkPage" />
 	<mvc:view-controller path="/manageMyWorkPage"
@@ -32,7 +35,7 @@
 		view-name="MakeGroupPage" />
 	<mvc:view-controller path="addMemberPage"
 		view-name="addMemberPage" />
-		
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -49,10 +52,10 @@
 
 
 
-	<!-- 자바 스크립트 리소스 경로 맵핑  -->
-	 <resources location="/WEB-INF/views/js/" mapping="/js/**"></resources> 
-	<!--   <resources location="/WEB-INF/views/css/" mapping="/css/**"></resources> 
-	   <resources location="/WEB-INF/views/img/" mapping="/img/**"></resources>  -->
+	<!-- 자바 스크립트 리소스 경로 맵핑 -->
+	<resources location="/WEB-INF/views/js/" mapping="/js/**"></resources>
+	<!-- <resources location="/WEB-INF/views/css/" mapping="/css/**"></resources> 
+		<resources location="/WEB-INF/views/img/" mapping="/img/**"></resources> -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -66,8 +69,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
-		<beans:property name="url"
+	 	<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:orcl" />
+	
 		<beans:property name="username" value="hr" />
 		<beans:property name="password" value="1234" />
 	</beans:bean>

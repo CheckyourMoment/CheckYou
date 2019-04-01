@@ -3,6 +3,7 @@ package com.spring.checkYou.dao;
 import com.spring.checkYou.dto.FriendDto;
 import com.spring.checkYou.dto.GroupDto;
 import com.spring.checkYou.dto.GroupMemberDto;
+import com.spring.checkYou.dto.GroupTaskDto;
 
 public interface IGroupDao {
 	public void addGroup(GroupDto dto);
@@ -33,4 +34,12 @@ public interface IGroupDao {
 	public void decreaseMemoCount(String decrease, String groupname);
 	public void changeMemoColor(String groupname, String changeNum , String memoColor);
 	public void addNewMemo(String groupname, String newMemoNum);
+	public void addWorkProgress(GroupTaskDto dto);
+	public void taskList(GroupTaskDto dto);
+	public void completedList(GroupTaskDto dto);
+	public void missionList(GroupTaskDto dto);
+	public void updateProgress(GroupTaskDto dto);
+	public void deleteProgress(GroupTaskDto dto);
+	public String checkGroupTask(GroupTaskDto dto);
+
 }
